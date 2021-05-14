@@ -1,11 +1,11 @@
 ---
 layout: tutorial_page
-permalink: /BiCG_2019_prework
-title: BiCG
+permalink: /CAN_2021_prework
+title: CAN
 header1: Workshop Pages for Students
-header2: Bioinformatics for Cancer Genomics 2019
+header2: Cancer Analysis 2021
 image: /site_images/CBW_cancerDNA_icon-16.jpg
-home: https://bioinformaticsdotca.github.io/BiCG_2019
+home: https://bioinformaticsdotca.github.io/CAN_2021
 ---
 
 ***
