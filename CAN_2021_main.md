@@ -1,27 +1,22 @@
 ---
 layout: workshop_main_5day
-permalink: /BiCG_2019
-title: Bioinformatics for Cancer Genomics 2019
+permalink: /CAN_2021
+title: Cancer Analysis 2021
 header1: Workshop Pages for Students
-header2: Bioinformatics for Cancer Genomics 2019
+header2: Cancer Analysis 2021
 image: /site_images/CBW_cancerDNA_icon-16.jpg
 keywords: Visualize genomic data, pathway analysis, integrate clinical data
 description: Course covers the key bioinformatics concepts and tools required to analyze cancer genomic data sets and access and work with data sets in the cloud. 
-instructors: Jared Simpson, Trevor Pugh, Francis Ouellette, Sorana Morrissy, Florence Cavalli, Juri Reimand, Lincoln Stein, Robin Haw, Mark Phillips, Heather Gibling, Aaron Gillmor, Zhibin Lu
+instructors:  Trevor Pugh, Francis Ouellette, Sorana Morrissy, Florence Cavalli, 
 length: 5 days
 ---
 
 # Welcome <a id="welcome"></a>
+ 
 
-[Welcome](https://drive.google.com/a/bioinformatics.ca/file/d/1HJ-CjEmMeyYuiZ-rQrP_eWXHnIc42dWV/view?usp=sharing) to Bioinformatics for Cancer Genomics 2019.  
-
-The course schedule can be found [here](https://bioinformaticsdotca.github.io/BiCG_2019_schedule).
+The course schedule can be found [here](https://bioinformaticsdotca.github.io/CAN_2021_schedule).
 
 Meet your faculty [here](https://drive.google.com/a/bioinformatics.ca/file/d/1hDpqptFM_kjnTTnqJGgujhzbNcqF-Qua/view?usp=sharing)
-
-**CLASS MATERIALS:** You can download the printed course manual [here](https://drive.google.com/a/bioinformatics.ca/file/d/1vup2l9AEEg7N7S180k8KbLfSzkmzIUsg/view?usp=sharing).  
-[Lecture 1 from Trevor](https://drive.google.com/a/bioinformatics.ca/file/d/14BKDblLxkEmW0uNsii2k2Qowm6mdRR32/view?usp=sharing)  
-[Lecture 3 from Francis](https://drive.google.com/a/bioinformatics.ca/file/d/15fHenhZcq6-sIz2AZDfFgousrRx3QFpE/view?usp=sharing)
 
 ***
 
@@ -33,14 +28,14 @@ Instructions to setup your laptop can be found [here](https://bioinformaticsdotc
 
 ## Pre-workshop Tutorials
 
-Pre-readings and pre-work can be found here [here](https://bioinformaticsdotca.github.io/BiCG_2019_prework).  
+Pre-readings and pre-work can be found here [here](https://bioinformaticsdotca.github.io/CAN_2021_prework).  
 It is in your best interest to complete these before the workshop.
 
 ***
 
 # Class Photo
 
-<img src="https://github.com/bioinformaticsdotca/BiCG_2019/blob/master/ClassPhoto_BiCG2019.jpg?raw=true" alt="Class Photo" width="750" /> 
+comming soon
 
 *** 
 
@@ -48,7 +43,7 @@ It is in your best interest to complete these before the workshop.
 
 ## Welcome
 
-*<font color="#827e9c">Michelle Brazas</font>*
+*<font color="#827e9c">Rachade/Francis</font>*
 
 ## Module 1: Introduction to Cancer Genomics
 
