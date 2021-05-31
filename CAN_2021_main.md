@@ -54,17 +54,17 @@ comming soon
 
 [Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/14Qvm4muPMuLKFY8gsJisNmthOneQTM7V/view?usp=sharing)
 
-## Module 3: Databases and Visualization Tools
+## Module 03: Genome Alignment 
 
-*<font color="#827e9c">Francis Ouellette</font>* 
+*<font color="#827e9c">Mathieu Bourgey</font>* 
 
-[Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1H4LKxa4CoQ4BVduV_O2KsBFzcfUdJPfE/view?usp=sharing) 
+[Lecture in ppt](https://drive.google.com/file/d/1IIbdQExYSK3tsExaOsoNKd0gzdX42IBG/view?usp=sharing) 
+[Lecture in pdf](https://drive.google.com/file/d/1omn0zGVOkal5xA_mnn6E32itWIZC54Zy/view?usp=sharing) 
 
-## Module 3 Lab: IGV
+[Practical]() 
 
-*<font color="#827e9c">Heather Gibling</font>*
+[Practical raw & computed data](https://datahub-263-pq5.p.genap.ca/CAN/module3/)
 
-[Lab Practical](http://bioinformaticsdotca.github.io/BiCG_2019_Module3_lab) 
 
 ## Logging into the Cloud
 
