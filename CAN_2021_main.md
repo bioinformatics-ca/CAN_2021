@@ -22,13 +22,10 @@ Meet your faculty [here](https://drive.google.com/a/bioinformatics.ca/file/d/1hD
 
 # Pre-Workshop Materials <a id="preworkshop"></a>
 
-## Laptop Setup Instructions
-
-Instructions to setup your laptop can be found [here](https://bioinformaticsdotca.github.io/BiCG_laptop_setup_instructions).
 
 ## Pre-workshop Tutorials
 
-Pre-readings and pre-work can be found here [here](https://bioinformaticsdotca.github.io/CAN_2021_prework).  
+Pre-readings and pre-work can be found here [here]().  
 It is in your best interest to complete these before the workshop.
 
 ***
