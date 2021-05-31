@@ -5,9 +5,9 @@ title: Cancer Analysis 2021
 header1: Workshop Pages for Students
 header2: Cancer Analysis 2021
 image: /site_images/CBW_cancerDNA_icon-16.jpg
-keywords: Visualize genomic data, pathway analysis, integrate clinical data
+keywords: Cancer Bioinformatics, Visualize genomic data, pathway analysis, integrate clinical data
 description: Course covers the key bioinformatics concepts and tools required to analyze cancer genomic data sets and access and work with data sets in the cloud. 
-instructors:  Trevor Pugh, Francis Ouellette, Sorana Morrissy, Florence Cavalli, 
+instructors:  Trevor Pugh, Sorana Morrissy, Florence Cavalli, 
 length: 5 days
 ---
 
