@@ -20,6 +20,8 @@ It is in your best interest to complete these before the workshop.
 * [Quick and Dirty Guide to **R**](http://ww2.coastal.edu/kingw/statistics/R-tutorials/text/quick&dirty_R.txt)  
 * The [R Tutorial](http://www.cyclismo.org/tutorial/R/) up to and including 5. Basic Plots
 * The [R command cheat sheet](../../resources/R_Short-refcard.pdf)
+* The [R 4 Data Science](https://r4ds.had.co.nz/index.html) tutorial, to the end of the Explore section at a minimum.
+* The [ggplot2 cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
 
 2) **UNIX Preparation tutorials**:  
 
