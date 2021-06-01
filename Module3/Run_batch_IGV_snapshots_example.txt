@@ -1,0 +1,68 @@
+#new
+#setSleepInterval 200
+
+genome hg19
+
+
+# load annotation tracks
+# Obtained the URLs by loading the annotation track in IGV (File> Load
+# from Server), saved the session and opened the .xml file in a text editor to get the URLs
+#load Ensembl gene, dbsnp, DGV, GC content, 
+load http://www.broadinstitute.org/igvdata/annotations/hg19/EnsemblGenes.ensGene,https://s3.amazonaws.com/igv.broadinstitute.org/annotations/hg19/snp147.hg19.ucscsnp.gz,https://s3.amazonaws.com/igv.broadinstitute.org/annotations/hg19/variations/dgv.bed.gz,http://www.broadinstitute.org/igvdata/annotations/hg19/hg19.gc5base.tdf
+
+#**** change these paths to point to your files:
+# load bam file
+load /Users/florence/Canadian_Bioinfo_workshop/CHSHL_March2017/CHSHL_March_workshop/Module2/HCC1143.normal.21.19M-20M.bam,/Users/florence/Canadian_Bioinfo_workshop/CHSHL_March2017/CHSHL_March_workshop/Module2/igv_HCC1143_attributes.txt
+
+
+# **** change this path to your output directory 
+snapshotDirectory /Users/florence/Canadian_Bioinfo_workshop/CHSHL_March2017/CHSHL_March_workshop/Module2/igv/screenshots/
+
+
+# Example1:
+goto chr21:19,479,731-19,479,731
+sort base chr21:19,479,731
+maxPanelHeight 50000
+snapshot HCC1143_exercise1_SNV_SNP_pair.png
+
+# Example2:
+goto chr21:19,518,452-19,518,452
+sort base chr21:19,518,452
+snapshot HCC1143_exercise2_homopolymerRepeat.png
+
+# Example3:
+goto chr21:19,611,925-19,631,555
+collapse
+snapshot HCC1143_exercise3_lowGC.png
+
+# Example4:
+goto chr21:19,666,890-19,666,930
+expand
+sort base
+snapshot HCC1143_exercise4_hetSNP_allelic.png
+
+
+# Example6:
+goto chr21:19,324,469-19,331,468
+expand
+viewaspairs
+snapshot HCC1143_exercise6_homDEL.png
+
+# Example7:
+goto chr21:19,102,154-19,103,108
+snapshot HCC1143_exercise7_AluY.png
+
+# Example8:
+goto chr21:19,089,694-19,095,362
+expand
+snapshot HCC1143_exercise8_translocation.png
+
+
+# Example5:
+# load LINE element track
+load https://s3.amazonaws.com/igv.broadinstitute.org/annotations/hg19/variations/LINE.rmask.gz
+goto chr21:19,800,320-19,818,162
+collapse
+snapshot HCC1143_exercise5_LINErepeat.png
+
+# exit
