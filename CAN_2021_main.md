@@ -125,6 +125,7 @@ comming soon
 ## Module 11: Multi-omic data integration
 
 *<font color="#827e9c">Shraddha Pai</font>* 
+
 [Lecture]()
 
 [Lab Practical]()    
