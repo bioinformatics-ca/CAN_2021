@@ -1,5 +1,17 @@
+---
+layout: tutorial_page
+permalink: /BiCG_2019_Module8_Lab
+title: BiCG 2019 Module 8 Lab
+header1: Workshop Pages for Students
+header2: Cancer Analyis 2021 Module 3
+image: /site_images/CBW_cancerDNA_icon-16.jpg
+home: https://bioinformaticsdotca.github.io/CAN_2021
+description: CAN 2021 Moule 3 lab
+author: Mathieu Bourgey, Ph.D
+ 
+---
 
-# CBW CAN 2021 - Module 3: Genome Alignment 
+# Module 3: Genome Alignment 
 ***By Mathieu Bourgey, Ph.D***  
 *https://bitbucket.org/mugqic/genpipes*
 
