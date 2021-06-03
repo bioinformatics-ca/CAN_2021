@@ -164,7 +164,7 @@ sig_tn_de = sigp[sigde,]
 o = order(sig_tn_de[,"qval"], -abs(sig_tn_de[,"de"]), decreasing=FALSE)
 
 output = sig_tn_de[o,c("gene_name","id","fc","pval","qval","de")]
-write.table(output, file="SigDE_Module8_Lab.txt", sep="\t", row.names=FALSE, quote=FALSE)
+write.table(output, file="SigDE_Module6_Lab.txt", sep="\t", row.names=FALSE, quote=FALSE)
 
 
 #View selected columns of the first 25 lines of output
@@ -192,10 +192,10 @@ dev.off()
 
 ## if you want to save all your data from this session:
 ls()
-save.image("save_module8_lab_plots.RData")
+save.image("save_module6_lab_plots.RData")
 
 #The output file can be downloaded in your browser at the following url:
-## http://##.oicrcbw.ca/Module8/Module8_Lab/de/ballgown/ref_only/assignment_Supplementary_R_output.pdf
+## http://##.oicrcbw.ca/Module6/Module6_Lab/de/ballgown/ref_only/assignment_Supplementary_R_output.pdf
 ## with your student number instead of ## 
 #To exit R type:
 quit(save="no")
