@@ -18,13 +18,13 @@ library(GenomicRanges)
 library(ballgown)
 
 #If X11 not available, open a pdf device for output of all plots
-pdf(file="Module8_Lab_Supplementary_R_output.pdf")
+pdf(file="Module6_Lab_Supplementary_R_output.pdf")
 
 #Clean up workspace - i.e. delete variable created by the graphics demo
 rm(list = ls(all = TRUE))
 
 #Set working directory where results files exist
-working_dir = "~/workspace/Module8/Module8_Lab/de/ballgown/ref_only"
+working_dir = "~/workspace/Module6/Module6_Lab/de/ballgown/ref_only"
 setwd(working_dir)
 
 
