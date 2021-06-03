@@ -9,7 +9,7 @@
 #R tutorial for CBW - Bioinformatics for Cancer Genomics - RNA Sequence Analysis
 #R tutorial for CSHL - Advanced Sequencing Technologies & Applications
 
-#Starting from the output of the Module8_Lab_ballgown.R
+#Starting from the output of the Module6_Lab_ballgown.R
 
 #Load libraries
 library(ggplot2)
