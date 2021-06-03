@@ -62,7 +62,7 @@ Note: when initiating an environment variable, we do not need the $; however, ev
 ```
 echo $RNA_LAB
 cd $RNA_LAB
-cp ~/CourseData/CG_data/Module6/data.zip .
+cp ~/CourseData/CAN_data/Module6/data.zip .
 unzip data.zip
 ```
 
