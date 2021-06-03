@@ -65,150 +65,68 @@ comming soon
 
 [Practical raw & computed data](https://bioinformaticsdotca.github.io//CAN_2021_module3_lab/)
 
-
-## Logging into the Cloud
-
-*<font color="#827e9c">Zhibin Lu</font>*
-
-[Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1nYEDsAAKKJH8S6LCg3885m7caLOFbUvM/view?usp=sharing)  
-
-[Lab Practical: Connecting to the Cloud](http://bioinformaticsdotca.github.io/AWS_setup)
-
-* We have set up instances on the Amazon cloud - one for each student. In order to log in to your instance, you will need a security certificate. If you plan on using Linux or Mac OS X, please download CBWCG.pem from Slack; Otherwise if you plan on using Windows (with Putty), please download CBWCG.ppk from Slack.  
-[Mac Key]()  
-[Windows Key]()
-
-## Unix and R review
-
-*<font color="#827e9c">Heather Gibling</font>*
-
-[Assignment](https://bioinformaticsdotca.github.io/BiCG_Unix_and_R)  
-
-* [Data file 1](https://raw.githubusercontent.com/bioinformaticsdotca/Genomic_Med_2017/master/test.fasta)  
-* [Data file 2](https://raw.githubusercontent.com/bioinformaticsdotca/BiCG_2017/master/Review_session/Gene_R_example.csv)  
-
 ***
 
 # Day 2 <a id="day2"></a>
 
-## Module 4: Genome Alignment
-
-*<font color="#827e9c">Jared Simpson</font>* 
-
-[Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1EqkCZE8m9JDFYhtCT8mWM9EjagpacyGz/view?usp=sharing)  
-
-[Lab Practical](https://bioinformaticsdotca.github.io/BiCG_2019_Module4_lab)  
-
-## Module 5: Genome Assembly
-
-*<font color="#827e9c">Jared Simpson</font>* 
-
-[Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1ZAi3xUAMCurnsiM-pFLvyHc6d5av5-v1/view?usp=sharing)
-
-[Lab Practical](https://bioinformaticsdotca.github.io//BiCG_2019_Module5_lab)  
-
-[Supplemental](https://bioinformaticsdotca.github.io/BiCG_2019_Module5_lab_supplemental)
-
-## Module 6: Copy Number Variants
+## Module 04: Somatic Genomic Alteration
 
 *<font color="#827e9c">Sorana Morrissy</font>* 
 
-[Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1-SYXqc5LUsLeOS6UVeoSYUE4Moht2OPF/view?usp=sharing)     
-[Lecture in PPT](https://drive.google.com/a/bioinformatics.ca/file/d/1ncjIqkg-uF0LYm17GMeB6r8rWUDfW_PJ/view?usp=sharing)     
-    
-[Updated Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1CDfpw5NPjYAzk5A9a3Ru7vb0X99EpVf2/view?usp=sharing)     
+[Lecture]()  
 
-## Integrative Assignment  
+[Lab Practical]()  
 
-[Assignment](https://bioinformaticsdotca.github.io/BiCG_2019_IA_Day2)
+## Module 05: Single Cell Genomics - DNA
 
-***
+*<font color="#827e9c">Andrew McPherson</font>* 
+
+[Lecture]()
+
+[Lab Practical]()  
 
 # Day 3 <a id="day3"></a>  
 
-## Module 6 Lab
-
-*<font color="#827e9c">Sorana Morrissy</font>* 
-
-[Lab Practical](https://bioinformaticsdotca.github.io/BiCG_2019_Module6_Lab)  
-
-* [Installation](https://bioinformaticsdotca.github.io/BiCG_2019_Module6_Lab-Installation)  
-* [Data Preprocessing](https://bioinformaticsdotca.github.io/BiCG_2019_Module6_Lab-DataProcessing)
-
-## Module 7: Somatic Mutations and Annotations
-
-*<font color="#827e9c">Sorana Morrissy</font>* 
-
-[Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1bqVw3HtBiOytAX_GuhZV_fZ5l6BxoQWO/view?usp=sharing)     
-[Lecture in PPT](https://drive.google.com/a/bioinformatics.ca/file/d/1Cr8cWGYFyRMwR7pYcAPbNjvffDhuqH3_/view?usp=sharing)   
-[Updated Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1dHXAr4ktbFiJ74bD4TTMta4JzBwgMw_c/view?usp=sharing)    
-  
-[Lab Practical](https://bioinformaticsdotca.github.io/BiCG_2019_Module7_Lab)  
-
-## Module 8: Gene Expression Profiling 
+## Module 06: Gene Expression Profiling
 
 *<font color="#827e9c">Florence Cavalli</font>* 
 
-[Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1Q43wMam7v6Fp9upPcf071UPuUAL08l8V/view?usp=sharing)      
-[Lecture in PPT](https://drive.google.com/a/bioinformatics.ca/file/d/1D7xJaM-2YrwOhqR4SImt6XF5tm61IU0o/view?usp=sharing)
+[Lecture]()     
+ [Labs](https://bioinformaticsdotca.github.io//CAN_2021_module6_lab)
 
-## Integrative Assignment  
 
-[Assignment](https://bioinformaticsdotca.github.io/BiCG_2019_IA_Day3)
+## Module 07: Single Cell Genomics - RNA
 
-***
+*<font color="#827e9c">Trevor Pugh / Javier Diaz</font>* 
+
+[Lecture]()
+
+[Lab Practical]() 
 
 # Day 4 <a id="day4"></a>
 
-## Module 8 Lab  
+## Module 08: Genes to Pathways
 
-*<font color="#827e9c">Florence Cavalli</font>* 
+*<font color="#827e9c">Veronique Voisin</font>* 
 
-[Lab Practical](https://bioinformaticsdotca.github.io/BiCG_2019_Module8_Lab)  
+[Lecture]()
 
-## Module 9: Gene Fusion and Rearrangements
-
-*<font color="#827e9c">Brian Haas</font>* 
-
-[Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1-VIw8id0GRsCBsvdgRZ_Dhvi3nlMjpW8/view?usp=sharing)      
-[Lecture in PPT](https://drive.google.com/a/bioinformatics.ca/file/d/12bemvum6Fb-x3KBjEwXVXssfgFGgtB6E/view?usp=sharing)
-
-[Lab Practical - CTAT Fusion Toolkit](https://bioinformaticsdotca.github.io/BiCG_2019_Module9_Lab-CTAT)
-
-[Lab Practical - DISCASM and GMAP-Fusion](https://bioinformaticsdotca.github.io/BiCG_2019_Module9_Lab-DISCASM)
-
-## Module 10: Genes to Pathways
-
-*<font color="#827e9c">Jüri Reimand</font>* 
-
-[Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1vrn16tmdrPfH8gSUL6Rl4SWoq6xgVmvU/view?usp=sharing)       
-[Lecture in PPT](https://drive.google.com/a/bioinformatics.ca/file/d/1rzPR8RuOA1xfsng_fkLTTpf5ufQFgnWM/view?usp=sharing)
-
-[Lab Practical - gProfiler](https://drive.google.com/a/bioinformatics.ca/file/d/194nU0oofEfibcl8Kzt68qXTJyyt2hHWP/view?usp=sharing)  
-
-[Data Sets - Genelist_GBM.txt](https://bioinformaticsdotca.github.io/BiCG_2019/Module10/Genelist_GBM.txt)  
-[Data Sets - Genelist_KIRC.txt](https://bioinformaticsdotca.github.io/BiCG_2019/Module10/Genelist_KIRC.txt)  
-[Data Sets - hsapiens.pathways.NAME.gmt](https://bioinformaticsdotca.github.io/BiCG_2019/Module10/hsapiens.pathways.NAME.gmt)  
-
-***
+[Lab Practical]()     
 
 # Day 5 <a id="day5"></a>  
 
-## Module 11: Variants to Networks
-
-*<font color="#827e9c">Robin Haw</font>* 
-
-[Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1iIOCHpM8ZTJuZMlS5TLeprWqHt-KVeWa/view?usp=sharing)      
-[Lecture in PPT](https://drive.google.com/a/bioinformatics.ca/file/d/1wHumu9geNfD6je5l_kLsvCS8lJpbOcGS/view?usp=sharing)
-
-[Lab Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/17qp2LpU-swPXJdTFUFnQrC81no09kpMS/view?usp=sharing)
-
-[Lab Practical](https://bioinformaticsdotca.github.io/BiCG_2019_Module11_lab)  
-
-## Module 12: Integration of Clinical Data
+## Module 10: Integration of Clinical Data
 
 *<font color="#827e9c">Lauren Erdman</font>* 
 
 [Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1eM8iaL9MPzwNPL7DZ4WtOzTz4BHTe0v9/view?usp=sharing)       
 [Lecture in PPT](https://drive.google.com/a/bioinformatics.ca/file/d/1EBdqVdjHkJ2TQ8VsFeYAttFwzaWSf2CO/view?usp=sharing)
+
+## Module 11: Multi-omic data integration
+
+*<font color="#827e9c">Shraddha Pai</font>* 
+[Lecture]()
+
+[Lab Practical]()    
+
 
