@@ -1,6 +1,6 @@
 ---
 layout: tutorial_page
-permalink: /CAN_2021_Lab3
+permalink: /CAN_2021_module3_lab
 title: CAN 2021 Module 3 Lab
 header1: Workshop Pages for Students
 header2: Cancer Analyis 2021 Module 3
