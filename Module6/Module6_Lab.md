@@ -1,17 +1,16 @@
 ---
 layout: tutorial_page
-permalink: /BiCG_2019_Module8_Lab
-title: BiCG 2019 Module 8 Lab
+permalink: /CAN_2021_Module6_Lab
+title: BiCG 2019 Module 6 Lab
 header1: Workshop Pages for Students
-header2: Bioinformatics for Cancer Genomics 2019
+header2: Cancer Analysis 2021
 image: /site_images/CBW_cancerDNA_icon-16.jpg
 home: https://bioinformaticsdotca.github.io/BiCG_2019
-description: BiCG 2019 Module 8 Lab - Gene Expression
+description: Cancer Analysis 2021 module 6Lab  - Gene Expression
 author: Florence Cavalli
-modified: May 30th, 2019
 ---
 
-# Lab Module 8 - Gene Expression
+# Lab Module 6 - Gene Expression Profiling
 
 ## Background
 The PCA3 gene plays a role in Prostate Cancer detection due to its localized expression in prostate tissues and its over-expression in tumour tissues. This gene expression profile makes it a useful marker that can complement the most frequently used biomarker for prostate cancer, PSA. There are cancer assays available that test the presence of PCA3 in urine. 
@@ -53,17 +52,17 @@ In order to keep our files in one location, we're going to create a new director
 
 ```
 cd  ~/workspace
-mkdir -p ~/workspace/Module8/
-mkdir -p ~/workspace/Module8/Module8_Lab/
-export RNA_LAB=~/workspace/Module8/Module8_Lab
+mkdir -p ~/workspace/Module6/
+mkdir -p ~/workspace/Module6/Module6_Lab/
+export RNA_LAB=~/workspace/Module6/Module6_Lab
 ```
-## Obtain reference, annotation and data files and place them in the Module8_Lab directory
+## Obtain reference, annotation and data files and place them in the Module6_Lab directory
 Note: when initiating an environment variable, we do not need the $; however, everytime we call the variable, it needs to be preceded by a $.
 
 ```
 echo $RNA_LAB
 cd $RNA_LAB
-cp ~/CourseData/CG_data/Module8/data.zip .
+cp ~/CourseData/CG_data/Module6/data.zip .
 unzip data.zip
 ```
 
@@ -241,7 +240,7 @@ Have a look at a transcripts.gtf file
 ```
 more carcinoma_C02/transcripts.gtf
 ```
-(Look for Ensembl Id (ENSGxxxxxxxxxxx)  for PCA3 in /workspace/Module8/Module8_Lab/refs/Homo_sapiens.GRCh38.86.chr9.gtf)
+(Look for Ensembl Id (ENSGxxxxxxxxxxx)  for PCA3 in /workspace/Module6/Module6_Lab/refs/Homo_sapiens.GRCh38.86.chr9.gtf)
 ```
 grep ENSG00000225937 ./*/transcripts.gtf | cut -f1,9 | grep FPKM
 ```
@@ -269,7 +268,7 @@ more carcinoma_vs_normal.csv
 R
 ```
 
-The file [Module8_Lab_ballgown.R](https://raw.githubusercontent.com/bioinformaticsdotca/BiCG_2019/master/Module8/Module8_Lab_ballgown.R) will help you to run differential expression analysis with the Ballgown package. Copy and paste the commands from this file into your terminal once R has started (you should see ">" as a prompt).
+The file [Module6_Lab_ballgown.R](https://raw.githubusercontent.com/bioinformaticsdotca/BiCG_2019/master/Module6/Module6_Lab_ballgown.R) will help you to run differential expression analysis with the Ballgown package. Copy and paste the commands from this file into your terminal once R has started (you should see ">" as a prompt).
 
 Have a look at the Ballgrown package and manual document as well
 https://www.bioconductor.org/packages/release/bioc/html/ballgown.html
@@ -282,18 +281,18 @@ https://www.bioconductor.org/packages/release/bioc/html/ballgown.html
 
 **A9)** The CummerBund package provides a wide variety of plots that can be used to visualize a gene’s expression profile or genes that are differentially expressed. Some of these plots include heatmaps, boxplots, and volcano plots. Alternatively, you can use custom plots using ggplot2 command or base R plotting commands such as those provided in the supplementary tutorials. Start with something very simple such as a scatter plot of tumor vs. normal FPKM values.
 
-**see [Module8_Lab_plots.R](https://raw.githubusercontent.com/bioinformaticsdotca/BiCG_2019/master/Module8/Module8_Lab_plots.R) for plotting options**.
+**see [Module6_Lab_plots.R](https://raw.githubusercontent.com/bioinformaticsdotca/BiCG_2019/master/Module6/Module6_Lab_plots.R) for plotting options**.
 
-When you finished running the commands from Module8_Lab_ballgown.R, you should have exited R (no more ">" prompt). Type R into the terminal again to restart R:
+When you finished running the commands from Module6_Lab_ballgown.R, you should have exited R (no more ">" prompt). Type R into the terminal again to restart R:
 ```
 R
 ```
 
 If you ever get stuck in R and want to return to the terminal, type `q()` to exit R.
 
-Your plots will be at http://##.oicrcbw.ca/Module8/Module8_Lab/de/ballgown/ref_only/Module8_Lab_Supplementary_R_output.pdf
+Your plots will be at http://##.oicrcbw.ca/Module6/Module6_Lab/de/ballgown/ref_only/Module6_Lab_Supplementary_R_output.pdf
 
 Remember to replace "##" with your instance number.
 
-Compare your plots to the expected plots: [Module8_Lab_Supplementary_R_output.pdf](https://raw.githubusercontent.com/bioinformaticsdotca/BiCG_2019/master/Module8/Module8_Lab_Supplementary_R_output.pdf)
+Compare your plots to the expected plots: [Module6_Lab_Supplementary_R_output.pdf](https://raw.githubusercontent.com/bioinformaticsdotca/BiCG_2019/master/Module6/Module6_Lab_Supplementary_R_output.pdf)
 
