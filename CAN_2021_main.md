@@ -129,6 +129,6 @@ comming soon
 
 [Lecture]()
 
-[Lab Practical]()    
+[Lab Practical](https://pailab.oicr.on.ca/CBW_CAN_DataIntegration_2021/index.html)    
 
 
