@@ -16,7 +16,7 @@ length: 5 days
 
 The course schedule can be found [here](https://bioinformaticsdotca.github.io/CAN_2021_schedule).
 
-Meet your faculty [here](https://drive.google.com/a/bioinformatics.ca/file/d/1hDpqptFM_kjnTTnqJGgujhzbNcqF-Qua/view?usp=sharing)
+Meet your faculty commig soon
 
 ***
 
@@ -46,13 +46,14 @@ comming soon
 
 *<font color="#827e9c">Trevor Pugh</font>* 
 
-[Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1OyCX2VaVBc0ItS_HLrPz_AtrEwJ-id5f/view?usp=sharing)  
+[Lecture]()  
 
-## Module 2: Ethics of Data Usage and Security
+## Module 02: Data, formats and Databases
 
-*<font color="#827e9c">Mark Phillips</font>*
+*<font color="#827e9c">Richard de Borja</font>*
 
-[Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/14Qvm4muPMuLKFY8gsJisNmthOneQTM7V/view?usp=sharing)
+[Lecture]()
+[Labs]()
 
 ## Module 03: Genome Alignment 
 
@@ -62,9 +63,7 @@ comming soon
 
 [Lecture in pdf](https://drive.google.com/file/d/1omn0zGVOkal5xA_mnn6E32itWIZC54Zy/view?usp=sharing) 
 
-[Practical]() 
-
-[Practical raw & computed data](https://datahub-263-pq5.p.genap.ca/CAN/module3/)
+[Practical raw & computed data](https://bioinformaticsdotca.github.io//CAN_2021_module3_lab/)
 
 
 ## Logging into the Cloud
@@ -212,12 +211,4 @@ comming soon
 
 [Lecture](https://drive.google.com/a/bioinformatics.ca/file/d/1eM8iaL9MPzwNPL7DZ4WtOzTz4BHTe0v9/view?usp=sharing)       
 [Lecture in PPT](https://drive.google.com/a/bioinformatics.ca/file/d/1EBdqVdjHkJ2TQ8VsFeYAttFwzaWSf2CO/view?usp=sharing)
-
-## Post Workshop 
-
-Post workshop content for data sets, docker containers, AWS image, tools and install instructions can be found [here](https://bioinformaticsdotca.github.io/BiCG_2019_Post-Workshop)  
-
-***
-
-Thank you for attending the Bioinformatics for Cancer Genomics workshop! Help us make this workshop better by filling out [our survey](https://forms.gle/ZHVpVCLWnTXjnWYWA).
 
