@@ -63,7 +63,7 @@ write.table(sig_genes,"carcinoma_vs_normal_gene_results_sig.tsv",sep="\t")
 
 ## if you want to save all your data from this session:
 ls()
-save.image("save_Module8_Lab_ballgown.RData")
+save.image("save_Module6_Lab_ballgown.RData")
 
 
 # Exit the R session
