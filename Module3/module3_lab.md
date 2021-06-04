@@ -94,14 +94,14 @@ The initial structure of your folders should look like this:
 
 
 ### Cheat file
-* You can find all the unix command lines of this practical in the file: [commands.sh](scripts/commands.sh)
+* You can find all the unix command lines of this practical in the file: [commands.sh](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/scripts/commands.sh)
 
 
 
 # First data glance
 So you've just received an email saying that your data is ready for download from the sequencing center of your choice.
 
-**What should you do ?** [solution](solutions/_data.md)
+**What should you do ?** [solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_data.md)
 
 
 ### Fastq files
@@ -114,7 +114,7 @@ zless -S raw_reads/normal/run62DVGAAXX_1/normal.64.pair1.fastq.gz
 
 ```
 
-**Why was it like that ?** [solution](solutions/_fastq1.md)
+**Why was it like that ?** [solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_fastq1.md)
 
 
 Now try these commands:
@@ -125,7 +125,7 @@ zcat raw_reads/normal/run62DVGAAXX_1/normal.64.pair2.fastq.gz | head -n4
 
 ```
 
-**What was special about the output ? Why was it like that?** [Solution](solutions/_fastq2.md)
+**What was special about the output ? Why was it like that?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_fastq2.md)
 
 You could also just count the reads
 
@@ -185,7 +185,7 @@ Older illumina runs, and the data here, were using phred+64 instead of phred+33 
 
 
 **Why do we see adapters ?** 
-[solution](solutions/_adapter1.md)
+[solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_adapter1.md)
 
 Although nowadays this doesn't happen often, it does still happen. In some cases, miRNA, it is expected to have adapters.
 
@@ -202,7 +202,7 @@ cat adapters.fa
 
 ```
 
-**Why are there 2 different ones ?** [Solution](solutions/_trim1.md)
+**Why are there 2 different ones ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_trim1.md)
 
 
 trimming with trimmomatic:
@@ -232,24 +232,24 @@ cat reads/normal/run62DVGAAXX_1/normal.trim.out
 
 ```
 
-[note on trimmomatic command](notes/_trimmomatic.md)
+[note on trimmomatic command](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/notes/_trimmomatic.md)
 
-**What does Trimmomatic says it did ?** [Solution](solutions/_trim2.md)
-
-
-__Exercice: Let's generate the new graphs__ [Solution](solutions/_fastqQC2.md)
+**What does Trimmomatic says it did ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_trim2.md)
 
 
-**How does it look now ?** [Solution](solutions/_trim3.md)
+__Exercice: Let's generate the new graphs__ [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_fastqQC2.md)
+
+
+**How does it look now ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_trim3.md)
 
 
 
 # Alignment
 The raw reads are now cleaned up of artefacts we can align each lane separatly.
 
-**Why should this be done separatly?** [Solution](solutions/_aln1.md)
+**Why should this be done separatly?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_aln1.md)
 
-**Why is it important to set Read Group information ?** [Solution](solutions/_aln2.md)
+**Why is it important to set Read Group information ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_aln2.md)
 
 ##Alignment with bwa-mem
 
@@ -280,9 +280,9 @@ done
 
 ```
  
-**Why did we pipe the output of one to the other ?** [Solution](solutions/_aln3.md)
+**Why did we pipe the output of one to the other ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_aln3.md)
 
-**Could we have done it differently ?** [Solution](solutions/_aln4.md)
+**Could we have done it differently ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_aln4.md)
 
 
 ## Lane merging
@@ -346,11 +346,11 @@ samtools view -H alignment/normal/normal.sorted.bam | grep "^@RG"
 
 You should have your 9 read group entries.
 
-**Why did we use the -H switch?** [Solution](solutions/_merge1.md)
+**Why did we use the -H switch?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_merge1.md)
 
-**Try without. What happens?** [Solution](solutions/_merge2.md)
+**Try without. What happens?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_merge2.md)
 
-[lane merging note](notes/_merge1.md)
+[lane merging note](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/notes/_merge1.md)
 
 ## SAM/BAM exploration
 Let's spend some time to explore bam files.
@@ -369,19 +369,19 @@ http://broadinstitute.github.io/picard/explain-flags.html
 
 The flag is the 2nd column.
 
-**What do the flags of the first 4th reads mean?** [solutions](solutions/_sambam1.md)
+**What do the flags of the first 4th reads mean?** [solutions](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_sambam1.md)
 
 Exercice:
-**Let's take the 3rd one, the one that is in proper pair, and find it's mate.** [solutions](solutions/_sambam3.md)
+**Let's take the 3rd one, the one that is in proper pair, and find it's mate.** [solutions](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_sambam3.md)
 
-**Why the pairing information is important ?**  [solutions](solutions/_sambam4.md)
+**Why the pairing information is important ?**  [solutions](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_sambam4.md)
 
 ## SAM/BAM filtering
 
 You can use samtools to filter reads as well.
 
 Exercice:
-**How many reads mapped and unmapped were there?** [solution](solutions/_sambam2.md)
+**How many reads mapped and unmapped were there?** [solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_sambam2.md)
 
 
 ## SAM/BAM CIGAR string
@@ -449,11 +449,11 @@ module unload mugqic/GenomeAnalysisTK/3.8
 module load  mugqic/GenomeAnalysisTK/4.1.0.0
   
 ```
-**Why did we use both normal and tumor together?** [Solution](solutions/_realign3.md)
+**Why did we use both normal and tumor together?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_realign3.md)
 
-**How could we make this go faster ?** [Solution](solutions/_realign1.md)
+**How could we make this go faster ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_realign1.md)
 
-**How many regions did it think needed cleaning ?** [Solution](solutions/_realign2.md)
+**How many regions did it think needed cleaning ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_realign2.md)
 
 Indel Realigner also makes sure the called deletions are left aligned when there is a microsatellite or homopolymer.
 
@@ -469,15 +469,15 @@ into
 ATCG--ATATATATATCG
 ```
 
-**Why it is important ?**[Solution](solutions/_realign4.md)
+**Why it is important ?**[Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_realign4.md)
 
 
 ## Mark duplicates
-**What are duplicate reads ?** [Solution](solutions/_markdup1.md)
+**What are duplicate reads ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_markdup1.md)
 
-**What are they caused by ?** [Solution](solutions/_markdup2.md)
+**What are they caused by ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_markdup2.md)
 
-**What are the ways to detect them ?** [Solution](solutions/_markdup3.md)
+**What are the ways to detect them ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_markdup3.md)
 
 Here we will use picards approach:
 
@@ -505,16 +505,16 @@ less -S alignment/tumor/tumor.sorted.dup.metrics
 
 ```
 
-**How many duplicates were there ?** [Solution](solutions/_markdup4.md)
+**How many duplicates were there ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_markdup4.md)
 
 We can see that it computed separate measures for each library.
  
-**Why is this important to do not combine everything ?** [Solution](solutions/_markdup5.md)
+**Why is this important to do not combine everything ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_markdup5.md)
 
-[Note on Duplicate rate](notes/_markdup1.md)
+[Note on Duplicate rate](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/notes/_markdup1.md)
 
 ## Base Quality recalibration
-**Why do we need to recalibrate base quality scores ?** [Solution](solutions/_recal1.md)
+**Why do we need to recalibrate base quality scores ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_recal1.md)
 
 
 It runs in 2 steps:  
@@ -589,7 +589,7 @@ done
 module unload mugqic/GenomeAnalysisTK/3.8
 module load  mugqic/GenomeAnalysisTK/4.1.0.0
 ```
-[note on DepthOfCoverage command](notes/_DOC.md)
+[note on DepthOfCoverage command](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/notes/_DOC.md)
 
 Coverage is the expected ~50x in this project
 
@@ -601,7 +601,7 @@ cat alignment/tumor/tumor.sorted.dup.recal.coverage.sample_interval_summary
 
 ```
 
-**Is the coverage fit with the expectation ?** [solution](solutions/_DOC1.md)
+**Is the coverage fit with the expectation ?** [solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_DOC1.md)
 
 ## Insert Size
 It corresponds to the size of DNA fragments sequenced.
@@ -634,9 +634,9 @@ head -20 alignment/tumor/tumor.sorted.dup.recal.metric.insertSize.tsv
 
 There is something interesting going on with our libraries.
 
-**Can you tell what it is?** [Solution](solutions/_insert1.md)
+**Can you tell what it is?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_insert1.md)
 
-**Which library is the most suitable for cancer analysis ?** [Solution](solutions/_insert2.md)
+**Which library is the most suitable for cancer analysis ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_insert2.md)
 
 ## Alignment metrics
 For the alignment metrics, samtools flagstat is very fast but with bwa-mem since some reads get broken into pieces, the numbers are a bit confusing. 
@@ -664,7 +664,7 @@ less -S alignment/tumor/tumor.sorted.dup.recal.metric.alignment.tsv
 
 ```
 
-**Do you think the sample and the reference genome fit together ?** [Solution](solutions/_alnMetrics1.md)
+**Do you think the sample and the reference genome fit together ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_alnMetrics1.md)
 
 
 # Exit the container environment
