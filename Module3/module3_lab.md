@@ -154,7 +154,7 @@ java -Xmx1G -jar ${BVATOOLS_JAR} readsqc --quality 64 \
 
 ```
 
-Open the images
+To view the images hosted on your AWS instance, open an internet browser tab and type in `http://<your IPv4 or your IPv4 DNS>`, where you replace `"<IPv4 or your IPv4 DNS>"` with the ID for your AWS instance. This is the same ID you used to `ssh` into your instance (`ssh -i CBW.pem ubuntu@<your IPv4 or your IPv4 DNS>`). From here you can navigate through the files in your AWS workspace. The images are stored in `CBW_CAN_2021/Module3/originalQC`.
 
 All the generated graphics have their uses. But 3 of them are particularly useful to get an overal picture of how good or bad a run went.
         - The Quality box plots 
@@ -251,7 +251,7 @@ The raw reads are now cleaned up of artefacts we can align each lane separatly.
 
 **Why is it important to set Read Group information ?** [Solution](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module3/solutions/_aln2.md)
 
-##Alignment with bwa-mem
+## Alignment with bwa-mem
 
 ```{.bash}
 # Align data
@@ -547,7 +547,7 @@ done
 
 
 # Extract BAM metrics
-Once your whole bam is generated, it's always a good thing to check the data again to see if everything makes sens.
+Once your whole bam is generated, it's always a good thing to check the data again to see if everything makes sense.
 
 **Compute coverage**
 If you have data from a capture kit, you should see how well your targets worked
