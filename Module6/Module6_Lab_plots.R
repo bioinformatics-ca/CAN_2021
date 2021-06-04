@@ -167,8 +167,8 @@ output = sig_tn_de[o,c("gene_name","id","fc","pval","qval","de")]
 write.table(output, file="SigDE_Module6_Lab.txt", sep="\t", row.names=FALSE, quote=FALSE)
 
 
-#View selected columns of the first 25 lines of output
-output[1:25,c(1,4,5)]
+#View selected columns of the first 20 lines of output
+output[1:20,c(1,4,5)]
 
 
 #You can open the file "SigDE_Module8_Lab.txt" in Excel, Calc, etc.
