@@ -92,7 +92,7 @@ comming soon
 *<font color="#827e9c">Florence Cavalli</font>* 
 
 [Lecture]()     
- [Labs](https://bioinformaticsdotca.github.io//CAN_2021_module6_lab)
+ [Labs](https://bioinformaticsdotca.github.io/CAN_2021_Module6_Lab)
 
 
 ## Module 07: Single Cell Genomics - RNA
