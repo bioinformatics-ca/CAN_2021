@@ -5,7 +5,7 @@ title: BiCG 2019 Module 6 Lab
 header1: Workshop Pages for Students
 header2: Cancer Analysis 2021
 image: /site_images/CBW_cancerDNA_icon-16.jpg
-home: https://bioinformaticsdotca.github.io/BiCG_2019
+home: https://bioinformaticsdotca.github.io/CAN_2021
 description: Cancer Analysis 2021 module 6Lab  - Gene Expression
 author: Florence Cavalli
 ---
