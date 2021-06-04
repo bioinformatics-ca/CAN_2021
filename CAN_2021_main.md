@@ -111,7 +111,15 @@ comming soon
 
 [Lecture]()
 
-[Lab Practical]()     
+[Lab Practical]() 
+
+## Module 09: Genes to Networks
+
+*<font color="#827e9c">Robin Haw</font>* 
+
+[Lecture]()
+
+[Lab Practical]()
 
 # Day 5 <a id="day5"></a>  
 
