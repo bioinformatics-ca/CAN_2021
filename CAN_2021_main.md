@@ -111,7 +111,12 @@ comming soon
 
 [Lecture]()
 
-[Lab Practical]()     
+[Lab1 part 1](https://baderlab.github.io/CBW_Pathways_2021/gprofiler-lab.html) 
+[Lab2 part2](https://baderlab.github.io/CBW_Pathways_2021/gprofiler-mod3.html) 
+
+[Lab2 part 1](https://baderlab.github.io/CBW_Pathways_2021/gsea-lab.html)
+[Lab2 part 2](https://baderlab.github.io/CBW_Pathways_2021/gsea-mod3.html) 
+
 
 # Day 5 <a id="day5"></a>  
 
