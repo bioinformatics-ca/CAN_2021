@@ -1,17 +1,17 @@
 ---
 layout: tutorial_page
-permalink: /BiCG_2019_Module3_lab
-title: BiCG
+permalink: /CAN_2021_Module2_lab
+title: CAN 2021 Module 2 Lab
 header1: Workshop Pages for Students
-header2: Bioinformatics for Cancer Genomics 2019
+header2: Cancer Analysis 2021
 image: /site_images/CBW_cancerDNA_icon-16.jpg
-home: https://bioinformaticsdotca.github.io/BiCG_2019
-description: BiCG Module 3 Lab
+home: https://bioinformaticsdotca.github.io/CAN_2021
+description: CAN 2021 Module 2 Lab
 author: Sorana Morrissy, Florence Cavalli and Heather Gibling
-modified: June 2, 2019
+modified: June 3, 2021
 ---
 
-# BiCG Module 3 - IGV lab
+# CAN Module 2 - IGV lab
 
 This lab was created by Sorana Morrissy, then modified by Florence Cavalli and Heather Gibling
 
@@ -44,15 +44,21 @@ Things to know before you start:
 
 ### Compatibility
 
-This tutorial was intended for **IGV v2.3 or higher**, which is available on the [Download](http://www.broadinstitute.org/software/igv/download) page. It is *strongly* recommended that you use one of these versions, as older versions may not be compatible. If you have installed a former version, please uninstall it and install the latest version.
+This tutorial was last tested on **IGV v2.9**, which is available on the [Download](http://www.broadinstitute.org/software/igv/download) page. It should work for versions as old as v2.3, but it is *strongly* recommended that you use a newer version to take advantage of new features and better performance.
 
 
 ### Data Set for IGV
-
-* Chromosome 21: 19,000,000-20,000,000
+**Parts 1-3**
+* HCC1143: Normal sample for matched breast cancer cell line 
+* Chromosome 21: 19,000,000-20,000,000 (aligned to hg19)
 * [HCC1143.normal.21.19M-20M.bam](https://github.com/bioinformatics-ca/bioinformatics-ca.github.io/raw/master/data_sets/HCC1143.normal.21.19M-20M.bam)
 * [HCC1143.normal.21.19M-20M.bam.bai](https://github.com/bioinformatics-ca/bioinformatics-ca.github.io/raw/master/data_sets/HCC1143.normal.21.19M-20M.bam.bai)
 
+**Part 4 (optional)**
+* NA12878: A frequently sequenced individual
+* Chromosome 21: 19,000,000-20,000,000 (aligned to GRCh38)
+* [NA12878.21.19M-20M.bam](https://github.com/hgibling/NanoporeNA12878/raw/master/NA12878.21.19M-20M.bam)
+* [NA12878.21.19M-20M.bam.bai](https://github.com/hgibling/NanoporeNA12878/raw/master/NA12878.21.19M-20M.bam.bai)
 
 # Visualization Part 1: Getting familiar with IGV
 
@@ -68,7 +74,7 @@ First, lets familiarize ourselves with it.
 
 ### Load a Genome and Data Tracks
 
-By default, IGV loads Human hg19 as the reference genome. If you work with another version of the human genome, or another organism altogether, you can change the genome by clicking the drop down menu in the upper-left. For this lab, we'll be using Human hg19.  
+By default, IGV loads Human hg19 as the reference genome. If you work with another version of the human genome, or another organism altogether, you can change the genome by clicking the drop down menu in the upper-left. For Parts 1-3 of this lab, we'll be using Human hg19.  
 
 We will also load additional tracks from **Server** *(File -> Load from Server)*:
 
@@ -86,7 +92,7 @@ We will also load additional tracks from **Server** *(File -> Load from Server)*
 
 ### Navigation
 
-You should see listing of chromosomes in this reference genome. Click on **1**, for chromosome 1.
+You should see a listing of chromosomes in this reference genome. Click on **1**, for chromosome 1.
 
 ![Chromosome chooser](https://bioinformatics-ca.github.io/images/Igv-chromosomes.png)
 
@@ -107,7 +113,7 @@ When loaded, tracks are stacked on top of each other. You can identify which tra
 
 ## Region Lists
 
-Sometimes it's really useful to save where you are, or to load regions of interest. For this purpose, there is a **Region Navigator** in IGV. To access it, click *Regions > Region Navigator*. While you browse around the genome, you can save some bookmarks by pressing the **Add** button at any time.
+Sometimes it's really useful to save where you are, or to load regions of interest. For this purpose, there is a **Region Navigator** in IGV. To access it, click *Regions > Region Navigator*. While you browse around the genome, you can save some bookmarks by pressing the **Add** button at any time. Add a useful label in the **Description** box to help you remember why you saved the region later on.
 
 ![Bookmarks in IGV.](https://bioinformatics-ca.github.io/images/Igv-bookmarks.png)
 
@@ -123,7 +129,7 @@ We will visualize alignments from the breast cancer cell line HCC1143. For speed
 
 *Note: these are the same files listed at the top of tutorial.*
 
-Copy the files to your local drive, and in IGV choose *File > Load from File*, select the bam file, and click **OK**. Note that the bam and index files must be in the same directory for IGV to load these properly, but only the bam file (not the bam.bai file) needs to be loaded into IGV.
+Copy the files to your computer, and in IGV choose *File > Load from File*, select the bam file, and click **OK**. Note that the bam and index files *must* be in the same directory for IGV to load these properly, but only the bam file (not the bam.bai index file) needs to be loaded into IGV.
 
 ![Load BAM track from File](https://bioinformatics-ca.github.io/images/Igv_load_bam.png)
 
@@ -140,15 +146,15 @@ Experiment with the various settings by right clicking the read alignment track 
 
 ![Read information.](https://bioinformatics-ca.github.io/images/Igv_sort_and_group.png)
 
-You will see reads represented by grey or white bars stacked on top of each other, where they were aligned to the reference genome. The reads are pointed to indicate their orientation (i.e. the strand on which they are mapped). Individual bases are only colored if they are a **mismatch** to the reference. The transparacy of the mismatched bases corresponds to the **base quality**.
+You will see reads represented by grey or white bars stacked on top of each other, where they were aligned to the reference genome. The reads are pointed to indicate their orientation (i.e. the strand on which they are mapped). By default, individual bases are only colored if they are a **mismatch** to the reference. The transparacy of the mismatched bases corresponds to the **base quality** (essentially how confident we are that the sequencing machine called the correct base).
 
 <img src="https://github.com/bioinformaticsdotca/BiCG_2019/raw/master/Module3/images/mismatches.png" width="500"/>
 
-Mouse over any read and notice that a lot of information is available. To toggle read display from "hover" to "click", select the yellow box at the top of the window and change the setting.
+Mouse over or click on any read and notice that a lot of information is available. To toggle read display from "hover" to "click", select the yellow box at the top of the window and change the setting.
 
 ![Read information.](https://bioinformatics-ca.github.io/images/Igv_show_details_on_click.png)
 
-Once you select a read, a pop-up window shows quality metrics and other information about that read.
+Once you select a read, a pop-up window shows quality metrics and other information about that read. We will learn more about these metrics in Module 3.
 
 ![Read information.](https://bioinformatics-ca.github.io/images/Igv_click_read.png)
 
