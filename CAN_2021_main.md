@@ -42,11 +42,11 @@ comming soon
 
 *<font color="#827e9c">Rachade/Francis</font>*
 
-## Module 1: Introduction to Cancer Genomics
+## Module 1: Introduction to Cancer Genomics (preWorkshop Video)
 
 *<font color="#827e9c">Trevor Pugh</font>* 
 
-[Lecture]()  
+[Lecture](https://youtu.be/nnHRfHB9N8Q)  
 
 ## Module 02: Data, formats and Databases
 
