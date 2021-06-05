@@ -6,7 +6,7 @@ header1: Workshop Pages for Students
 header2: Cancer Analyis 2021 Module 4
 image: 
 home: https://bioinformaticsdotca.github.io/CAN_2021
-description: CAN 2021 Module 3 lab
+description: CAN 2021 Module 4 lab
 author: Aaron Gillmor
  
 ---
