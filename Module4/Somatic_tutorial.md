@@ -234,7 +234,159 @@ Next we can examine some variants in IGV.
  
 ![image](https://user-images.githubusercontent.com/15352153/120569761-d42a7480-c3d3-11eb-8897-12cbfa600a65.png)
 
-  
+   Short break time 
+   
+** copy number variations
+
+In this workshop, we will present the main steps for calling copy number variations (CNVs). 
+Normally we would perform a copy number variation analysis on alignment files (BAMs). Due to time and resource constraints we will not be able to do this analysis on the full sequence or from shortened bam files. Instead we will be working with some preprocessed data using gc correction files and mpileups. Our data sample is again the cagekid sample c0098.
+
+
+To examine the copy number states within the cage kid tumors we are going to be using a tool called [controlfreec] (http://boevalab.inf.ethz.ch/FREEC/)
+
+With this tool we can call 
+* Copy number gains
+* Copy number losses
+* Copy-neutral loss of heterozygosity
+* This tool can also be used on exome seqencing and can even be used without a control (non-tumor) sample.
+
+
+#controlfreec requires additional files
+* A reference genome and a reference index (fasta and fai):  
+* List of single nucelotide polymorphisms 
+
+
+##Running controlfreec 
+
+```
+cd ~/workspace/Module4_somaticvariants
+mkdir copynumber
+cd copynumber
+```
+
+The first step is to generate a configuration file which contain the parameters and file locations.
+```
+bash /home/ubuntu/CourseData/CAN_data/Module4/scripts/generate_controlfreec_configurationfile.sh > CBW_config.txt
+```
+#Let's now look at the configuration file. We see that our enviroment variables $1 $2 $3 and $4 correspond to the tumor pileup/cpn and the normal pileup/cpn.
+We have commented out the BAM files, however if you you were running this for the first time you should start from the BAM files. 
+
+```
+less CBW_config.txt
+```
+Here we see four categories general, sample, control and BAF.
+ 
+```
+ ls *
+```
+ 
+- [General] indicates parameters for how we want the algorithm to run; parameters like minCNAlength, intercept are indicating WGS is being used
+- [sample] indicates the input data of our tumor either in bam format or pileup/cpn
+- [control] indicates our input data of our normal sample, again in different formats
+- [BAF] indicates the necesarry files for calculatibng the b-allele frequency which will help us indicated LOH
+
+#Now to run controlfreec
+```
+/usr/local/bin/freec -conf CBW_config.txt > output.log
+``` 
+ 
+ 
+ 
+ 
+Now lets go visualize these results using R --> you will need to open r studio for this
+#This script is availabe with controlfreec but due to subsetting we will have to do it our selves#
+ 
+ Let's read in our data
+ ```
+ratio_dataTable <- read.table(file = "CBW_regions_c0098_Tumor.sorted.markduplicates.bam_ratio.txt", header=TRUE)
+ratio <- data.frame(ratio_dataTable)
+BAF_dataTable <-read.table(file="CBW_regions_c0098_Tumor.sorted.markduplicates.bam_BAF.txt", header=TRUE);
+BAF<-data.frame(BAF_dataTable)
+ploidy <- 2
+                   
+ ```
+          
+          
+ Now we can plot all of our data in a way that allows us to see gain, losses and neutral regions         
+```{r}         
+for (chrom in c(3,5,11))
+{ 
+tt <- which(ratio$Chromosome==i)
+if (length(tt)>0)
+{
+        plot(ratio$Start[tt],log2(ratio$Ratio[tt]),xlab = paste ("position, chr",i),ylab = "normalized copy number profile (log2)",pch = ".",col = colors()[88],cex=4)
+        tt <- which(ratio$Chromosome==i  & ratio$CopyNumber>ploidy )
+        points(ratio$Start[tt],log2(ratio$Ratio[tt]),pch = ".",col = colors()[136],cex=4)
+
+        tt <- which(ratio$Chromosome==i  & ratio$CopyNumber<ploidy & ratio$CopyNumber!= -1)
+        points(ratio$Start[tt],log2(ratio$Ratio[tt]),pch = ".",col = colors()[461],cex=4)
+        tt <- which(ratio$Chromosome==i)
+        }
+        tt <- which(ratio$Chromosome==i)
+}
+```      
+
+   
+```{r}
+ 
+
+for (i in c(3,5,11))
+{
+tt <- which(BAF$Chromosome==i)
+if (length(tt)>0)
+  {
+                lBAF <-BAF[tt,]
+                plot(lBAF$Position,lBAF$BAF,ylim = c(-0.1,1.1),xlab = paste ("position, chr",i),ylab = "BAF",pch = ".",col = colors()[1])
+
+                tt <- which(lBAF$A==0.5)
+                points(lBAF$Position[tt],lBAF$BAF[tt],pch = ".",col = colors()[92])
+                tt <- which(lBAF$A!=0.5 & lBAF$A>=0)
+                points(lBAF$Position[tt],lBAF$BAF[tt],pch = ".",col = colors()[62])
+                tt <- 1
+                pres <- 1
+
+                if (length(lBAF$A)>4) {
+                        for (j in c(2:(length(lBAF$A)-pres-1))) {
+                                if (lBAF$A[j]==lBAF$A[j+pres]) {
+                                        tt[length(tt)+1] <- j
+                                }
+                        }
+                        points(lBAF$Position[tt],lBAF$A[tt],pch = ".",col = colors()[24],cex=3)
+                        points(lBAF$Position[tt],lBAF$B[tt],pch = ".",col = colors()[24],cex=3)
+                }
+
+                tt <- 1
+                pres <- 1
+                if (length(lBAF$FittedA)>4) {
+                        for (j in c(2:(length(lBAF$FittedA)-pres-1))) {
+                                if (lBAF$FittedA[j]==lBAF$FittedA[j+pres]) {
+                                        tt[length(tt)+1] <- j
+                                }
+                        }
+  points(lBAF$Position[tt],lBAF$FittedA[tt],pch = ".",col = colors()[463],cex=3)
+  points(lBAF$Position[tt],lBAF$FittedB[tt],pch = ".",col = colors()[463],cex=3)
+}}}
+
+ 
+``` 
+                                                            
+
+ ![image](https://user-images.githubusercontent.com/15352153/120875901-6dd85a00-c56b-11eb-9bf9-523629c0550a.png)
+ ![image](https://user-images.githubusercontent.com/15352153/120876052-e0493a00-c56b-11eb-9381-54e82ce7d7b7.png)
+                                                            
+Based off of the ratio data we see that chromosome 3 has a diploid region that is then going into a gain:          
+However we see here that this is a copy-neutral loss of heterozygosity. This is a form of copynumber variations where the cell losses one allelic region but gains the other. So instead of AB it will be AA or BB. 
+     
+                                                        
+ Now we see a chromsome 5 region which represents a gain and it is supported by the BAF
+![image](https://user-images.githubusercontent.com/15352153/120875932-89dbfb80-c56b-11eb-8509-ad6e5a435717.png)
+![image](https://user-images.githubusercontent.com/15352153/120876231-d411ac80-c56c-11eb-8dff-8732ed98dedd.png)
+
+ And we also see another gain on chromsome 11, which is again supported by the BAF.                                                           
+![image](https://user-images.githubusercontent.com/15352153/120876295-323e8f80-c56d-11eb-88f7-5af71c879b49.png)
+![image](https://user-images.githubusercontent.com/15352153/120876298-38cd0700-c56d-11eb-9fe9-05bfc48f7b74.png)
+                                                   
+                                
     
     
 
