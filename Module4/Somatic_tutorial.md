@@ -26,14 +26,26 @@ Data Source
 We will be working on the [CageKid](https://www.cnrgh.fr/cagekid/) samples from Module3, specifically --> patient C0098. 
 Whole genome sequencing and analysis can take multiple days to run, as such we have downsampled the files so that we can proceed more quickly. For the SNV analsyis we have selected a region on chromsome 9 between 130215000 & 130636000. 
 
-The tools we are going to using for assessing SNV's is mutect2 and varscan2.
+The tools and their general function we are going to using for calling SNV's and CNV's are:
+mutect2
+varscan2
+samtools
+bcftools
+bgzip and tabix
+annovar
 
+
+
+
+Requirements for variant calling:
+1) Bam --> Sequence alignments from Module 3 or /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam
+2) Reference genome --> /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta
 
 **Running Mutect2**
 
 ```
 cd ~/workspace
-mkdir Module4_somaticvariants
+mkdir -p Module4_somaticvariants
 cd Module4_somaticvariants
 ```
 
@@ -142,7 +154,7 @@ This show's us that varscan has 4 unique variants, mutect2 has 6 unique variants
 ```
 bcftools merge pairedVariants_mutect2_filtered_normalized.vcf.gz pairedVariants_varscan2_filtered.vcf.gz -o pairedVariants_mutect2_varscan2.vcf.gz -Oz
 ```
-#Now that we have our two vcf's we can look at their contents. A full description of the [vcf_format](https://www.internationalgenome.org/wiki/Analysis/vcf4.0/):
+#Now that we have our two vcf's combined we can look at their contents. A full description of the [vcf_format](https://www.internationalgenome.org/wiki/Analysis/vcf4.0/):
 
 ## Every vcf has a metadata sections two ##
 ```
@@ -166,9 +178,11 @@ This section contains details about the vcf including
 - contigs used and their length
 - Processes taken to generate the vcf eg bcftools_mergeCommand=merge -o pairedVariants_mutect2_varscan2.vcf.gz -Oz 0000.vcf.gz 0001.vcf.gz
 
-Every vcf has a column (with one #) and;
+Every vcf has a column (with one #) and
+ 
 ```
 less -S pairedVariants_varscan2_filtered.vcf | egrep '#CHROM' | head -n 1
+ 
 ```
 ```
 CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO    FORMAT  normal  tumor   NORMAL  TUMOR 
@@ -177,7 +191,7 @@ CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO    FORMAT  normal  t
 The header has 8 mandatory columns. CHROM, POS, ID, REF, ALT, QUAL, FILTER & INFO
 These are followed by a FORMAT column header and sample ID's. These sample id's will follow from their vcf's 
 
-# Every vcf content section which has the variants.
+Every vcf content section which has the variants.
 
 ```
 less -S pairedVariants_varscan2_filtered.vcf | egrep -v '#' | head -n 1
@@ -378,7 +392,7 @@ if (length(tt)>0)
  ![image](https://user-images.githubusercontent.com/15352153/120876052-e0493a00-c56b-11eb-9381-54e82ce7d7b7.png)
                                                             
 Based off of the ratio data we see that chromosome 3 has a diploid region that is then going into a gain:          
-However we see here that this is a copy-neutral loss of heterozygosity. This is a form of copynumber variations where the cell losses one allelic region but gains the other. So instead of AB it will be AA or BB. 
+However we see here that this is a copy-neutral loss of heterozygosity. This is a form of copynumber variation where the cell losses one allelic region but gains the other. So instead of AB it will be AA or BB. 
      
                                                         
  Now we see a chromsome 5 region which represents a gain and it is supported by the BAF
