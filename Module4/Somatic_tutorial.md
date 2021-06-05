@@ -23,7 +23,7 @@ In this workshop, we will work with common tools to process and analyze cancer s
 
 
 Data Source
-We will be working on the [CageKid](https://www.cnrgh.fr/cagekid/) samples from Module3, specifically --> patient C0098. 
+We will be working on the [CageKid](https://www.cnrgh.fr/cagekid/) samples from Module3. 
 Whole genome sequencing and analysis can take multiple days to run, as such we have downsampled the files so that we can proceed more quickly. For the SNV analsyis we have selected a region on chromsome 9 between 130215000 & 130636000. 
 
 The tools and their general function we are going to using for calling SNV's and CNV's are:
