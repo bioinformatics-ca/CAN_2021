@@ -36,9 +36,10 @@ The tools and their general function we are going to using for calling SNV's and
 * controlfreec
 * R
 
-Requirements for variant calling:
+Files for variant calling:
 1) Bam --> Sequence alignments from Module 3 or /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam
 2) Reference genome --> /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta
+3) Germline-reference file --> /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
 
 **Running Mutect2**
 
@@ -241,11 +242,10 @@ This will produce two annotation files: annotated_mutect2_varscan2.hg19_multiann
         3 nonsynonymous SNV
 
 This shows the functional consequence of each exonix variant, we have 5 exonic variants that results in two frameshifts and 3 nonsynonymous SNV's. 
- 
- TODO
- ##Run on ubuntu
- ##Get the vcf
- 
+
+
+
+
  
 Next we can examine some variants in IGV. 
  
@@ -261,7 +261,7 @@ Next we can examine some variants in IGV.
 
  
 ![image](https://user-images.githubusercontent.com/15352153/120569761-d42a7480-c3d3-11eb-8897-12cbfa600a65.png)
- Here we can see evidence of the C --> T in the tumor bam but not in the normal sample. This variant is called correctly .
+ Here we can see evidence of the C --> T in the tumor bam but not in the normal sample. This variant is called correctly
 
 
 
