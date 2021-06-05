@@ -19,12 +19,12 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unpor
 ================================
 
 
-In this workshop, we will work with common tools to process and analyze cancer sequencing data. Using the command line we will analyze DNA sequencing from the whole genome. The focus of this workshop will be on single nucelotide variants, insertion, deletions (commonly referred to as SNV/indels) as well as calling copy-number variations (CNVs). We will also annotate SNV & CNV files, such that you will known the functional conseqeunce of these variants.
+In this workshop, we will work with common tools to process and analyze cancer sequencing data. Using the command line we will analyze DNA sequencing from the whole genome. The focus of this workshop will be on calling single nucelotide variants, insertion, deletions (commonly referred to as SNV/indels) as well as calling copy-number variations (CNVs). We will also annotate SNV & CNV files, such that you will known the functional conseqeunce of these variants.
 
 
 Data Source
 We will be working on the [CageKid] (https://www.cnrgh.fr/cagekid/) samples from Module3, specifically --> patient C0098. 
-Whole genome sequencing and analysis can take multiple days to run, as such we have downsampled the files so that we can proceed more quickly. For the SNV analsyis we have selected the region on chromsome 9 between 130215000 & 130636000. 
+Whole genome sequencing and analysis can take multiple days to run, as such we have downsampled the files so that we can proceed more quickly. For the SNV analsyis we have selected a region on chromsome 9 between 130215000 & 130636000. 
 
 The tools we are going to using for assessing SNV's is mutect2 and varscan2.
 
@@ -42,7 +42,11 @@ cd Module4_somaticvariants
 /usr/local/GATK/gatk Mutect2 -R /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -I /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam -I /home/ubuntu/CourseData/CAN_data/Module4/alignments/tumor/tumor.sorted.realigned.bam -normal normal -tumor tumor -O pairedVariants_mutect2.vcf -L 9:130215000-130636000
 ```
 
-#This will generate an intial vcf but does not contain any filters which tell us important information about the variants.
+This will generate an intial vcf but does not contain any filters which tell us important information about the variants.
+
+```
+less -S pairedVariants_mutect2.vcf
+```
 
 ```
 gatk FilterMutectCalls -R /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta --filtering-stats pairedVariants_mutect2.vcf.stats -V pairedVariants_mutect2.vcf -O pairedVariants_mutect2_filtered.vcf
@@ -54,8 +58,7 @@ Let's look at our file now
 less -S pairedVariants_mutect2_filtered.vcf
 ```
 
-#Although we have all of the information to proceed forward we still have multiple variants at a single loci. And since we will be comparing to another tool it is best to consider these multiallelic variants which can be accomplished by using bcftools norm functionality.
-#Next I want to split multiallelic (example Ref == A & Alt == AT,ATT)
+Although we have all of the information to proceed forward we still have multiple variants at a single loci. And since we will be comparing to another tool it is best to consider these multiallelic variants which can be accomplished by using bcftools norm functionality. Next I want to split multiallelic (example Ref == A & Alt == AT,ATT)
 
 ```
 bcftools norm -m-both -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -Oz -o pairedVariants_mutect2_filtered_normalized.vcf pairedVariants_mutect2_filtered.vcf
