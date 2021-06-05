@@ -22,8 +22,8 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unpor
 In this workshop, we will work with common tools to process and analyze cancer sequencing data. Using the command line we will analyze DNA sequencing from the whole genome. The focus of this workshop will be on calling single nucelotide variants, insertion, deletions (commonly referred to as SNV/indels) as well as calling copy-number variations (CNVs). We will also annotate SNV & CNV files, such that you will known the functional conseqeunce of these variants.
 
 
-Data Source
-We will be working on the [CageKid](https://www.cnrgh.fr/cagekid/) samples from Module3. 
+Data Source:
+we will be working on the [CageKid](https://www.cnrgh.fr/cagekid/) samples from Module3. 
 Whole genome sequencing and analysis can take multiple days to run, as such we have downsampled the files so that we can proceed more quickly. For the SNV analsyis we have selected a region on chromsome 9 between 130215000 & 130636000. 
 
 The tools and their general function we are going to using for calling SNV's and CNV's are:
@@ -50,7 +50,7 @@ cd Module4_somaticvariants
 
 
 ```
-/usr/local/GATK/gatk Mutect2 -R /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -I /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam -I /home/ubuntu/CourseData/CAN_data/Module4/alignments/tumor/tumor.sorted.realigned.bam -normal normal -tumor tumor -O pairedVariants_mutect2.vcf -L 9:130215000-130636000
+/usr/local/GATK/gatk Mutect2 -R /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -I /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam -I /home/ubuntu/CourseData/CAN_data/Module4/alignments/tumor/tumor.sorted.realigned.bam -normal normal -tumor tumor -O pairedVariants_mutect2.vcf -L 9:130215000-130636000 --germline-resource /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
 ```
 
 This will generate an intial vcf but does not contain any filters which tell us important information about the variants.
@@ -69,7 +69,7 @@ Let's look at our file now
 less -S pairedVariants_mutect2_filtered.vcf
 ```
 
-Although we have all of the information to proceed forward we still have multiple variants at a single loci. And since we will be comparing to another tool it is best to consider these multiallelic variants which can be accomplished by using bcftools norm functionality. Next I want to split multiallelic (example Ref == A & Alt == AT,ATT)
+Although we have all of the information to proceed forward we have multiple variants at a single loci. And since we will be comparing to another tool it is best to consider these multiallelic variants which can be accomplished by using bcftools norm functionality. This is to say: I want to split multiallelic (Ref == A & Alt == AT,ATT) into two seperate variants A --> AT and A --> ATT. This is because some variants callers (there are many) will report the multiallelic (mutect2) and some will report the singleallele variant (varscan2).
 
 ```
 bcftools norm -m-both -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -Oz -o pairedVariants_mutect2_filtered_normalized.vcf pairedVariants_mutect2_filtered.vcf
@@ -77,14 +77,14 @@ bcftools norm -m-both -f /home/ubuntu/CourseData/CAN_data/Module4/references/hum
 
 #Running varscan2 (http://varscan.sourceforge.net/)
 
-First we create pileup files from both the normal sample and the blood sampled. This is done with a useful tool called samtools:
+First we create pileup files from both the normal sample and the control sample. This is done with a tool called samtools:
 ```
 samtools mpileup -B -q 1 -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -r 9:130215000-130636000 /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam > normal.mpileup &&
 ```
 ```
 samtools mpileup -B -q 1 -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -r 9:130215000-130636000 /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam > normal.mpileup &&
 ```
-#Next we use varscan to execute the somatic function which does the initial variant calling from our mpileups
+Next we use varscan2 to execute the somatic function which does the initial variant calling from our mpileups
 
 ```
 java -Xmx2G -jar /usr/local/VarScan.v2.3.9.jar somatic normal.mpileup tumor.mpileup --output-vcf 1 --strand-filter 1 --somatic-p-value 0.05 --output-snp varscan2.snp.vcf --output-indel varscan2.indel.vcf
@@ -105,7 +105,7 @@ bgzip varscan2.indel.Somatic.hc.vcf
 tabix varscan2.indel.Somatic.hc.vcf.gz
 ```
 
-#Combine high-confidence snp and indels
+Combine high-confidence snp and indels
 ```
 bcftools concat -Ov -a -r 9:130215000-130636000 varscan2.snp.Somatic.hc.vcf.gz varscan2.indel.Somatic.hc.vcf.gz -o -o pairedVariants_varscan2_filtered.vcf
 ```
@@ -114,12 +114,11 @@ bgzip  pairedVariants_varscan2_filtered.vcf
 tabix  pairedVariants_varscan2_filtered.vcf.gz
 ```
 
-#Now we have finished variant calling using two different variants callers.
-
-##combining with multiple callers
+Now we have finished variant calling using two different variants callers. The next step is to combine the output of the multiple callers
 ```
 bcftools isec -n+1 -f PASS -p intersectionDirectory pairedVariants_mutect2_filtered_normalized.vcf.gz pairedVariants_varscan2_filtered.vcf.gz -o pairedVariants_mutect2_varscan2.vcf -Ov
 ```
+
 This creates a directory named intersectionDirectory that contains all variants that pass in at-least one vcf. It's at this point where you can choose which variants to include.
 
 ```
@@ -149,11 +148,20 @@ less -S sites.txt | cut -f  5 | sort | uniq -c
 
 This show's us that varscan has 4 unique variants, mutect2 has 6 unique variants and there are 11 shared variants.
 
-#Finally we combine our mutect2 and varscan2 into a single vcf.
+Finally we combine our mutect2 and varscan2 vcfs into a single vcf. This will generate the union of variants. 
+```
+cd ../
+```
+
 ```
 bcftools merge pairedVariants_mutect2_filtered_normalized.vcf.gz pairedVariants_varscan2_filtered.vcf.gz -o pairedVariants_mutect2_varscan2.vcf.gz -Oz
 ```
-#Now that we have our two vcf's combined we can look at their contents. A full description of the [vcf_format](https://www.internationalgenome.org/wiki/Analysis/vcf4.0/):
+Now that we have our two vcf's combined we can look at their contents. A full description of the [vcf_format](https://www.internationalgenome.org/wiki/Analysis/vcf4.0/):
+The generate fields will depend on the caller's used. common ones are:
+* Reference allele (REF) and Alternate allele (ALT)
+* Variant quality (QUAL)
+* Genotype per-sample (GT) note this is not in Strelka which is a popular variant caller
+
 
 ## Every vcf has a metadata sections two ##
 ```
@@ -172,9 +180,9 @@ zless -S pairedVariants_varscan2_filtered.vcf | egrep ' ##' | head -n 10
       ##FILTER=<ID=haplotype,Description="Variant near filtered variant on same haplotype.">
 
 
-This section contains details about the vcf including 
-- explanations of the filters, format and ID's. if you want to know what something means in a vcf: this is where you look! <question >
-- contigs used and their length
+This section contains details about the vcf including:
+- Explanations of the FILTERS, INFO and FORMAT.
+- Contigs used and their length
 - Processes taken to generate the vcf eg bcftools_mergeCommand=merge -o pairedVariants_mutect2_varscan2.vcf.gz -Oz 0000.vcf.gz 0001.vcf.gz
 
 Every vcf has a column (with one #) and
@@ -201,12 +209,12 @@ less -S pairedVariants_varscan2_filtered.vcf | egrep -v '#' | head -n 1
 9       130223126       .       C       T       .       PASS    SOMATIC;SS=2;SSC=18;GPV=1;SPV=0.014587;DP=55    GT:GQ:DP:RD:AD:FREQ:DP4 ./.:.:.:.:.:.:. ./.:.:.:.:.:.:. 0/0:.:26:26:0:0%:14,12,0,0      0/1:.:29:22:6:21.43%:15,7,1,5
  ```
  
- This shows a variant on chromosome 9 position 130223126 that goes from the reference C to a T. This variant was called uniquely by varscan2. This variant has passed all filters. The INFO and FORMAT field has additional information that can be explained in more detail using the '##' information. 
+ This shows a variant on chromosome 9 position 130223126 that goes from the reference C to a T. This variant was called uniquely by varscan2. This variant has passed all filters. The INFO and FORMAT field has additional information that can be explained in more detail using the '##' information. Please not that missing data is denoted as a '.'.
 
 
 #Annotating our combined files
 ```
-mkdir results
+mkdir -p results
 ```
 
 #annovar 
@@ -218,13 +226,12 @@ This will produce two annotation files: annotated_mutect2_varscan2.hg19_multiann
 ```
  less -S annotated_mutect2_varscan2.hg19_multianno.txt | cut -f 6 | sort | uniq -c
 ```
- This shows the genomic region change where each variant is occuring. Typically exonic variants are more likely to produce a phenotypic chance. 
-
+ This shows the genomic region change where each variant is occuring. Typically exonic variants are more likely to produce a phenotypic change. 
+ 
         5 exonic
         1 intergenic
         15 intronic
-
- 
+        
 ```
  less -S annotated_mutect2_varscan2.hg19_multianno.txt | cut -f 9 | sort | uniq -c
 ```
@@ -233,26 +240,36 @@ This will produce two annotation files: annotated_mutect2_varscan2.hg19_multiann
         2 frameshift insertion
         3 nonsynonymous SNV
 
- This shows the functional consequence of each variant, we have 5 exonic variants that results in two frameshifts and 3 nonsynonymous SNV's.
+This shows the functional consequence of each exonix variant, we have 5 exonic variants that results in two frameshifts and 3 nonsynonymous SNV's. 
+ 
+ TODO
+ ##Run on ubuntu
+ ##Get the vcf
  
  
 Next we can examine some variants in IGV. 
  
  start IGV 
+ ensure hg19 is selected
  
  load your bam files by clicking file --> load from file 
+ If you have not downloaded the bam or are missing it. It is provided here (https://drive.google.com/drive/folders/1f_1pDbpNaNUT6oC-pEPXInemyZwMV4Hc)
  
  input the variant region of intereset. Input chr9:130,634,091-130 which corresponds to a exonic mutation called in AK1.
  ![image](https://user-images.githubusercontent.com/15352153/120568604-72690b00-c3d1-11eb-8164-329868b51e7c.png)
 
- Here we can see evidence of the C --> T in the tumor bam but not in the normal sample. This variant was called correctly. 
- 
+
  
 ![image](https://user-images.githubusercontent.com/15352153/120569761-d42a7480-c3d3-11eb-8897-12cbfa600a65.png)
+ Here we can see evidence of the C --> T in the tumor bam but not in the normal sample. This variant is called correctly .
 
-   Short break time 
+
+
+
+
+Short break time 
    
-** copy number variations
+**Copy number variations
 
 In this workshop, we will present the main steps for calling copy number variations (CNVs). 
 Normally we would perform a copy number variation analysis on alignment files (BAMs). Due to time and resource constraints we will not be able to do this analysis on the full sequence or from shortened bam files. Instead we will be working with some preprocessed data using gc correction files and mpileups. Our data sample is again the cagekid sample c0098.
