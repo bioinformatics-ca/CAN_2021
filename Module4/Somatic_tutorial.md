@@ -4,7 +4,7 @@ permalink: /CAN_2021_module3_lab
 title: CAN 2021 Module 4 Lab
 header1: Workshop Pages for Students
 header2: Cancer Analyis 2021 Module 4
-image: /site_images/CBW_cancerDNA_icon-16.jpg
+image: 
 home: https://bioinformaticsdotca.github.io/CAN_2021
 description: CAN 2021 Module 3 lab
 author: Aaron Gillmor
@@ -23,10 +23,10 @@ In this workshop, we will work with common tools to process and analyze cancer s
 
 
 Data Source
-We will be working on the CageKid samples from Module3, specifically --> patient C0098. 
+We will be working on the [CageKid] (https://www.cnrgh.fr/cagekid/) samples from Module3, specifically --> patient C0098. 
 Whole genome sequencing and analysis can take multiple days to run, as such we have downsampled the files so that we can proceed more quickly. For the SNV analsyis we have selected the region on chromsome 9 between 130215000 & 130636000. 
 
-The tools we are going to using for assessing SNV's is mutect2 and varscan2 (data and provide command lines that allow detecting Single Nucleotide Variants (SNV).
+The tools we are going to using for assessing SNV's is mutect2 and varscan2.
 
 
 **Running Mutect2**
