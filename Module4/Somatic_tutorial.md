@@ -27,15 +27,14 @@ We will be working on the [CageKid](https://www.cnrgh.fr/cagekid/) samples from 
 Whole genome sequencing and analysis can take multiple days to run, as such we have downsampled the files so that we can proceed more quickly. For the SNV analsyis we have selected a region on chromsome 9 between 130215000 & 130636000. 
 
 The tools and their general function we are going to using for calling SNV's and CNV's are:
-mutect2
-varscan2
-samtools
-bcftools
-bgzip and tabix
-annovar
-
-
-
+* mutect2
+* varscan2
+* samtools
+* bcftools
+* bgzip and tabix
+* annovar
+* controlfreec
+* R
 
 Requirements for variant calling:
 1) Bam --> Sequence alignments from Module 3 or /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam
