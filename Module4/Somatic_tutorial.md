@@ -241,9 +241,7 @@ This will produce two annotation files: annotated_mutect2_varscan2.hg19_multiann
         2 frameshift insertion
         3 nonsynonymous SNV
 
-This shows the functional consequence of each exonix variant, we have 5 exonic variants that results in two frameshifts and 3 nonsynonymous SNV's. 
-
-
+This shows the functional consequence of each exonic variant, we have 5 exonic variants that results in two frameshifts and 3 nonsynonymous SNV's. 
 
 
  
@@ -255,17 +253,34 @@ Next we can examine some variants in IGV.
  load your bam files by clicking file --> load from file 
  If you have not downloaded the bam or are missing it. It is provided here (https://drive.google.com/drive/folders/1f_1pDbpNaNUT6oC-pEPXInemyZwMV4Hc)
  
- input the variant region of intereset. Input chr9:130,634,091-130 which corresponds to a exonic mutation called in AK1.
- ![image](https://user-images.githubusercontent.com/15352153/120568604-72690b00-c3d1-11eb-8164-329868b51e7c.png)
+Input chr9:130,634,091.
+![image](https://user-images.githubusercontent.com/15352153/120568604-72690b00-c3d1-11eb-8164-329868b51e7c.png)
 
+![image](https://user-images.githubusercontent.com/15352153/120906146-438ea700-c614-11eb-9fb1-6dc9fb7c8d75.png)
+Here we can see evidence of the C --> T in the tumor bam but not in the normal sample. This variant is called correctly and is called by both mutect2 and varscan2.
 
- 
-![image](https://user-images.githubusercontent.com/15352153/120569761-d42a7480-c3d3-11eb-8897-12cbfa600a65.png)
- Here we can see evidence of the C --> T in the tumor bam but not in the normal sample. This variant is called correctly
+```
+9       130634110       130634110       C       T       exonic  AK1     nonsynonymous_SNV       0/0:48,0:0.02:48:22,0:26,0:21,27,0,0:.:.:.:.                0/1:50,30:0.376:80:25,10:25,19:26,24,14,16:.:.:.:.       0/0:0:.:47:.:.:.:.:47:0%:21,26,0,0      0/1:29:.:79:.:.:.:.:50:36.71%:26,24,15,14
+```
 
+Now input chr9:130634993. 
 
+![image](https://user-images.githubusercontent.com/15352153/120906346-f14e8580-c615-11eb-9e22-e7f8cce02ef0.png)
+Here we can see evidence of two variants in the AKT1 exonic region. These variants are called only using mutect2.
 
+```
+9       130634993       130634993       C       T       exonic  AK1     nonsynonymous SNV       0/0:46,0:0.021:46:24,0:21,0:18,28,0,0   0/1:48,8:0.155:56:24,5:24,3:20,28,5,3   ./.:.:.:.:.:.:. ./.:.:.:.:.:.:.
+9       130635011       130635011       C       G       exonic  AK1     nonsynonymous SNV       0/0:39,0:0.024:39:23,0:16,0:17,22,0,0   0/1:46,9:0.175:55:21,5:25,4:16,30,5,4   ./.:.:.:.:.:.:. ./.:.:.:.:.:.:.
+```
 
+Now input chr9:130316821. This will be an intronic variant in the NIBAN2 gene. 
+
+![image](https://user-images.githubusercontent.com/15352153/120906325-b8aeac00-c615-11eb-8163-6a74c044f85a.png)
+This variant is real and only called by varscan2.
+
+```
+9       130316821       130316821       C       T       intronic        NIBAN2  .       ./.:.:.:.:.:.:. ./.:.:.:.:.:.:.                                     0/0:.:23:20:0:0%:13,7,0,0        0/1:.:24:19:5:20.83%:14,5,1,4
+```
 
 Short break time 
    
