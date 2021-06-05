@@ -220,7 +220,7 @@ mkdir -p results
 
 #annovar 
 ```
-/usr/local/annovar/table_annovar.pl pairedVariants_mutect2_varscan2.vcf /usr/local/annovar/humandb/ -buildver hg19 -out results/annotated_mutect2_varscan2 -remove -protocol refGene -operation g -nastring . --vcfinput
+/usr/local/annovar/table_annovar.pl pairedVariants_mutect2_varscan2.vcf.gz /usr/local/annovar/humandb/ -buildver hg19 -out results/annotated_mutect2_varscan2 -remove -protocol refGene -operation g -nastring . --vcfinput
 ```
 This will produce two annotation files: annotated_mutect2_varscan2.hg19_multianno.vcf & annotated_mutect2_varscan2.hg19_multianno.txt. These files contain the gene annotations and infer the functional consequence of each variant. 
 
