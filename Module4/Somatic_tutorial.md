@@ -283,11 +283,10 @@ This variant is real and only called by varscan2.
 
 Short break time 
    
-**Copy number variations
+**Copy number variations**
 
 In this workshop, we will present the main steps for calling copy number variations (CNVs). 
 Normally we would perform a copy number variation analysis on alignment files (BAMs). Due to time and resource constraints we will not be able to do this analysis on the full sequence or from shortened bam files. Instead we will be working with some preprocessed data using gc correction files and mpileups. Our data sample is again the cagekid sample c0098.
-
 
 To examine the copy number states within the cage kid tumors we are going to be using a tool called [controlfreec] (http://boevalab.inf.ethz.ch/FREEC/)
 
@@ -297,13 +296,12 @@ With this tool we can call
 * Copy-neutral loss of heterozygosity
 * This tool can also be used on exome seqencing and can even be used without a control (non-tumor) sample.
 
-
 #controlfreec requires additional files
 * A reference genome and a reference index (fasta and fai):  
 * List of single nucelotide polymorphisms 
 
 
-##Running controlfreec 
+Running controlfreec 
 
 ```
 cd ~/workspace/Module4_somaticvariants
@@ -315,14 +313,17 @@ The first step is to generate a configuration file which contain the parameters 
 ```
 bash /home/ubuntu/CourseData/CAN_data/Module4/scripts/generate_controlfreec_configurationfile.sh > CBW_config.txt
 ```
-#Let's now look at the configuration file. We see that our enviroment variables $1 $2 $3 and $4 correspond to the tumor pileup/cpn and the normal pileup/cpn.
-We have commented out the BAM files, however if you you were running this for the first time you should start from the BAM files. 
+Let's now look at the configuration file. 
 
 ```
 less CBW_config.txt
 ```
 Here we see four categories general, sample, control and BAF.
- 
+
+We have commented out the BAM files, however if you you were running this for the first time you should start from the BAM files. 
+Instead we use pileups and gc content. 
+ * Pileup contain base information that will help us assess which alleles.
+ * cpn contain gc content for normalization.
  
 - [General] indicates parameters for how we want the algorithm to run; parameters like minCNAlength, intercept are indicating WGS is being used
 - [sample] indicates the input data of our tumor either in bam format or pileup/cpn
@@ -344,16 +345,21 @@ ls *
      CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_CNVs : Containing our copy numbers calls th
      CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_info.txt : Containing sample information, purity and ploidy
 
-
 While we don't have annovar we can simply annotate our segment file with a gene transfer format file or [GTF] (http://m.ensembl.org/info/website/upload/gff.html). 
 
-
 ```
-bedtools intersect -wb -b <(less CBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs | awk 'NF==7' | awk '{print "chr"$1"\t"$2"\t"$3"\t"$0}' | less -S) -a <(less ~/references/genes_and_GTFS/Homo_sapiens.GRCh38.Ensemble100.FullGeneAnnotations.txt | awk '$4=="ensembl_havana"') | awk '{print $1"\t"$2"\t"$3"\t"$7"\t"$8"\t"$15}' | awk '$5=="protein_coding"' >  AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv
+bedtools intersect -wb -b <(less CBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs | awk 'NF==7' | awk '{print "chr"$1"\t"$2"\t"$3"\t"$0}' | less -S) -a <(less ~/references/genes_and_GTFS/Homo_sapiens.GRCh38.Ensemble100.FullGeneAnnotations.txt | awk '$4=="ensembl_havana"') | awk '{print $1"\t"$2"\t"$3"\t"$7"\t"$8"\t"$15}' >  AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv
 ```
 ```
 less -S AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv 
 ```
+We can examine a gene of interest, such as a loss of VHL which is common in kidney cancers. 
+
+```
+less AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv | awk '$4=="VHL"' | less -S
+```
+
+If you don't have a specific gene or gene set you can use [COSMIC](https://cancer.sanger.ac.uk/census): Which contains genes that are known and speculated to be associated with cancer. 
 
 Now lets go visualize these results using R --> You will need to open r studio for this.
 This script is availabe with controlfreec but due to the subsettting we will have to plot the ratio and BAF ourselves.
