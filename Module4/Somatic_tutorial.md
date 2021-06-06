@@ -438,10 +438,7 @@ if (length(tt)>0)
 }}}
 
  
-``` 
-                                                            
-![image] (https://user-images.githubusercontent.com/15352153/120875901-6dd85a00-c56b-11eb-9bf9-523629c0550a.png)
-![image] (https://user-images.githubusercontent.com/15352153/120876052-e0493a00-c56b-11eb-9381-54e82ce7d7b7.png)
+```                                                             
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_ratio.png)
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_BAF.png)
 
@@ -449,16 +446,13 @@ Based off of the ratio data we see that chromosome 3 has a diploid region that i
 However we see here that this is a copy-neutral loss of heterozygosity. This is a form of copynumber variation where the cell losses one allelic region but gains the other. So instead of AB it will be AA or BB. 
                                                             
  Now we see a chromsome 5 region which represents a gain and it is supported by the BAF
-![image] (https://user-images.githubusercontent.com/15352153/120875932-89dbfb80-c56b-11eb-8509-ad6e5a435717.png)
-![image] (https://user-images.githubusercontent.com/15352153/120876231-d411ac80-c56c-11eb-8dff-8732ed98dedd.png)
+
 
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr5_ratio.png)
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr5_BAF.png)
 
 
  And we also see another gain on chromsome 11, which is again supported by the BAF.                                                           
-![image] (https://user-images.githubusercontent.com/15352153/120876295-323e8f80-c56d-11eb-88f7-5af71c879b49.png)
-![image] (https://user-images.githubusercontent.com/15352153/120876298-38cd0700-c56d-11eb-9fe9-05bfc48f7b74.png)
 
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr11_ratio.png)
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr11_BAF.png)
