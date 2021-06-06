@@ -53,7 +53,10 @@ comming soon
 *<font color="#827e9c">Richard de Borja</font>*
 
 [Lecture]()
-[Labs]()
+
+[Lab slides]()
+
+[Lab Practical](https://bioinformaticsdotca.github.io/CAN_2021_Module2_lab_cancer)
 
 ## Module 03: Genome Alignment 
 
@@ -63,7 +66,7 @@ comming soon
 
 [Lecture in pdf](https://drive.google.com/file/d/1omn0zGVOkal5xA_mnn6E32itWIZC54Zy/view?usp=sharing) 
 
-[Practical raw & computed data](https://bioinformaticsdotca.github.io/CAN_2021_module3_lab)
+[Lab practical raw & computed data](https://bioinformaticsdotca.github.io/CAN_2021_module3_lab)
 
 ***
 
