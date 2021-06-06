@@ -268,7 +268,7 @@ more carcinoma_vs_normal.csv
 R
 ```
 
-The file [Module6_Lab_ballgown.R](https://raw.githubusercontent.com/bioinformaticsdotca/CAN_2021/blob/main/Module6/Module6_Lab_ballgown.R) will help you to run differential expression analysis with the Ballgown package. Copy and paste the commands from this file into your terminal once R has started (you should see ">" as a prompt).
+The file [Module6_Lab_ballgown.R](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module6/Module6_Lab_ballgown.R) will help you to run differential expression analysis with the Ballgown package. Copy and paste the commands from this file into your terminal once R has started (you should see ">" as a prompt).
 
 Have a look at the Ballgrown package and manual document as well
 https://www.bioconductor.org/packages/release/bioc/html/ballgown.html
