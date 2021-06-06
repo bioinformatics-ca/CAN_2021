@@ -114,10 +114,12 @@ comming soon
 
 [Lecture]()
 
-[Lab1 part 1](https://baderlab.github.io/CBW_Pathways_2021/CANgprofiler-lab.html) 
+Lab1:
+ * [Lab1](https://baderlab.github.io/CBW_Pathways_2021/CANgprofiler-lab.html) 
 
-[Lab2 part 1](https://baderlab.github.io/CBW_Pathways_2021/gsea-lab.html) 
-[Lab2 part 2](https://baderlab.github.io/CBW_Pathways_2021/gsea-mod3.html) 
+Lab2:
+ * [Lab2 part 1](https://baderlab.github.io/CBW_Pathways_2021/gsea-lab.html) 
+ * [Lab2 part 2](https://baderlab.github.io/CBW_Pathways_2021/gsea-mod3.html) 
 
 
 # Day 5 <a id="day5"></a>  
