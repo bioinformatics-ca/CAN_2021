@@ -49,12 +49,10 @@ This tutorial was last tested on **IGV v2.9**, which is available on the [Downlo
 
 ### Data Set for IGV
 These bams are a sneak peak of the ones you will be creating in module 3. They are a renal cancer tumor-normal matched pair from the [CageKid project](http://www.cng.fr/cagekid).
-* [normal.bam](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/data/normal.bam)
-* [normal.bam.bai](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/data/normal.bam.bai)
-* [tumor.bam](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/data/tumor.bam)
-* [tumor.bam.bai](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/data/tumor.bam.bai)
+* [normal.zip](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/data/normal.zip)
+* [tumor.zip](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/data/tumor.zip)
 
-Copy the files to your computer in one directory (folder). Remeber where you saved them!
+Download the files to your computer in one directory (folder) and unzip them. Remeber where you saved them!
 
 # Visualization Part 1: Getting familiar with IGV
 
