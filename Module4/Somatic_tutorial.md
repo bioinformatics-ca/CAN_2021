@@ -18,7 +18,6 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unpor
 
 In this workshop, we will work with common tools to process and analyze cancer sequencing data. Using the command line we will analyze DNA sequencing from the whole genome. The focus of this workshop will be on calling single nucelotide variants, insertion, deletions (commonly referred to as SNV/indels) as well as calling copy-number variations (CNVs). We will also annotate SNV & CNV files, such that you will known the functional conseqeunce of these variants.
 
-
 Data Source:
 we will be working on the [CageKid](https://www.cnrgh.fr/cagekid/) samples from Module3. 
 Whole genome sequencing and analysis can take multiple days to run, as such we have downsampled the files so that we can proceed more quickly. For the SNV analsyis we have selected a region on chromsome 9 between 130215000 & 130636000. 
@@ -26,7 +25,7 @@ Whole genome sequencing and analysis can take multiple days to run, as such we h
 The tools and their general function we are going to using for calling SNV's and CNV's are:
 * mutect2 
 * varscan2
-* samtools
+* samtools 
 * bcftools
 * bgzip and tabix
 * annovar
@@ -38,8 +37,9 @@ Files for variant calling:
 2) Reference genome --> /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta
 3) Germline-reference file --> /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
 
- This germline reference file is for the Gnomad database of germline variation in the human population
+This germline reference file is from the Gnomad database of germline variation in the human population. It includes the variant allele frequency thereby providing a starting probability that the sample carries the allele in the germline. 
  
+Part 1, step 1 
 **Running Mutect2**
 
 ```
@@ -78,33 +78,52 @@ less pairedVariants_mutect2.vcf | egrep '##' | less -S
     ##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
     ##FORMAT=<ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another">
     ##FORMAT=<ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
-    
+The Header
 ```
 less pairedVariants_mutect2.vcf | egrep '#CHROM' | less -S
 ```
     #CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO    FORMAT  normal  tumor
+The Variants
 ```
 less pairedVariants_mutect2.vcf | egrep -v '#' | head -n1
 ```
     9       130219144       .       CA      C       .       .       DP=89;ECNT=1;MBQ=32,32;MFRL=284,277;MMQ=60,60;MPOS=25;NALOD=1.09;NLOD=5.79;POPAF=6.00;RPA=15,14;RU=A;STR;TLOD=4.79   GT:AD:AF:DP:F1R2:F2R1:SB        0/0:22,1:0.042:23:6,1:12,0:14,8,1,0     0/1:25,4:0.157:29:9,4:9,0:17,8,3,1
-    
-    
-The pairedVariants_mutect2.vcf does not contain any filter information. Filter information comes from each variant and generates tags we can use to 
-We need to filter these mutations. HERE!!!
+ 
+Question: What is the definition of AD and AF in this mutect2 VCF?   
+  
+The pairedVariants_mutect2.vcf does not contain any filter information. Filter information comes from each variant and generates tags we can use to filter these mutations.
 ```
 gatk FilterMutectCalls -R /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta --filtering-stats pairedVariants_mutect2.vcf.stats -V pairedVariants_mutect2.vcf -O pairedVariants_mutect2_filtered.vcf
 ```
-Let's look at our file now. 
+
+Let's look at our file now.
 ```
-less -S pairedVariants_mutect2_filtered.vcf
+less -S pairedVariants_mutect2_filtered.vcf | egrep -v '#' | less -S
 ```
 
-Although we have all of the information to proceed forward we have multiple variants at a single loci. And since we will be comparing to another tool it is best to consider these multiallelic variants which can be accomplished by using bcftools norm functionality. This is to say: I want to split multiallelic (Ref == A & Alt == AT,ATT) into two seperate variants A --> AT and A --> ATT. This is because some variants callers (there are many) will report the multiallelic (mutect2) and some will report the singleallele variant (varscan2).
+We can see in the seventh column there are now filters
+```
+less -S pairedVariants_mutect2_filtered.vcf | egrep -v '#' | cut -f 1,2,4,5,7 | less -S
+```
+Question: what does the  "germline" in the FILTER field mean?
 
+
+Since we will be comparing with another tool it is best to try to consider as many sites as possible. To this end we will be using bcftools:
+```
+bcftool --help 
+```
+```
+bcftools norm --help
+```
+bcftools norm will help us here 
+1) Split multiallelic (Ref == A & Alt == AT,ATT) into two seperate variants A --> AT and A --> ATT 
+2) It will ensure we are left-aligned. Which is a way to normalize variants based on the reference genome (https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/Normalization_mnp.png)
+ 
 ```
 bcftools norm -m-both -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -Oz -o pairedVariants_mutect2_filtered_normalized.vcf pairedVariants_mutect2_filtered.vcf
 ```
-Part 1, step 2:
+
+Part 1, step 2: HERE
 
 Running varscan2 (http://varscan.sourceforge.net/)
 
@@ -115,10 +134,11 @@ samtools mpileup -B -q 1 -f /home/ubuntu/CourseData/CAN_data/Module4/references/
 ```
 samtools mpileup -B -q 1 -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -r 9:130215000-130636000 /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam > normal.mpileup &&
 ```
-Next we use varscan2 to execute the somatic function which does the initial variant calling from our mpileups
 
 ##DISCUSS the contents of the pileup
 
+
+Next we use varscan2 to execute the somatic function which does the initial variant calling from our mpileups
 ```
 java -Xmx2G -jar /usr/local/VarScan.v2.3.9.jar somatic normal.mpileup tumor.mpileup --output-vcf 1 --strand-filter 1 --somatic-p-value 0.05 --output-snp varscan2.snp.vcf --output-indel varscan2.indel.vcf
 ```
