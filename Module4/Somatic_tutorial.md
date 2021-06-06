@@ -34,7 +34,7 @@ The tools and their general function we are going to using for calling SNV's and
 * bgzip and tabix
 * annovar
 * controlfreec
-* R
+* R & R-Studio
 
 Files for variant calling:
 1) Bam --> Sequence alignments from Module 3 or /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam
@@ -49,10 +49,18 @@ mkdir -p Module4_somaticvariants
 cd Module4_somaticvariants
 ```
 
+We should try to use your alignment files from Module 3 they can be found:
+/home/ubuntu/workspace/CBW_CAN_2021/Module3/alignment/tumor/tumor.sorted.dup.recal.bam
+/home/ubuntu/workspace/CBW_CAN_2021/Module3/alignment/normal/tumor.sorted.dup.recal.bam
 
 ```
-/usr/local/GATK/gatk Mutect2 -R /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -I /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam -I /home/ubuntu/CourseData/CAN_data/Module4/alignments/tumor/tumor.sorted.realigned.bam -normal normal -tumor tumor -O pairedVariants_mutect2.vcf -L 9:130215000-130636000 --germline-resource /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
+/usr/local/GATK/gatk Mutect2 -R /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -I /home/ubuntu/workspace/CBW_CAN_2021/Module3/alignment/normal/tumor.sorted.dup.recal.bam -I /home/ubuntu/workspace/CBW_CAN_2021/Module3/alignment/tumor/tumor.sorted.dup.recal.bam -normal normal -tumor tumor -O pairedVariants_mutect2.vcf -L 9:130215000-130636000 --germline-resource /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
 ```
+
+If for some reason you don't have those files: there are spare files that are found at
+/home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam
+/home/ubuntu/CourseData/CAN_data/Module4/alignments/tumor/tumor.sorted.realigned.bam
+
 
 This will generate an intial vcf but does not contain any filters which tell us important information about the variants.
 
