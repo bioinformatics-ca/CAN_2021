@@ -294,5 +294,5 @@ Your plots will be at http://##.oicrcbw.ca/Module6/Module6_Lab/de/ballgown/ref_o
 
 Remember to replace "##" with your instance number.
 
-Compare your plots to the expected plots: [Module6_Lab_Supplementary_R_output.pdf](https://raw.githubusercontent.com/bioinformaticsdotca/CAN_2021/blob/main/Module6/Module6_Lab_Supplementary_R_output.pdf)
+Compare your plots to the expected plots: [Module6_Lab_Supplementary_R_output.pdf](https://github.com/bioinformatics-ca/CAN_2021/raw/main/Module6/Module6_Lab_Supplementary_R_output.pdf)
 
