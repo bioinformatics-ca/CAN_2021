@@ -52,7 +52,7 @@ These bams are a sneak peak of the ones you will be creating in module 3. They a
 * [normal.zip](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/data/normal.zip)
 * [tumor.zip](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/data/tumor.zip)
 
-Download the files to your computer in one directory (folder) and unzip them. Remeber where you saved them!
+Download the files to your computer in one directory (folder) and unzip them. Remember where you saved them!
 
 # Visualization Part 1: Getting familiar with IGV
 
@@ -86,7 +86,7 @@ You should see a listing of chromosomes in this reference genome. Click on **1**
 
 ![Chromosome chooser](https://bioinformatics-ca.github.io/images/Igv-chromosomes.png)
 
-Navigate to **chr1:10,000-11,000** by entering this into the location field (in the top-left corner of the interface) and clicking **Go** or pressing Enter/Return on your keyboard. This shows a window of chromosome 1 that is 1,000 base pairs wide and beginning at position 10,000.
+Navigate to **chr1:10,000-11,000** by entering this into the location field (in the top-left corner of the interface) and clicking *Go* or pressing Enter/Return on your keyboard. This shows a window of chromosome 1 that is 1,000 base pairs wide and beginning at position 10,000.
 
 ![Navigation using Location text field. Sequence track displayed as sequence of colours.](https://bioinformatics-ca.github.io/images/Igv-1.png)
 
@@ -103,14 +103,14 @@ When loaded, tracks are stacked on top of each other. You can identify which tra
 
 ## Region Lists
 
-Sometimes it's really useful to save where you are, or to load regions of interest. For this purpose, there is a **Region Navigator** in IGV. To access it, click *Regions > Region Navigator*. While you browse around the genome, you can save some bookmarks by pressing the **Add** button at any time. Add a useful label in the **Description** box to help you remember why you saved the region later on.
+Sometimes it's really useful to save where you are, or to load regions of interest. For this purpose, there is a **Region Navigator** in IGV. To access it, click *Regions > Region Navigator*. While you browse around the genome, you can save some bookmarks by pressing the *Add* button at any time. Add a useful label in the *Description* box to help you remember why you saved the region later on.
 
 ![Bookmarks in IGV.](https://bioinformatics-ca.github.io/images/Igv-bookmarks.png)
 
 
 ## Loading Read Alignments
 
-We will first visualize alignments from the subset of normal sample. In IGV choose *File > Load from File*, select normal.bam, and click **OK**. Note that the bam and index files *must* be in the same directory for IGV to load these properly, but only the bam file (not the bam.bai index file) needs to be loaded into IGV.
+We will first visualize alignments from the subset of normal sample. In IGV choose *File > Load from File*, select *normal.bam*, and click *OK*. Note that the bam and index files *must* be in the same directory for IGV to load these properly, but only the bam file (not the *bam.bai* index file) needs to be loaded into IGV.
 
 ![Load BAM track from File](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/load-bams.png)
 
@@ -119,13 +119,18 @@ We will first visualize alignments from the subset of normal sample. In IGV choo
 
 Navigate to a narrow window on chromosome 9: "chr9:130,620,912-130,621,487". 
 
-IGV lets you group, sort, and color alignments to better visualize the data. To start our exploration, right click on the track name, and select the following options:
-* Sort alignments by “start location”
-* Group alignments by "pair orientation"
+IGV lets you group, sort, and color alignments to better visualize the data. To start our exploration, right click on the track name (normal.bam), and select the following options:
+* Sort alignments by *start location*
+* Group alignments by *pair orientation*
 
 Experiment with the various settings by right clicking the read alignment track and toggling the options. Think about which would be best for specific tasks (e.g. quality control, SNP calling, CNV finding).
 
+You can also change how many reads are visible in the track by changing their width. Rick click the normal.bam track name and test out *Collapsed*, *Expanded*, and *Squished*. *Collapsed* or *Expanded* is recommended for this lab.
+
 ![Read information.](https://bioinformatics-ca.github.io/images/Igv_sort_and_group.png)
+
+A useful tool is the center line. In the menu bar, go to *View > Preferences > Alignments* and check the box for *Show center line* (you might have to scroll down a bit). This is useful when you want to sort alignments by a specific base (ex. at a SNP site) for making sure you are sorting on the correct base.
+![centre line](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/centre-line.png)
 
 You will see reads represented by grey or white bars stacked on top of each other, where they were aligned to the reference genome. The reads are pointed to indicate their orientation (i.e. the strand on which they are mapped). By default, individual bases are only colored if they are a **mismatch** to the reference. The transparacy of the mismatched bases corresponds to the **base quality** (essentially how confident we are that the sequencing machine called the correct base).
 
@@ -135,7 +140,7 @@ Mouse over or click on any read and notice that a lot of information is availabl
 
 ![Read information.](https://bioinformatics-ca.github.io/images/Igv_show_details_on_click.png)
 
-Once you select a read, a pop-up window shows quality metrics and other information about that read. We will learn more about these metrics in Module 3.
+Once you select a read, a pop-up window shows quality metrics and other information about that read (if your setting is on "click" but you don't see a popup box, they might be hiding behind the IGV window or on the other screen if you have a two-screen setup). We will learn more about these metrics in Module 3.
 
 ![Read information.](https://bioinformatics-ca.github.io/images/Igv_click_read.png)
 
@@ -147,14 +152,14 @@ Once you select a read, a pop-up window shows quality metrics and other informat
 1. Which variant is heterozygous and which is homozygous?
 2. What are the variant allele frequencies for each SNP? To find out you can click/hover on the colored bars in the coverage track
 
-* Now color alignments by “read strand”. Red reads are in the forward orientation, and blue reads are in the reverse orientation.
+* Now color alignments by *read strand*. Red reads are in the forward orientation, and blue reads are in the reverse orientation.
 3. Do these look like true SNPs? What evidence is there for this?
 
 ![SNPs](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/01-het-hom-SNP.png)
 
 * Look at the other mismatched bases in the region between the two SNPs.
 4. Are these sequencing errors, SNPs, or SNVs?
-5. What does “Shade base by quality” do and how might this be helpful?
+5. What does *Shade base by quality* do and how might this be helpful?
 6. Can a normal sample have somatic SNVs?
 
 ## Homozygous deletion 
@@ -167,7 +172,7 @@ Once you select a read, a pop-up window shows quality metrics and other informat
 * Navigate to chr9:130284240-130286902
 ![gc](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/03-gc-coverage.png)
 1. What do you notice about the coverage track and GC Percentage track?
-2. What does coloring alignments by “read strand” tell you?
+2. What does coloring alignments by *read strand* tell you?
 3. Do you think this is a deletion? Compare this region to the previous region.
 
 # Visualization Part 3: Inspecting small somatic variants in the tumor sample
@@ -188,7 +193,7 @@ Load *tumor.bam* the same way you loaded *normal.bam*. You can resize the tracks
 ## Somatic indel next to SNP with change in heterozygosity
 * Navigate to chr9:130337723-130337888 and sort alignments by *base*
 ![som indel](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/06-somatic-indel.png)
-1. What type of variant is in your centre line?
+1. What type of variant is in the centre?
 2. What do you notice about the variant in the normal sample to the right?
 3. What might be an explanation for what happened?
 
@@ -205,23 +210,23 @@ The IGV User Guide has great explanations of how we can use colorings by [pair o
 
 ## Inversion
 * Navigate to chrX:14728136-14732366 and make the following viewing adjustments:
-  * View as pairs
-  * Group alignments by “pair orientation”
-  * Color alignments by “pair orientation”
-  * Sort alignments by “start location”
+  * Select *View as pairs*
+  * Group alignments by *pair orientation*
+  * Color alignments by *pair orientation*
+  * Sort alignments by *start location*
 ![inversion](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/07-inversion.png)
 1. What do you notice about the blue and teal reads at the top?
-2. How does “View as pairs” help understand that this is an inversion?
+2. How does *View as pairs* help understand that this is an inversion?
 3. Is this inversion heterozygous or homozygous?
 
 ## Duplication
-* Navigate to chr17:55080031-55081661, sort alignments by “start location”, and keep the same viewing options as the previous inversion
+* Navigate to chr17:55080031-55081661, sort alignments by *start location*, and keep the same viewing options as the previous inversion
 ![dup](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/08-duplication.png)
 1. What do you notice about the green reads at the top?
 * Note: Green reads when colored by read orientation can indicate a translocation as well as a duplication. If you zoom out you can see there is a rise in the coverage track above the green reads, suggesting this is a duplication of the sequence at this location.
 
 ## Large deletion
-* Navigate to chr7:39811931-39833535 and color alignments by “insert size”, keeping the other options the same. Sort by *start location*
+* Navigate to chr7:39811931-39833535 and color alignments by *insert size*, keeping the other options the same. Sort by *start location*
 ![del](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/09-deletion.png)
 1. What do the red read pairs indicate?
 2. What other track can we look at to see that this is a deletion?
