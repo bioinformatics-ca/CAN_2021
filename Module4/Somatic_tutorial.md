@@ -97,7 +97,7 @@ varscan processSomatic varscan2.indel.vcf --min-tumor-freq 0.05
 varscan processSomatic varscan2.snp.vcf --min-tumor-freq 0.05
 ```
 
-#zip and tabix of high confidence variants
+zip and tabix of high confidence variants
 ```
 bgzip varscan2.snp.Somatic.hc.vcf
 tabix varscan2.snp.Somatic.hc.vcf.gz
@@ -164,7 +164,7 @@ The generate fields will depend on the caller's used. common ones are:
 * Genotype per-sample (GT) note this is not in Strelka which is a popular variant caller
 
 
-## Every vcf has a metadata sections two ##
+Every vcf has a metadata sections two ##
 ```
 zless -S pairedVariants_varscan2_filtered.vcf | egrep ' ##' | head -n 10
 
@@ -210,15 +210,15 @@ less -S pairedVariants_varscan2_filtered.vcf | egrep -v '#' | head -n 1
 9       130223126       .       C       T       .       PASS    SOMATIC;SS=2;SSC=18;GPV=1;SPV=0.014587;DP=55    GT:GQ:DP:RD:AD:FREQ:DP4 ./.:.:.:.:.:.:. ./.:.:.:.:.:.:. 0/0:.:26:26:0:0%:14,12,0,0      0/1:.:29:22:6:21.43%:15,7,1,5
  ```
  
- This shows a variant on chromosome 9 position 130223126 that goes from the reference C to a T. This variant was called uniquely by varscan2. This variant has passed all filters. The INFO and FORMAT field has additional information that can be explained in more detail using the '##' information. Please not that missing data is denoted as a '.'.
+This shows a variant on chromosome 9 position 130223126 that goes from the reference C to a T. This variant was called uniquely by varscan2. This variant has passed all filters. The INFO and FORMAT field has additional information that can be explained in more detail using the '##' information. Please not that missing data is denoted as a '.'.
 
 
-#Annotating our combined files
+Annotating our combined files
 ```
 mkdir -p results
 ```
 
-#annovar 
+annovar is a tool to annotate our vcf files with gene names & functional information 
 ```
 /usr/local/annovar/table_annovar.pl pairedVariants_mutect2_varscan2.vcf.gz /usr/local/annovar/humandb/ -buildver hg19 -out results/annotated_mutect2_varscan2 -remove -protocol refGene -operation g -nastring . --vcfinput
 ```
@@ -242,7 +242,6 @@ This will produce two annotation files: annotated_mutect2_varscan2.hg19_multiann
         3 nonsynonymous SNV
 
 This shows the functional consequence of each exonic variant, we have 5 exonic variants that results in two frameshifts and 3 nonsynonymous SNV's. 
-
 
  
 Next we can examine some variants in IGV. 
@@ -324,9 +323,6 @@ less CBW_config.txt
 ```
 Here we see four categories general, sample, control and BAF.
  
-```
- ls *
-```
  
 - [General] indicates parameters for how we want the algorithm to run; parameters like minCNAlength, intercept are indicating WGS is being used
 - [sample] indicates the input data of our tumor either in bam format or pileup/cpn
@@ -337,16 +333,34 @@ Here we see four categories general, sample, control and BAF.
 ```
 /usr/local/bin/freec -conf CBW_config.txt > output.log
 ``` 
- 
- 
+Note here we will get somewarning that segmentation is completed, this due to subsetting the files to allow for a quicker runtime. 
 
-Now lets go visualize these results using R --> you will need to open r studio for this
-This script is availabe with controlfreec but due to the subsettting we will have to do it our selves.
+Let's list the files we generated here. 
+```
+ls *
+```
+     CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_BAF.txt : Containing the allele frequency 
+     CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_ratio.txt : Contain read-depth ratios
+     CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_CNVs : Containing our copy numbers calls th
+     CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_info.txt : Containing sample information, purity and ploidy
 
-* if you are missing any of the data it can be found at github  
+
+While we don't have annovar we can simply annotate our segment file with a gene transfer format file or [GTF] (http://m.ensembl.org/info/website/upload/gff.html). 
+
+
+```
+bedtools intersect -wb -b <(less CBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs | awk 'NF==7' | awk '{print "chr"$1"\t"$2"\t"$3"\t"$0}' | less -S) -a <(less ~/references/genes_and_GTFS/Homo_sapiens.GRCh38.Ensemble100.FullGeneAnnotations.txt | awk '$4=="ensembl_havana"') | awk '{print $1"\t"$2"\t"$3"\t"$7"\t"$8"\t"$15}' | awk '$5=="protein_coding"' >  AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv
+```
+```
+less -S AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv 
+```
+
+Now lets go visualize these results using R --> You will need to open r studio for this.
+This script is availabe with controlfreec but due to the subsettting we will have to plot the ratio and BAF ourselves.
+
+* If you are missing any of the data it can be found at github  
 * https://github.com/bioinformatics-ca/CAN_2021/raw/main/Module4/Data/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_BAF.txt
 * https://github.com/bioinformatics-ca/CAN_2021/raw/main/Module4/Data/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_ratio.txt
-
 
  Let's read in our data
  ```
@@ -357,9 +371,8 @@ ratio <- data.frame(ratio_dataTable)
 BAF_dataTable <-read.table(file="CBW_regions_c0098_Tumor.sorted.markduplicates.bam_BAF.txt", header=TRUE)
 #BAF_dataTable <- read.table(file = "https://github.com/bioinformatics-ca/CAN_2021/raw/main/Module4/Data/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_BAF.txt"", header=TRUE)
 BAF<-data.frame(BAF_dataTable)
-ploidy <- 2
-                   
- ```
+ploidy <- 2                   
+```
                    
 Now we can plot all of our data in a way that allows us to see gain, losses and neutral regions         
 ```{r}         
@@ -425,13 +438,12 @@ if (length(tt)>0)
 ``` 
                                                             
 
- ![image](https://user-images.githubusercontent.com/15352153/120875901-6dd85a00-c56b-11eb-9bf9-523629c0550a.png)
- ![image](https://user-images.githubusercontent.com/15352153/120876052-e0493a00-c56b-11eb-9381-54e82ce7d7b7.png)
+![image](https://user-images.githubusercontent.com/15352153/120875901-6dd85a00-c56b-11eb-9bf9-523629c0550a.png)
+![image](https://user-images.githubusercontent.com/15352153/120876052-e0493a00-c56b-11eb-9381-54e82ce7d7b7.png)
                                                             
 Based off of the ratio data we see that chromosome 3 has a diploid region that is then going into a gain:          
 However we see here that this is a copy-neutral loss of heterozygosity. This is a form of copynumber variation where the cell losses one allelic region but gains the other. So instead of AB it will be AA or BB. 
-     
-                                                        
+                                                            
  Now we see a chromsome 5 region which represents a gain and it is supported by the BAF
 ![image](https://user-images.githubusercontent.com/15352153/120875932-89dbfb80-c56b-11eb-8509-ad6e5a435717.png)
 ![image](https://user-images.githubusercontent.com/15352153/120876231-d411ac80-c56c-11eb-8dff-8732ed98dedd.png)
