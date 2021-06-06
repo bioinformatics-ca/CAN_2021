@@ -201,6 +201,8 @@ First remove the coverage and alignment tracks for both the tumor and normal sam
 Now go to *File > Load from server* and click on the arrow next to *Platinum Genomes* to expand the selection. Click on *NA12878* (second from the top).
 ![na12878](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/load-na12878.png)
 
+The IGV User Guide has great explanations of how we can use colorings by [pair orientation](http://software.broadinstitute.org/software/igv/interpreting_pair_orientations) or [insert size](http://software.broadinstitute.org/software/igv/interpreting_insert_size) to view structural variants.
+
 ## Inversion
 * Navigate to chrX:14728136-14732366 and make the following viewing adjustments:
   * View as pairs
