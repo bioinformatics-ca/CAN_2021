@@ -49,17 +49,9 @@ mkdir -p Module4_somaticvariants
 cd Module4_somaticvariants
 ```
 
-We should try to use your alignment files from Module 3 they can be found:
-/home/ubuntu/workspace/CBW_CAN_2021/Module3/alignment/tumor/tumor.sorted.dup.recal.bam
-/home/ubuntu/workspace/CBW_CAN_2021/Module3/alignment/normal/tumor.sorted.dup.recal.bam
-
 ```
-/usr/local/GATK/gatk Mutect2 -R /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -I /home/ubuntu/workspace/CBW_CAN_2021/Module3/alignment/normal/tumor.sorted.dup.recal.bam -I /home/ubuntu/workspace/CBW_CAN_2021/Module3/alignment/tumor/tumor.sorted.dup.recal.bam -normal normal -tumor tumor -O pairedVariants_mutect2.vcf -L 9:130215000-130636000 --germline-resource /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
+/usr/local/GATK/gatk Mutect2 -R /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -I /home/ubuntu/workspace/CBW_CAN_2021/Module4/alignment/normal/normal.sorted.dup.recal.bam -I /home/ubuntu/workspace/CBW_CAN_2021/Module4/alignment/tumor/tumor.sorted.dup.recal.bam -normal normal -tumor tumor -O pairedVariants_mutect2.vcf -L 9:130215000-130636000 --germline-resource /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
 ```
-
-If for some reason you don't have those files: there are spare files that are found at
-/home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam
-/home/ubuntu/CourseData/CAN_data/Module4/alignments/tumor/tumor.sorted.realigned.bam
 
 
 This will generate an intial vcf but does not contain any filters which tell us important information about the variants.
@@ -151,7 +143,7 @@ This reads that the first variants on chromosme 9, position 130223126 changes fr
 
 less -S sites.txt | cut -f  5 | sort | uniq -c 
       
-      4 01
+      3 01
       6 10
      11 11
 
@@ -238,14 +230,13 @@ This will produce two annotation files: annotated_mutect2_varscan2.hg19_multiann
  This shows the genomic region change where each variant is occuring. Typically exonic variants are more likely to produce a phenotypic change. 
  
         5 exonic
-        1 intergenic
         15 intronic
         
 ```
  less -S annotated_mutect2_varscan2.hg19_multianno.txt | cut -f 9 | sort | uniq -c
 ```
 
-        16 .
+        15 .
         2 frameshift insertion
         3 nonsynonymous SNV
 
