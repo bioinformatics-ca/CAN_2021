@@ -360,6 +360,7 @@ less AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv | awk '
 If you don't have a specific gene or gene set you can use [COSMIC](https://cancer.sanger.ac.uk/census): Which contains genes that are known and speculated to be associated with cancer. 
 
 Now lets go visualize these results using R --> You will need to open r studio for this.
+
 This script is availabe with controlfreec but due to the subsettting we will have to plot the ratio and BAF ourselves.
 
 * If you are missing any of the data it can be found at github  
@@ -459,7 +460,9 @@ However we see here that this is a copy-neutral loss of heterozygosity. This is 
                                                    
                                 
     
-    
+###
+Special thanks to Dr.Bourgey for access to the CAGEKID data and access to [genpipes](https://genpipes.readthedocs.io/en/genpipes-v-3.4.0/)
+###
 
  
 
