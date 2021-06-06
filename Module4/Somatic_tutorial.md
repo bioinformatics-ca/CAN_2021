@@ -441,6 +441,7 @@ if (length(tt)>0)
 ``` 
                                                             
 ![image](https://user-images.githubusercontent.com/15352153/120875901-6dd85a00-c56b-11eb-9bf9-523629c0550a.png)
+
 ![image](https://user-images.githubusercontent.com/15352153/120876052-e0493a00-c56b-11eb-9381-54e82ce7d7b7.png)
                                                             
 Based off of the ratio data we see that chromosome 3 has a diploid region that is then going into a gain:          
