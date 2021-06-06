@@ -170,6 +170,7 @@ Once you select a read, a pop-up window shows quality metrics and other informat
 3. Do you think this is a deletion? Compare this region to the previous region.
 
 # Visualization Part 3: Inspecting small somatic variants in the tumor sample
+Load *tumor.bam* the same way you loaded *normal.bam*. You can resize the tracks to make them both fit better as needed by dragging the horizontal line between the samples up and down.
 
 ## Somatic SNV
 * Navigate to chr9:130633300-130633965
@@ -177,9 +178,9 @@ Once you select a read, a pop-up window shows quality metrics and other informat
 2. What is the variant allele frequency for the extra SNV in the tumor sample? How did it get this high?
 
 ## Somatic SNP with change in heterozygosity
-1. Navigate to chr9:130515234-130515399 and sort alignments by “base”
-2. What are the variant allele frequencies for each sample?
-3. Why are these frequencies different?
+* Navigate to chr9:130515234-130515399 and sort alignments by “base”
+1. What are the variant allele frequencies for each sample?
+2. Why are these frequencies different?
 
 ## Somatic indel next to SNP with change in heterozygosity
 * Navigate to chr9:130337723-130337888 and sort alignments by “base”
@@ -188,9 +189,14 @@ Once you select a read, a pop-up window shows quality metrics and other informat
 3. What might be an explanation for what happened?
 
 # Visualization Part 4: Inspecting structural variants in NA12878
+Cancers often have large structural variants, like inversions, duplications, and translocations. We will examine some structural variants in a well-studied individual (NA12878) from the Platinum Genomes Project. Note that this is a normal sample, but think about how these variants might look in a tumor sample.
+
+First remove the coverage and alignment tracks for both the tumor and normal samples. Click on the top coverage track, then hold down the *shift* key and click on the bottom alignment track. The four trackcs should now be grey. Right click anywhere on the tracks and select *Remove Tracks*.
+
+Now go to *File > Load from server* and click on the arrow next to *Platinum Genomes* to expand the selection. Click on *NA12878* (second from the top).
 
 ## Inversion
-* Navigate to chrX:14,728,136-14,732,366 and make the following viewing adjustments:
+* Navigate to chrX:14728136-14732366 and make the following viewing adjustments:
   * View as pairs
   * Group alignments by “pair orientation”
   * Color alignments by “pair orientation”
@@ -206,7 +212,7 @@ Once you select a read, a pop-up window shows quality metrics and other informat
 * Note: Green reads when colored by read orientation can indicate a translocation as well as a duplication. If you zoom out you can see there is a rise in the coverage track above the green reads, suggesting this is a duplication of the sequence at this location.
 
 ## Large deletion
-* Navigate to chr7:39,811,931-39,833,535 and color alignments by “insert size”, keeping the other options the same. Sort by “start location”
+* Navigate to chr7:39811931-39833535 and color alignments by “insert size”, keeping the other options the same. Sort by “start location”
 1. What do the red read pairs indicate?
 2. What other track can we look at to see that this is a deletion?
 
