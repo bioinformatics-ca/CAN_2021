@@ -39,7 +39,7 @@ Files for variant calling:
 1) Bam --> Sequence alignments from Module 3 or /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam
 2) Reference genome --> /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta
 3) Germline-reference file --> /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
-
+ (This is the Gnomad database of germline variation in the human population)
 **Running Mutect2**
 
 ```
