@@ -11,7 +11,6 @@ author: Aaron Gillmor
  
 ---
 
-
 ================================
 
 This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US). This means that you are able to copy, share and modify the work, as long as the result is distributed under the same license.
@@ -383,21 +382,20 @@ Now we can plot all of our data in a way that allows us to see gain, losses and 
 ```{r}         
 for (chrom in c(3,5,11))
 { 
-tt <- which(ratio$Chromosome==i)
+tt <- which(ratio$Chromosome==chrom)
 if (length(tt)>0)
 {
         plot(ratio$Start[tt],log2(ratio$Ratio[tt]),xlab = paste ("position, chr",i),ylab = "normalized copy number profile (log2)",pch = ".",col = colors()[88],cex=4)
-        tt <- which(ratio$Chromosome==i  & ratio$CopyNumber>ploidy )
+        tt <- which(ratio$Chromosome==chrom  & ratio$CopyNumber>ploidy )
         points(ratio$Start[tt],log2(ratio$Ratio[tt]),pch = ".",col = colors()[136],cex=4)
 
-        tt <- which(ratio$Chromosome==i  & ratio$CopyNumber<ploidy & ratio$CopyNumber!= -1)
+        tt <- which(ratio$Chromosome==chrom  & ratio$CopyNumber<ploidy & ratio$CopyNumber!= -1)
         points(ratio$Start[tt],log2(ratio$Ratio[tt]),pch = ".",col = colors()[461],cex=4)
-        tt <- which(ratio$Chromosome==i)
+        tt <- which(ratio$Chromosome==chrom)
         }
-        tt <- which(ratio$Chromosome==i)
+        tt <- which(ratio$Chromosome==chrom)
 }
 ```      
-
    
 ```{r}
  
@@ -442,7 +440,6 @@ if (length(tt)>0)
  
 ``` 
                                                             
-
 ![image](https://user-images.githubusercontent.com/15352153/120875901-6dd85a00-c56b-11eb-9bf9-523629c0550a.png)
 ![image](https://user-images.githubusercontent.com/15352153/120876052-e0493a00-c56b-11eb-9381-54e82ce7d7b7.png)
                                                             
