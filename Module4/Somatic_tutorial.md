@@ -339,23 +339,29 @@ Here we see four categories general, sample, control and BAF.
 ``` 
  
  
- 
- 
+
 Now lets go visualize these results using R --> you will need to open r studio for this
-#This script is availabe with controlfreec but due to subsetting we will have to do it our selves#
- 
+This script is availabe with controlfreec but due to the subsettting we will have to do it our selves.
+
+* if you are missing any of the data it can be found at github  
+* https://github.com/bioinformatics-ca/CAN_2021/raw/main/Module4/Data/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_BAF.txt
+* https://github.com/bioinformatics-ca/CAN_2021/raw/main/Module4/Data/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_ratio.txt
+
+
  Let's read in our data
  ```
 ratio_dataTable <- read.table(file = "CBW_regions_c0098_Tumor.sorted.markduplicates.bam_ratio.txt", header=TRUE)
+#ratio_dataTable <- read.table(file = "https://github.com/bioinformatics-ca/CAN_2021/raw/main/Module4/Data/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_ratio.txt",header=TRUE)
+
 ratio <- data.frame(ratio_dataTable)
-BAF_dataTable <-read.table(file="CBW_regions_c0098_Tumor.sorted.markduplicates.bam_BAF.txt", header=TRUE);
+BAF_dataTable <-read.table(file="CBW_regions_c0098_Tumor.sorted.markduplicates.bam_BAF.txt", header=TRUE)
+#BAF_dataTable <- read.table(file = "https://github.com/bioinformatics-ca/CAN_2021/raw/main/Module4/Data/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_BAF.txt"", header=TRUE)
 BAF<-data.frame(BAF_dataTable)
 ploidy <- 2
                    
  ```
-          
-          
- Now we can plot all of our data in a way that allows us to see gain, losses and neutral regions         
+                   
+Now we can plot all of our data in a way that allows us to see gain, losses and neutral regions         
 ```{r}         
 for (chrom in c(3,5,11))
 { 
