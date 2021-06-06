@@ -76,7 +76,7 @@ Although we have all of the information to proceed forward we have multiple vari
 bcftools norm -m-both -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -Oz -o pairedVariants_mutect2_filtered_normalized.vcf pairedVariants_mutect2_filtered.vcf
 ```
 
-#Running varscan2 (http://varscan.sourceforge.net/)
+Running varscan2 (http://varscan.sourceforge.net/)
 
 First we create pileup files from both the normal sample and the control sample. This is done with a tool called samtools:
 ```
