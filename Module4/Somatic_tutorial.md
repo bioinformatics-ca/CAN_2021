@@ -8,7 +8,6 @@ image:
 home: https://bioinformaticsdotca.github.io/CAN_2021
 description: CAN 2021 Module 4 lab
 author: Aaron Gillmor
- 
 ---
 
 ================================
@@ -16,7 +15,6 @@ author: Aaron Gillmor
 This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US). This means that you are able to copy, share and modify the work, as long as the result is distributed under the same license.
 
 ================================
-
 
 In this workshop, we will work with common tools to process and analyze cancer sequencing data. Using the command line we will analyze DNA sequencing from the whole genome. The focus of this workshop will be on calling single nucelotide variants, insertion, deletions (commonly referred to as SNV/indels) as well as calling copy-number variations (CNVs). We will also annotate SNV & CNV files, such that you will known the functional conseqeunce of these variants.
 
@@ -26,7 +24,7 @@ we will be working on the [CageKid](https://www.cnrgh.fr/cagekid/) samples from 
 Whole genome sequencing and analysis can take multiple days to run, as such we have downsampled the files so that we can proceed more quickly. For the SNV analsyis we have selected a region on chromsome 9 between 130215000 & 130636000. 
 
 The tools and their general function we are going to using for calling SNV's and CNV's are:
-* mutect2
+* mutect2 
 * varscan2
 * samtools
 * bcftools
@@ -39,32 +37,64 @@ Files for variant calling:
 1) Bam --> Sequence alignments from Module 3 or /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam
 2) Reference genome --> /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta
 3) Germline-reference file --> /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
- (This is the Gnomad database of germline variation in the human population)
+
+ This germline reference file is for the Gnomad database of germline variation in the human population
+ 
 **Running Mutect2**
 
 ```
 cd ~/workspace
 mkdir -p Module4_somaticvariants
-cd Module4_somaticvariants
+cd  ~/workspace/Module4_somaticvariants
 ```
 
 ```
 /usr/local/GATK/gatk Mutect2 -R /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -I /home/ubuntu/workspace/CBW_CAN_2021/Module4/alignment/normal/normal.sorted.dup.recal.bam -I /home/ubuntu/workspace/CBW_CAN_2021/Module4/alignment/tumor/tumor.sorted.dup.recal.bam -normal normal -tumor tumor -O pairedVariants_mutect2.vcf -L 9:130215000-130636000 --germline-resource /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
 ```
 
-
-This will generate an intial vcf but does not contain any filters which tell us important information about the variants.
-
+Question: The -normal and -tumor are represented by which field in the bam? 
 ```
-less -S pairedVariants_mutect2.vcf
+samtools view /home/ubuntu/workspace/CBW_CAN_2021/Module4/alignment/normal/normal.sorted.dup.recal.bam | head -n 1 | less -S
 ```
 
+side note: Mutect2 can also take multiple samples. In this case you only have to specify the normal sample! how neat is that!
+
+
+This will generate an initial variant call format file. This is the standard way in which variants are reported. For a full description of the [vcf_format](https://www.internationalgenome.org/wiki/Analysis/vcf4.0/): 
+
+Every VCF has three sections Metadata, Header, variant info.
+
+The Metadata
+```
+less pairedVariants_mutect2.vcf | egrep '##' | less -S
+```
+    ##fileformat=VCFv4.2
+    ##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Allelic depths for the ref and alt alleles in the order listed">
+    ##FORMAT=<ID=AF,Number=A,Type=Float,Description="Allele fractions of alternate alleles in the tumor">
+    ##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Approximate read depth (reads with MQ=255 or with bad mates are filtered)">
+    ##FORMAT=<ID=F1R2,Number=R,Type=Integer,Description="Count of reads in F1R2 pair orientation supporting each allele">
+    ##FORMAT=<ID=F2R1,Number=R,Type=Integer,Description="Count of reads in F2R1 pair orientation supporting each allele">
+    ##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype Quality">
+    ##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+    ##FORMAT=<ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another">
+    ##FORMAT=<ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+    
+```
+less pairedVariants_mutect2.vcf | egrep '#CHROM' | less -S
+```
+    #CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO    FORMAT  normal  tumor
+```
+less pairedVariants_mutect2.vcf | egrep -v '#' | head -n1
+```
+    9       130219144       .       CA      C       .       .       DP=89;ECNT=1;MBQ=32,32;MFRL=284,277;MMQ=60,60;MPOS=25;NALOD=1.09;NLOD=5.79;POPAF=6.00;RPA=15,14;RU=A;STR;TLOD=4.79   GT:AD:AF:DP:F1R2:F2R1:SB        0/0:22,1:0.042:23:6,1:12,0:14,8,1,0     0/1:25,4:0.157:29:9,4:9,0:17,8,3,1
+    
+    
+The pairedVariants_mutect2.vcf does not contain any filter information. Filter information comes from each variant and generates tags we can use to 
+We need to filter these mutations. HERE!!!
 ```
 gatk FilterMutectCalls -R /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta --filtering-stats pairedVariants_mutect2.vcf.stats -V pairedVariants_mutect2.vcf -O pairedVariants_mutect2_filtered.vcf
 ```
-
-Let's look at our file now
-
+Let's look at our file now. 
 ```
 less -S pairedVariants_mutect2_filtered.vcf
 ```
@@ -74,6 +104,7 @@ Although we have all of the information to proceed forward we have multiple vari
 ```
 bcftools norm -m-both -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -Oz -o pairedVariants_mutect2_filtered_normalized.vcf pairedVariants_mutect2_filtered.vcf
 ```
+Part 1, step 2:
 
 Running varscan2 (http://varscan.sourceforge.net/)
 
@@ -85,6 +116,8 @@ samtools mpileup -B -q 1 -f /home/ubuntu/CourseData/CAN_data/Module4/references/
 samtools mpileup -B -q 1 -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -r 9:130215000-130636000 /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam > normal.mpileup &&
 ```
 Next we use varscan2 to execute the somatic function which does the initial variant calling from our mpileups
+
+##DISCUSS the contents of the pileup
 
 ```
 java -Xmx2G -jar /usr/local/VarScan.v2.3.9.jar somatic normal.mpileup tumor.mpileup --output-vcf 1 --strand-filter 1 --somatic-p-value 0.05 --output-snp varscan2.snp.vcf --output-indel varscan2.indel.vcf
@@ -122,10 +155,11 @@ bcftools isec -n+1 -f PASS -p intersectionDirectory pairedVariants_mutect2_filte
 This creates a directory named intersectionDirectory that contains all variants that pass in at-least one vcf. It's at this point where you can choose which variants to include.
 
 ```
-cd intersectionDirectory/
+cd ~/workspace/Module4_somaticvariants/intersectionDirectory/
 ```
-- All variants -- The union will represent the most variants but has the higher false positives count
-- Common variants -- The intersection will represerent the least variants but has a lower false positive 
+
+- All variants -- The union includes all variants and has a low false negative count but a high false positives count
+- Common variants -- The intersection is the subset of high confidence varianta with fewer false positive and potentially more false negatives. 
 
 In this directory we see the 0000.vcf and 0001.vcf. These corresponds to the mutect2 vcf and the varscan2 vcf, respectively. (confirmed in the README.txt)
 
@@ -146,22 +180,17 @@ less -S sites.txt | cut -f  5 | sort | uniq -c
       6 10
      11 11
 
-This show's us that varscan has 4 unique variants, mutect2 has 6 unique variants and there are 11 shared variants.
+This show's us that varscan has 3 unique variants, mutect2 has 6 unique variants and there are 11 shared variants.
 
 Finally we combine our mutect2 and varscan2 vcfs into a single vcf. This will generate the union of variants. 
 ```
-cd ../
+cd ~/workspace/Module4_somaticvariants
 ```
 
 ```
 bcftools merge pairedVariants_mutect2_filtered_normalized.vcf.gz pairedVariants_varscan2_filtered.vcf.gz -o pairedVariants_mutect2_varscan2.vcf.gz -Oz
 ```
-Now that we have our two vcf's combined we can look at their contents. A full description of the [vcf_format](https://www.internationalgenome.org/wiki/Analysis/vcf4.0/):
-The generate fields will depend on the caller's used. common ones are:
-* Reference allele (REF) and Alternate allele (ALT)
-* Variant quality (QUAL)
-* Genotype per-sample (GT) note this is not in Strelka which is a popular variant caller
-
+Now that we have our two vcf's combined we can look at their contents. 
 
 Every vcf has a metadata sections two ##
 ```
@@ -273,11 +302,13 @@ Here we can see evidence of two variants in the AKT1 exonic region. These varian
 Now input chr9:130316821. This will be an intronic variant in the NIBAN2 gene. 
 
 ![image](https://user-images.githubusercontent.com/15352153/120906325-b8aeac00-c615-11eb-8163-6a74c044f85a.png)
-This variant is real and only called by varscan2.
+
 
 ```
 9       130316821       130316821       C       T       intronic        NIBAN2  .       ./.:.:.:.:.:.:. ./.:.:.:.:.:.:.                                     0/0:.:23:20:0:0%:13,7,0,0        0/1:.:24:19:5:20.83%:14,5,1,4
 ```
+
+Question 5: This variant is only called by varscan2, what red flags exist for this variant (strandbias, hom
 
 Short break time 
    
@@ -294,7 +325,7 @@ With this tool we can call
 * Copy-neutral loss of heterozygosity
 * This tool can also be used on exome seqencing and can even be used without a control (non-tumor) sample.
 
-#controlfreec requires additional files
+controlfreec requires the sequence data and these additional files
 * A reference genome and a reference index (fasta and fai):  
 * List of single nucelotide polymorphisms 
 
@@ -316,7 +347,11 @@ Let's now look at the configuration file.
 ```
 less CBW_config.txt
 ```
-Here we see four categories general, sample, control and BAF.
+
+###Controlfreec has many different parameters 
+
+
+In the configfile ee four categories general, sample, control and BAF.
 
 We have commented out the BAM files, however if you you were running this for the first time you should start from the BAM files. 
 Instead we use pileups and gc content. 
@@ -326,13 +361,13 @@ Instead we use pileups and gc content.
 - [General] indicates parameters for how we want the algorithm to run; parameters like minCNAlength, intercept are indicating WGS is being used
 - [sample] indicates the input data of our tumor either in bam format or pileup/cpn
 - [control] indicates our input data of our normal sample, again in different formats
-- [BAF] indicates the necesarry files for calculatibng the b-allele frequency which will help us indicated LOH
+- [BAF] indicates the necesarry files for calculatibng the b-allele frequency which will help us identify regions of LOH
 
 #Now to run controlfreec
 ```
 /usr/local/bin/freec -conf CBW_config.txt > output.log
 ``` 
-Note here we will get somewarning that segmentation is completed, this due to subsetting the files to allow for a quicker runtime. 
+Note here we will get some warning that segmentation is completed, this due to subsetting the files to allow for a quicker runtime. 
 
 Let's list the files we generated here. 
 ```
@@ -340,11 +375,16 @@ ls *
 ```
      CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_BAF.txt : Containing the allele frequency 
      CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_ratio.txt : Contain read-depth ratios
-     CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_CNVs : Containing our copy numbers calls th
+     CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_CNVs : Containing our copy numbers calls
      CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_info.txt : Containing sample information, purity and ploidy
+     
+     ####HOW does controlfreec calculate purity, ploidy 
 
-While we don't have annovar we can simply annotate our segment file with a gene transfer format file or [GTF] (http://m.ensembl.org/info/website/upload/gff.html). 
+While we don't have annovar we can intersect our segment file with a gene transfer format file or [GTF] (http://m.ensembl.org/info/website/upload/gff.html). 
 
+#ADD an awk cheat sheet tutorial --> (https://www.shortcutfoo.com/app/dojos/awk/cheatsheet)
+
+##Explain what each variable does and why we are selecting 
 ```
 bedtools intersect -wb -b <(less CBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs | awk 'NF==7' | awk '{print "chr"$1"\t"$2"\t"$3"\t"$0}' | less -S) -a <(less ~/references/genes_and_GTFS/Homo_sapiens.GRCh38.Ensemble100.FullGeneAnnotations.txt | awk '$4=="ensembl_havana"') | awk '{print $1"\t"$2"\t"$3"\t"$7"\t"$8"\t"$15}' >  AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv
 ```
@@ -357,7 +397,7 @@ We can examine a gene of interest, such as a loss of VHL which is common in kidn
 less AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv | awk '$4=="VHL"' | less -S
 ```
 
-If you don't have a specific gene or gene set you can use [COSMIC](https://cancer.sanger.ac.uk/census): Which contains genes that are known and speculated to be associated with cancer. 
+#If you don't have a specific gene or gene set you can use [COSMIC](https://cancer.sanger.ac.uk/census): Which contains genes implicated in cancer biology. 
 
 Now lets go visualize these results using R --> You will need to open r studio for this, we have two ways to do this. 
 1) Open it locally on you personal computer
@@ -442,15 +482,29 @@ if (length(tt)>0)
 }}}
 
  
-```                                                             
+```
+
+
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_ratio.png)
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_BAF.png)
 
+Question 4: What does each dot mean in the two plots above?
+Question 5: In the top what is the copy-number 
+
 Based off of the ratio data we see that chromosome 3 has a diploid region that is then going into a gain:          
 However we see here that this is a copy-neutral loss of heterozygosity. This is a form of copynumber variation where the cell losses one allelic region but gains the other. So instead of AB it will be AA or BB. 
-                                                            
- Now we see a chromsome 5 region which represents a gain and it is supported by the BAF
 
+
+
+Add on sections for TFRI for whole samples [TFRI-WGS](https://www.pnas.org/content/116/38/19098)
+
+
+
+
+
+
+
+ Now we see a chromsome 5 region which represents a gain and it is supported by the BAF
 
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr5_ratio.png)
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr5_BAF.png)
@@ -461,11 +515,12 @@ However we see here that this is a copy-neutral loss of heterozygosity. This is 
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr11_ratio.png)
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr11_BAF.png)
                                                    
-                                
-    
+
+
 ###
 Special thanks to Dr.Bourgey for access to the CAGEKID data and access to [genpipes](https://genpipes.readthedocs.io/en/genpipes-v-3.4.0/)
 ###
+
 
  
 
