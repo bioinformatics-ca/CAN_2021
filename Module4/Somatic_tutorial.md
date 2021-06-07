@@ -563,11 +563,10 @@ if (length(tt)>0)
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_BAF.png)
 
 Question: What does each dot mean in the top CNV plots and what does each dot mean in the bottom BAF plot?
+ 
 Question: What is the absolute copy-number of the red region in the top plot?
+ 
 Question: Comparing the green region to the BAF plots, what kind of copy number variation is taking place?
-
-Based off of the ratio data we see that chromosome 3 has a diploid region that is then going into a gain:          
-However we see here that this is a copy-neutral loss of heterozygosity. This is a form of copynumber variation where the cell losses one allelic region but gains the other. So instead of AB it will be AA or BB. We also noticed a similar event using varscan2 although that was in chr9.
 
 Using a completed CNV calling on WGS data from the Terry Fox Research Initiative on GBM we can see how it looks across a whole genome.  [TFRI-WGS](https://www.pnas.org/content/116/38/19098)
 
@@ -575,6 +574,7 @@ Using a completed CNV calling on WGS data from the Terry Fox Research Initiative
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/BT143_TFRI_BAF.png)
 
 Question: What CNV events are supported by the data?
+ 
 Question: There are hundred of segments as seen in both CNV and BAF plots, what is one way you can modify controlfreec to call fewer segments? 
 
 We can also plot chromosome 5 regions and chromosome 11 regions
