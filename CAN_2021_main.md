@@ -25,7 +25,7 @@ Meet your faculty [here](https://drive.google.com/file/d/1QFI0H9kX7U8rg4NY6ZhCEL
 
 ## Pre-workshop Tutorials
 
-Pre-readings and pre-work can be found here [here](https://forms.gle/fMQMdWQxZQMcTMRB9).  
+Pre-readings and pre-work can be found [here](https://forms.gle/fMQMdWQxZQMcTMRB9).  
 It is in your best interest to complete these before the workshop.
 
 
@@ -36,7 +36,7 @@ It is in your best interest to complete these before the workshop.
 
 # Class Photo
 
-comming soon
+Comming soon
 
 *** 
 
