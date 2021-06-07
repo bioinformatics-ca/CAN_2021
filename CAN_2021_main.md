@@ -86,7 +86,7 @@ Comming soon
 
 [Lecture]()  
 
-[Lab Practical]()  
+[Lab Practical](https://bioinformaticsdotca.github.io/CAN_2021_module4_lab)  
 
 ## Module 05: Single Cell Genomics - DNA
 
