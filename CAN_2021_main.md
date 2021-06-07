@@ -52,7 +52,7 @@ comming soon
 
 *<font color="#827e9c">Richard de Borja</font>*
 
-[Lecture]()
+[Lecture](https://drive.google.com/file/d/1MAnCRwiKFasZc77v-uRmVQpeOFzw6ACz/view?usp=sharing)
 
 [Lab slides](https://drive.google.com/file/d/1TZwPhdgERNP5uaqHq039W5I6adJ6DA3-/view?usp=sharing)
 
