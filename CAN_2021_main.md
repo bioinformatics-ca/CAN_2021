@@ -16,7 +16,7 @@ length: 5 days
 
 The course schedule can be found [here](https://bioinformaticsdotca.github.io/CAN_2021_schedule).
 
-Meet your faculty commig soon
+Meet your faculty [here](https://drive.google.com/file/d/1QFI0H9kX7U8rg4NY6ZhCELmJnCmUH7sZ/view?usp=sharing)
 
 ***
 
@@ -25,8 +25,12 @@ Meet your faculty commig soon
 
 ## Pre-workshop Tutorials
 
-Pre-readings and pre-work can be found here [here]().  
+Pre-readings and pre-work can be found here [here](https://forms.gle/fMQMdWQxZQMcTMRB9).  
 It is in your best interest to complete these before the workshop.
+
+
+## Connecting and properly using a cloud computing cluster at the CBW Module
+[AWS and unix intro](https://bioinformaticsdotca.github.io/aws_2021) 
 
 ***
 
