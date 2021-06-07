@@ -96,7 +96,7 @@ Comming soon
 
 [Lecture]()
 
-[Lab Practical]()  
+[Lab Practical](https://amcpherson.github.io/CBW_CAN_scDNA_2021)  
 
 # Day 3 <a id="day3"></a>  
 
