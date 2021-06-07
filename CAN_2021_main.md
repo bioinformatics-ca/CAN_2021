@@ -118,8 +118,15 @@ comming soon
 
  * Lab2:
   * [Lab2 part 1](https://baderlab.github.io/CBW_Pathways_2021/gsea-lab.html) 
-  * [Lab2 part 2](https://baderlab.github.io/CBW_Pathways_2021/gsea-mod3.html) 
+  * [Lab2 part 2](https://baderlab.github.io/CBW_Pathways_2021/gsea-mod3.html)  
 
+ ## Module 09: Genes to Networks
+
+ *<font color="#827e9c">Robin Haw</font>* 
+
+ [Lecture]()
+
+ [Lab Practical]()
 
 # Day 5 <a id="day5"></a>  
 
