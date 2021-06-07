@@ -224,7 +224,7 @@ Again let's normalize
 bcftools norm -m-both -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -Oz -o pairedVariants_varscan2_filtered_normalized.vcf.gz pairedVariants_varscan2_filtered.vcf.gz
 ```
 ```
-bcftools index pairedVariants_varscan2_filtered_normalized.vcf.gz
+tabix pairedVariants_varscan2_filtered_normalized.vcf.gz
 ```
 Part 1, step 3
 
@@ -276,7 +276,7 @@ cd ~/workspace/Module4_somaticvariants
 ```
 
 ```
-bcftools merge -f PASS pairedVariants_mutect2_filtered_normalized.vcf.gz pairedVariants_varscan2_filtered.vcf.gz -o pairedVariants_mutect2_varscan2.vcf.gz -Oz
+bcftools merge -f PASS pairedVariants_mutect2_filtered_normalized.vcf.gz pairedVariants_varscan2_filtered_normalized.vcf.gz -o pairedVariants_mutect2_varscan2.vcf.gz -Oz
 ```
 Now that we have our two vcf's combined we can look at their contents. 
 
