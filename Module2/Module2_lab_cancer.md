@@ -77,7 +77,7 @@ We will also load additional tracks from **Server** *(File -> Load from Server)*
 
 ![Load_hg19_genome](https://github.com/bioinformaticsdotca/HT-Biology_2017/raw/master/HtSeq/img/igv_genome1.png)
 
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/extra-tracks.png">
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/extra-tracks.png"  width="300"/>
 
 
 ### Navigation
@@ -112,7 +112,7 @@ Sometimes it's really useful to save where you are, or to load regions of intere
 
 We will first visualize alignments from the subset of normal sample. In IGV choose *File > Load from File*, select *normal.bam*, and click *OK*. Note that the bam and index (*bam.bai*) files *must* be in the same directory for IGV to load these properly, but only the bam file needs to be loaded into IGV.
 
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/load-bams.png">
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/load-bams.png" width="300"/>
 
 
 ## Visualizing Read Alignments
@@ -156,7 +156,7 @@ Once you select a read, a pop-up window shows quality metrics and other informat
 * Now color alignments by *read strand*. Red reads are in the forward orientation, and blue reads are in the reverse orientation.
 3. Do these look like true SNPs? What evidence is there for this?
 
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/01-het-hom-SNP.png" width="500"/>
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/01-het-hom-SNP.png" width="700"/>
 
 * Look at the other mismatched bases in the region between the two SNPs.
 4. Are these sequencing errors, SNPs, or SNVs?
@@ -166,7 +166,7 @@ Once you select a read, a pop-up window shows quality metrics and other informat
 ## Homozygous deletion 
 * Navigate to chr9:130555407-130556072
 
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/02-hom-del.png" width="500"/>
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/02-hom-del.png" width="700"/>
 
 1. How large is this deletion?
 2. Is it homozygous or heterozygous?
@@ -174,7 +174,7 @@ Once you select a read, a pop-up window shows quality metrics and other informat
 ## GC coverage
 * Navigate to chr9:130284240-130286902
 
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/03-gc-coverage.png" width="500"/>
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/03-gc-coverage.png" width="700"/>
 
 1. What do you notice about the coverage track and GC Percentage track?
 2. What does coloring alignments by *read strand* tell you?
@@ -186,7 +186,7 @@ Load *tumor.bam* the same way you loaded *normal.bam*. You can resize the tracks
 ## Somatic SNV
 * Navigate to chr9:130633300-130633965
 
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/04-somatic-snv.png" width="500"/>
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/04-somatic-snv.png" width="700"/>
 
 1. How many SNVs are in this region for each sample?
 2. What is the variant allele frequency for the extra SNV in the tumor sample? How did it get this high?
@@ -194,7 +194,7 @@ Load *tumor.bam* the same way you loaded *normal.bam*. You can resize the tracks
 ## Somatic SNP with change in heterozygosity
 * Navigate to chr9:130515234-130515399 and sort alignments by *base*
 
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/05-somatic-snv-loh.png" width="500"/>
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/05-somatic-snv-loh.png" width="700"/>
 
 1. What are the variant allele frequencies for each sample?
 2. Why are these frequencies different?
@@ -202,7 +202,7 @@ Load *tumor.bam* the same way you loaded *normal.bam*. You can resize the tracks
 ## Somatic indel next to SNP with change in heterozygosity
 * Navigate to chr9:130337723-130337888 and sort alignments by *base*
 
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/06-somatic-indel.png" width="500"/>
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/06-somatic-indel.png" width="700"/>
 
 1. What type of variant is in the centre?
 2. In the normal sample there is a SNP to the right. What do you notice about this variant in the tumor sample?
@@ -213,11 +213,11 @@ Cancers often have large structural variants, like inversions, duplications, and
 
 First remove the coverage and alignment tracks for both the tumor and normal samples. Click on the top coverage track, then hold down the *shift* key and click on the bottom alignment track. The four tracks should now be grey. Right click anywhere on the tracks and select *Remove Tracks*.
 
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/remove-tracks.png" width="500"/>
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/remove-tracks.png" width="300"/>
 
 Now go to *File > Load from server* and click on the arrow next to *Platinum Genomes* to expand the selection. Click on *NA12878* (second from the top).
 
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/load-na12878.png" width="500"/>
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/load-na12878.png" width="300"/>
 
 The IGV User Guide has great explanations of how we can use colorings by [pair orientation](http://software.broadinstitute.org/software/igv/interpreting_pair_orientations) or [insert size](http://software.broadinstitute.org/software/igv/interpreting_insert_size) to view structural variants.
 
@@ -228,7 +228,7 @@ The IGV User Guide has great explanations of how we can use colorings by [pair o
   * Color alignments by *pair orientation*
   * Sort alignments by *start location*
 
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/07-inversion.png" width="500"/>
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/07-inversion.png" width="700"/>
 
 1. What do you notice about the blue and teal reads at the top?
 2. How does *View as pairs* help understand that this is an inversion?
@@ -237,7 +237,7 @@ The IGV User Guide has great explanations of how we can use colorings by [pair o
 ## Duplication
 * Navigate to chr17:55080031-55081661, sort alignments by *start location*, and keep the same viewing options as the previous inversion
 
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/08-duplication.png" width="500"/>
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/08-duplication.png" width="700"/>
 
 1. What do you notice about the green reads at the top?
 * Note: Green reads when colored by read orientation can indicate a translocation as well as a duplication. If you zoom out you can see there is a rise in the coverage track above the green reads, suggesting this is a duplication of the sequence at this location.
@@ -245,7 +245,7 @@ The IGV User Guide has great explanations of how we can use colorings by [pair o
 ## Large deletion
 * Navigate to chr7:39811931-39833535 and color alignments by *insert size*, keeping the other options the same. Sort by *start location*
 
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/09-deletion.png" width="500"/>
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/09-deletion.png" width="700"/>
 
 1. What do the red read pairs indicate?
 2. What other track can we look at to see that this is a deletion?
