@@ -52,7 +52,9 @@ comming soon
 
 *<font color="#827e9c">Richard de Borja</font>*
 
-[Lecture](https://drive.google.com/file/d/1MAnCRwiKFasZc77v-uRmVQpeOFzw6ACz/view?usp=sharing)
+[Lecture in PDF](https://drive.google.com/file/d/1MAnCRwiKFasZc77v-uRmVQpeOFzw6ACz/view?usp=sharing)
+
+[Lecture in Keynote](https://drive.google.com/file/d/1mESelXpdaSk5iGgZ1E3qZoTAGiDme9Dd/view?usp=sharing)
 
 [Lab slides](https://drive.google.com/file/d/1TZwPhdgERNP5uaqHq039W5I6adJ6DA3-/view?usp=sharing)
 
