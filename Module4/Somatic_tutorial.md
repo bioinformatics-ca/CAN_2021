@@ -3,7 +3,7 @@ layout: tutorial_page
 permalink: /CAN_2021_module4_lab
 title: CAN 2021 Module 4 Lab
 header1: Workshop Pages for Students
-header2: Cancer Analyis 2021 Module 4
+header2: Cancer Analysis 2021 Module 4
 image: 
 home: https://bioinformaticsdotca.github.io/CAN_2021
 description: CAN 2021 Module 4 lab
