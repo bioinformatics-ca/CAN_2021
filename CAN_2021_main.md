@@ -112,14 +112,13 @@ comming soon
 
 *<font color="#827e9c">Veronique Voisin</font>* 
 
-[Lecture]()
+[Lecture](https://drive.google.com/file/d/1cq6zapNx7wpdHOUv70SA7yiABVe7g7XC/view?usp=sharing)
 
-Lab1:
  * [Lab1](https://baderlab.github.io/CBW_Pathways_2021/CANgprofiler-lab.html) 
 
-Lab2:
- * [Lab2 part 1](https://baderlab.github.io/CBW_Pathways_2021/gsea-lab.html) 
- * [Lab2 part 2](https://baderlab.github.io/CBW_Pathways_2021/gsea-mod3.html) 
+ * Lab2:
+  * [Lab2 part 1](https://baderlab.github.io/CBW_Pathways_2021/gsea-lab.html) 
+  * [Lab2 part 2](https://baderlab.github.io/CBW_Pathways_2021/gsea-mod3.html) 
 
 
 # Day 5 <a id="day5"></a>  
