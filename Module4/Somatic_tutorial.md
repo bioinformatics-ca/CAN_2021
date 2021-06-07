@@ -9,17 +9,20 @@ home: https://bioinformaticsdotca.github.io/CAN_2021
 description: CAN 2021 Module 4 lab
 author: Aaron Gillmor
 ---
+================================
+
+This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US). 
+This means that you are able to copy, share and modify the work, as long as the result is distributed under the same license.
 
 ================================
 
-This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US). This means that you are able to copy, share and modify the work, as long as the result is distributed under the same license.
-
-================================
-
-In this workshop, we will work with common tools to process and analyze cancer sequencing data. Using the command line we will analyze DNA sequencing from the whole genome. The focus of this workshop will be on calling single nucelotide variants, insertion, deletions (commonly referred to as SNV/indels) as well as calling copy-number variations (CNVs). We will also annotate SNV & CNV files, such that we will known the functional consequence of these variants.
+In this workshop, we will work with common tools to process and analyze cancer sequencing data. 
+Using the command line we will analyze DNA sequencing from the whole genome. 
+The focus of this workshop will be on calling single nucelotide variants, insertion, deletions (commonly referred to as SNV/indels) as well as calling copy-number variations (CNVs). 
+We will also annotate SNV & CNV files, such that we will known the functional consequence of these variants.
 
 Data Source:
-we will be working on the [CageKid](https://www.cnrgh.fr/cagekid/) samples from Module3. 
+we will be working on the [CageKid](https://www.cnrgh.fr/cagekid/) samples from Module3.
 Whole genome sequencing and analysis can take multiple days to run, as such we have downsampled the files so that we can proceed in a timely fashion. 
 
 The tools and their general function we are going to using for calling SNV's and CNV's are:
@@ -35,6 +38,7 @@ The tools and their general function we are going to using for calling SNV's and
 * R & R-Studio --> visualization 
 
 Files for variant calling:
+
 1) Bam --> Sequence alignments from Module3 or /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam
 2) Reference genome --> /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta
 3) Germline-reference file --> /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
@@ -58,7 +62,6 @@ Question: The -normal and -tumor are represented by which field in the bam?
 samtools view /home/ubuntu/workspace/CBW_CAN_2021/Module4/alignment/normal/normal.sorted.dup.recal.bam | head -n 1 | less -S
 ```
 side note: Mutect2 can also take multiple samples. In this case you only have to specify the normal sample! how neat is that!
-
 
 This will generate an initial variant call format file. This is a standardized way in which variants are reported. For a full description of the [vcf_format](https://www.internationalgenome.org/wiki/Analysis/vcf4.0/): 
 
@@ -90,7 +93,8 @@ less pairedVariants_mutect2.vcf | egrep -v '#' | head -n1
  
 Question: What is the definition of AD and AF in this mutect2-VCF?   
   
-The pairedVariants_mutect2.vcf does not contain any filter information. Filter information comes from each variant and generates tags we can use to filter these mutations.
+The pairedVariants_mutect2.vcf does not contain any filter information. 
+Filter information comes from each variant and generates tags we can use to filter these mutations.
 ```
 gatk FilterMutectCalls -R /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta --filtering-stats pairedVariants_mutect2.vcf.stats -V pairedVariants_mutect2.vcf -O pairedVariants_mutect2_filtered.vcf
 ```
@@ -116,7 +120,9 @@ bcftool --help
 bcftools norm --help
 ```
 bcftools norm will help us here 
+ 
 1) Split multiallelic (Ref == A & Alt == AT,ATT) into two seperate variants A --> AT and A --> ATT 
+ 
 2) It will ensure we are left-aligned. Which is a way to normalize variants based on the reference genome ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/Normalization_mnp.png)
  
 ```
@@ -137,7 +143,8 @@ samtools mpileup -B -q 1 -f /home/ubuntu/CourseData/CAN_data/Module4/references/
 samtools mpileup -B -q 1 -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -r 9:130215000-130636000 /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam > normal.mpileup &&
 ```
 
-A pileup contains the information of every single base-pair. Simply put this consolidates our data to help varscan call variants.
+A pileup contains the information of every single base-pair. 
+Simply put this consolidates our data to help varscan call variants.
 The first three columns are the pretty obvious (chromosome, postion and reference)
 The fourth column is the number of reads covering the site
 The fifth and sixth are the read-bases and the base qualities
@@ -147,7 +154,7 @@ less -S tumor.mpileup
 ```
 
 Next we use varscan2 to execute the somatic function which does the initial variant calling from our mpileups.
-For parameters here we are setting a strand-filter to 1 meaning we will remove variants that are favored by >90% on one strand. We are also setting a p-value threshold of the variant being somatic to 0.05.
+ For parameters here we are setting a strand-filter to 1 meaning we will remove variants that are favored by >90% on one strand. We are also setting a p-value threshold of the variant being somatic to 0.05.
 ```
 java -Xmx2G -jar /usr/local/VarScan.v2.3.9.jar somatic normal.mpileup tumor.mpileup --output-vcf 1 --strand-filter 1 --somatic-p-value 0.05 --output-snp varscan2.snp.vcf --output-indel varscan2.indel.vcf
 ```
@@ -168,10 +175,11 @@ varscan processSomatic varscan2.indel.vcf --min-tumor-freq 0.05
 varscan processSomatic varscan2.snp.vcf --min-tumor-freq 0.05
 ```
 This will split our varscan.snp.vcf and varscan.indel.vcf into 6 files each.
-LOH.vcf & LOH.hc.vcf
-Germline.vcf & Germline.hc.vcf
-Somatic.vcf & Somatic.hc.vcf
-The hc.vcf indicate that there is a higher confidence that these variants are somatic. We want to work with the best set of variant calls so we selected the *hc.vcf.
+ 
+ LOH.vcf & LOH.hc.vcf
+ Germline.vcf & Germline.hc.vcf
+ Somatic.vcf & Somatic.hc.vcf
+ The hc.vcf indicate that there is a higher confidence that these variants are somatic. We want to work with the best set of variant calls so we selected the *hc.vcf.
 
 LOH: stands for Loss of heterozygozity. Meaning we had a region with A and B allele and lost the mix of A and B.
 
@@ -199,13 +207,15 @@ tabix varscan2.indel.Somatic.hc.vcf.gz
 ```
 
 Combine high-confidence snp and indels.
+ 
 bcftools concat allows us to combine vcf's from the same sample, it is not the same as bcftools merge.
 -a allows us to have overlaps such as a snp and indel occurring in the same location.
+ 
 ```
 bcftools concat -Oz -a -r 9:130215000-130636000 varscan2.snp.Somatic.hc.vcf.gz varscan2.indel.Somatic.hc.vcf.gz -o pairedVariants_varscan2_filtered.vcf.gz
 ```
 
-#Again let's normalize
+Again let's normalize
 ```
 bcftools norm -m-both -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -Oz -o pairedVariants_varscan2_filtered_normalized.vcf pairedVariants_varscan2_filtered.vcf.gz
 ```
@@ -221,7 +231,8 @@ Now we have finished variant calling using two different variants callers. The n
 bcftools isec -n+1 -f PASS -p intersectionDirectory pairedVariants_mutect2_filtered_normalized.vcf.gz pairedVariants_varscan2_filtered_normalized.vcf.gz
 ```
 
-This creates a directory named intersectionDirectory that contains all variants that pass in at-least one vcf. It's at this point where you can choose which variants to include.
+This creates a directory named intersectionDirectory that contains all variants that pass in at-least one vcf.
+It's at this point where you can choose which variants to include.
 
 ```
 cd ~/workspace/Module4_somaticvariants/intersectionDirectory/
@@ -230,7 +241,8 @@ cd ~/workspace/Module4_somaticvariants/intersectionDirectory/
 - All variants -- The union includes all variants and has a low false negative count but a high false positives count
 - Common variants -- The intersection is the subset of high confidence varianta with fewer false positive and potentially more false negatives. 
 
-In this directory we see the 0000.vcf and 0001.vcf. These corresponds to the mutect2 vcf and the varscan2 vcf, respectively. (confirmed in the README.txt)
+In this directory we see the 0000.vcf and 0001.vcf. These corresponds to the mutect2 vcf and the varscan2 vcf, respectively. 
+(confirmed in the README.txt)
 
 If we review the sites.txt files:
 ```
@@ -241,7 +253,8 @@ less -S sites.txt
     9       130296899       A       T       11
     9       130308743       C       A       11
 
-This reads that the first variants on chromosme 9, position 130223126 changes from a C to a T: and that this variant was called in the varscan.vcf (01). 11 corresponds to the being called in both and 10 is being called in only mutect2. 
+This reads that the first variants on chromosme 9, position 130223126 changes from a C to a T:, 
+This variant was called in the varscan.vcf (01). 11 corresponds to the being called in both and 10 is being called in only mutect2. 
 ```
 less -S sites.txt | cut -f  5 | sort | uniq -c 
 ```   
@@ -292,6 +305,7 @@ CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO    FORMAT  normal  t
 ```
  
 The header has 8 mandatory columns. CHROM, POS, ID, REF, ALT, QUAL, FILTER & INFO
+ 
 These are followed by a FORMAT column header and sample ID's. These sample id's will follow from their vcf's. In our case mutect2 (normal tumor) and then varscan2 (NORMAL TUMOR)
 
 Every vcf has a content section which has the variants.
