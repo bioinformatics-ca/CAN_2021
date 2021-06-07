@@ -72,7 +72,7 @@ comming soon
 
 [Lecture in pdf](https://drive.google.com/file/d/1omn0zGVOkal5xA_mnn6E32itWIZC54Zy/view?usp=sharing) 
 
-[lab pratical](https://github.com/mbourgey/CBW_CAN_module3)
+[Lab pratical](https://github.com/mbourgey/CBW_CAN_module3)
 
 [Lab practical raw & computed data](https://bioinformaticsdotca.github.io/CAN_2021_module3_lab)
 
