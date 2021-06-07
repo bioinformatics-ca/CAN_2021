@@ -54,7 +54,7 @@ comming soon
 
 [Lecture]()
 
-[Lab slides]()
+[Lab slides](https://drive.google.com/file/d/1TZwPhdgERNP5uaqHq039W5I6adJ6DA3-/view?usp=sharing)
 
 [Lab Practical](https://bioinformaticsdotca.github.io/CAN_2021_Module2_lab_cancer)
 
