@@ -16,7 +16,7 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unpor
 
 ================================
 
-In this workshop, we will work with common tools to process and analyze cancer sequencing data. Using the command line we will analyze DNA sequencing from the whole genome. The focus of this workshop will be on calling single nucelotide variants, insertion, deletions (commonly referred to as SNV/indels) as well as calling copy-number variations (CNVs). We will also annotate SNV & CNV files, such that we will known the functional conseqeunce of these variants.
+In this workshop, we will work with common tools to process and analyze cancer sequencing data. Using the command line we will analyze DNA sequencing from the whole genome. The focus of this workshop will be on calling single nucelotide variants, insertion, deletions (commonly referred to as SNV/indels) as well as calling copy-number variations (CNVs). We will also annotate SNV & CNV files, such that we will known the functional consequence of these variants.
 
 Data Source:
 we will be working on the [CageKid](https://www.cnrgh.fr/cagekid/) samples from Module3. 
@@ -30,15 +30,15 @@ The tools and their general function we are going to using for calling SNV's and
 * bgzip and tabix --> compress and index
 * annovar --> annotation
 * controlfreec --> CNV calling
-* Bedtools --> segment manipulation
-* Awk --> line by line file manipulation
+* bedtools --> segment manipulation
+* awk --> line by line file manipulation
 * R & R-Studio --> visualization 
 
 Files for variant calling:
-1) Bam --> Sequence alignments from Module 3 or /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam
+1) Bam --> Sequence alignments from Module3 or /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam
 2) Reference genome --> /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta
 3) Germline-reference file --> /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
-This germline reference file is from the Gnomad database of germline variation in the human population. It includes the variant allele frequency thereby providing a starting probability that the sample carries the allele in the germline. 
+This germline reference file is from the Gnomad database of germline variation in the human population. It includes the variant allele frequency and known single nucleotide polymorphisms thereby providing a starting probability that the sample carries the allele in the germline.  <optional>
  
 Part 1, step 1 
 **Running Mutect2**
@@ -60,7 +60,7 @@ samtools view /home/ubuntu/workspace/CBW_CAN_2021/Module4/alignment/normal/norma
 side note: Mutect2 can also take multiple samples. In this case you only have to specify the normal sample! how neat is that!
 
 
-This will generate an initial variant call format file. This is the standard way in which variants are reported. For a full description of the [vcf_format](https://www.internationalgenome.org/wiki/Analysis/vcf4.0/): 
+This will generate an initial variant call format file. This is a standardized way in which variants are reported. For a full description of the [vcf_format](https://www.internationalgenome.org/wiki/Analysis/vcf4.0/): 
 
 Every VCF has three sections Metadata, Header and variants.
 The Metadata
@@ -104,6 +104,7 @@ We can see in the FILTER column there are now filters
 ```
 less -S pairedVariants_mutect2_filtered.vcf | egrep -v '#' | cut -f 1,2,4,5,7 | less -S
 ```
+ 
 Question: what does the "germline" in the FILTER field mean?
 
 
@@ -146,14 +147,17 @@ less -S tumor.mpileup
 ```
 
 Next we use varscan2 to execute the somatic function which does the initial variant calling from our mpileups.
-For parameters here we are setting a strand-filter to 1 meaning we will remove variants that are favored by >90% on one strand. we are also setting a p-value threshold of the variant being somatic to 0.05.
+For parameters here we are setting a strand-filter to 1 meaning we will remove variants that are favored by >90% on one strand. We are also setting a p-value threshold of the variant being somatic to 0.05.
 ```
 java -Xmx2G -jar /usr/local/VarScan.v2.3.9.jar somatic normal.mpileup tumor.mpileup --output-vcf 1 --strand-filter 1 --somatic-p-value 0.05 --output-snp varscan2.snp.vcf --output-indel varscan2.indel.vcf
 ```
 
-Question: What is the definition of AD and RD in this varscan-VCF & how would you calculate the variant allele frequency?   
-
-We now set the minmum variant allele frequency to 0.05 or 5%.
+Question: What is the definition of AD and RD in this varscan-VCF & how would you calculate the variant allele frequency?  
+ ```
+ less -S varscan2.snp.vcf 
+ ```
+ 
+We now set the minimum variant allele frequency to 0.05 or 5%.
 Two default parameters are also indicated by examining the function with --help
 ```
 varscan processSomatic --help
@@ -167,17 +171,17 @@ This will split our varscan.snp.vcf and varscan.indel.vcf into 6 files each.
 LOH.vcf & LOH.hc.vcf
 Germline.vcf & Germline.hc.vcf
 Somatic.vcf & Somatic.hc.vcf
-The hc.vcf indicate that there is a higher confidence that these variants are somatic. We want to work with the best set of variant calls so we selected the hc.vcf
+The hc.vcf indicate that there is a higher confidence that these variants are somatic. We want to work with the best set of variant calls so we selected the *hc.vcf.
 
 LOH: stands for Loss of heterozygozity. Meaning we had a region with A and B allele and lost the mix of A and B.
 
-Question: In the LOH variant below what happened?
+Question: What happened in the LOH variant below? 
 ```
 #CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO    FORMAT  NORMAL  TUMOR
 9       130311404       .       A       C       .       PASS    DP=125;SS=3;SSC=28;GPV=1E0;SPV=1.4873E-3        GT:GQ:DP:RD:AD:FREQ:DP4                     0/1:.:71:32:39:54.93%:20,12,23,16        1/1:.:54:10:44:81.48%:6,4,27,17
 ```
 
-Question: In the LOH variant below what happened?
+Question: What happened in the LOH variant below?
 ```
 9       130346618       .       G       A       .       PASS    DP=49;SS=3;SSC=32;GPV=1E0;SPV=5.4288E-4 GT:GQ:DP:RD:AD:FREQ:DP4 0/1:.:26:10:16:61.54%:5,5,5,11  0/0:.:23:20:3:13.04%:5,15,1,2
 ```
@@ -208,7 +212,11 @@ bcftools norm -m-both -f /home/ubuntu/CourseData/CAN_data/Module4/references/hum
 
 Part 1, step 3
 
-Now we have finished variant calling using two different variants callers. The next step is to combine the output of the multiple callers
+Now we have finished variant calling using two different variants callers. The next step is to combine the output of the multiple callers.
+ 
+```
+ bcftools isec --help
+```
 ```
 bcftools isec -n+1 -f PASS -p intersectionDirectory pairedVariants_mutect2_filtered_normalized.vcf.gz pairedVariants_varscan2_filtered_normalized.vcf.gz
 ```
@@ -226,7 +234,7 @@ In this directory we see the 0000.vcf and 0001.vcf. These corresponds to the mut
 
 If we review the sites.txt files:
 ```
-less -S sites.txt | head -n 4
+less -S sites.txt
 ```
     9       130223126       C       T       01
     9       130264057       T       A       11
@@ -256,7 +264,6 @@ Now that we have our two vcf's combined we can look at their contents.
 Every vcf has a metadata sections two ##
 ```
 zless -S pairedVariants_mutect2_varscan2.vcf.gz | egrep ' ##' | head -n 10
-
 ```
       ##fileformat=VCFv4.2
       ##FILTER=<ID=PASS,Description="All filters passed">
@@ -287,8 +294,7 @@ CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO    FORMAT  normal  t
 The header has 8 mandatory columns. CHROM, POS, ID, REF, ALT, QUAL, FILTER & INFO
 These are followed by a FORMAT column header and sample ID's. These sample id's will follow from their vcf's. In our case mutect2 (normal tumor) and then varscan2 (NORMAL TUMOR)
 
-Every vcf content section which has the variants.
-
+Every vcf has a content section which has the variants.
 ```
 less -S pairedVariants_mutect2_varscan2.vcf.gz | egrep -v '#' | head -n 1
  
@@ -297,7 +303,7 @@ less -S pairedVariants_mutect2_varscan2.vcf.gz | egrep -v '#' | head -n 1
 9       130223126       .       C       T       .       PASS    SOMATIC;SS=2;SSC=18;GPV=1;SPV=0.014587;DP=55    GT:GQ:DP:RD:AD:FREQ:DP4 ./.:.:.:.:.:.:. ./.:.:.:.:.:.:. 0/0:.:26:26:0:0%:14,12,0,0      0/1:.:29:22:6:21.43%:15,7,1,5
  ```
  
-This shows a variant on chromosome 9 position 130223126 that goes from the reference C to a T. This variant was called uniquely by varscan2. This variant has passed all filters. The INFO and FORMAT field has additional information that can be explained in more detail using the '##' information. Please not that missing data is denoted as a '.'.
+This shows a variant on chromosome 9 position 130223126 that goes from the reference C to a T. This variant was called uniquely by varscan2. This variant has passed all filters. The INFO and FORMAT field has additional information that can be explained in more detail using the '##' information. Please note that missing data is denoted as a '.'.
 
 
 Annotating our combined files
@@ -321,7 +327,6 @@ For example our first variant is an intronic mutation in LRSAM1.
 9       130223126       130223126       C       T       intronic        LRSAM1  .       .       .       0.25    .      31                                   9130223126       .       C       T       .       PASS    SOMATIC;SS=2;SSC=21;GPV=1;SPV=0.0064791;DP=55   GT:GQ:DP:RD:AD:FREQ:DP4                             ./.:.:.:.:.:.:.  ./.:.:.:.:.:.:. 0/0:.:24:24:0:0%:13,11,0,0      0/1:.:31:23:8:25.81%:17,6,3,5
 ```
 
-
 ```
 less -S annotated_mutect2_varscan2.hg19_multianno.txt | cut -f 6 | sort | uniq -c
 ```
@@ -337,7 +342,7 @@ less -S annotated_mutect2_varscan2.hg19_multianno.txt | cut -f 6 | sort | uniq -
 
 This shows the functional consequence of each exonic variant, we have 5 exonic variants that results in two frameshifts and 3 nonsynonymous SNV's. 
 
- 
+
 Next we can examine some variants in IGV. 
  
  start IGV 
@@ -346,7 +351,7 @@ Next we can examine some variants in IGV.
  load your bam files by clicking file --> load from file 
  If you have not downloaded the bam or are missing it. It is provided here (https://drive.google.com/drive/folders/1f_1pDbpNaNUT6oC-pEPXInemyZwMV4Hc)
  
-Input chr9:130634091
+Input: chr9:130634091
 
 ![image](https://user-images.githubusercontent.com/15352153/120568604-72690b00-c3d1-11eb-8164-329868b51e7c.png)
 
@@ -367,11 +372,12 @@ Here we can see evidence of two variants in the AKT1 exonic region. These varian
 9       130634993       130634993       C       T       exonic  AK1     nonsynonymous SNV       0/0:46,0:0.021:46:24,0:21,0:18,28,0,0   0/1:48,8:0.155:56:24,5:24,3:20,28,5,3   ./.:.:.:.:.:.:. ./.:.:.:.:.:.:.
 9       130635011       130635011       C       G       exonic  AK1     nonsynonymous SNV       0/0:39,0:0.024:39:23,0:16,0:17,22,0,0   0/1:46,9:0.175:55:21,5:25,4:16,30,5,4   ./.:.:.:.:.:.:. ./.:.:.:.:.:.:.
 ```
+ 
+Question: Compare the variant allele frequency between these three variants in AK1. Which one's came first?
 
 Now input chr9:130316821. This will be an intronic variant in the NIBAN2 gene. 
 
 ![image](https://user-images.githubusercontent.com/15352153/120906325-b8aeac00-c615-11eb-8163-6a74c044f85a.png)
-
 
 ```
 9       130316821       130316821       C       T       intronic        NIBAN2  .       ./.:.:.:.:.:.:. ./.:.:.:.:.:.:.                                     0/0:.:23:20:0:0%:13,7,0,0        0/1:.:24:19:5:20.83%:14,5,1,4
@@ -380,6 +386,8 @@ Now input chr9:130316821. This will be an intronic variant in the NIBAN2 gene.
 Question: This variant is only called by varscan2, what red flags exist for this variant?
 
 Short break time 
+ 
+ part 2, step 1
    
 **Copy number variations**
 
@@ -396,8 +404,7 @@ With this tool we can call
 
 controlfreec requires the sequence data and these additional files
 * A reference genome and a reference index (fasta and fai):  
-* List of single nucelotide polymorphisms 
-
+* List of single nucelotide polymorphisms
 
 Running controlfreec 
 
@@ -407,7 +414,7 @@ mkdir -p copynumber
 cd ~/workspace/Module4_somaticvariants/copynumber
 ```
 
-The first step is to generate a configuration file which contain the parameters and file locations.
+The first step is to generate a configuration file which contains the parameters and file locations.
 ```
 bash /home/ubuntu/CourseData/CAN_data/Module4/scripts/generate_controlfreec_configurationfile.sh > CBW_config.txt
 ```
@@ -419,9 +426,9 @@ less CBW_config.txt
 
 ###Controlfreec has many different parameters 
 
-In the configfile ee four categories general, sample, control and BAF.
+In the config file has four categories: general, sample, control and BAF.
 
-We have commented out the BAM files, however if you you were running this for the first time you should start from the BAM files. 
+I have commented out the BAM files, however if you you were running this for the first time you should start from the BAM file. 
 Instead we use pileups and gc content. 
 
  * pileup contain base-pair information which we discussed earlier.
@@ -447,10 +454,16 @@ ls *
      CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_CNVs : Containing our copy numbers calls
      CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_info.txt : Containing sample information, purity and ploidy 
 
+ ```
+ less CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_info.txt
+ ```
+ 
 While we don't have annovar we can intersect our segment file with a gene transfer format file or [GTF] (http://m.ensembl.org/info/website/upload/gff.html). 
-awk is tool that allows for command line manipulations of files (https://www.shortcutfoo.com/app/dojos/awk/cheatsheet)
-
-bedtools intersect which is a way to subset regions to the common regions between to bed files (bed files are described as being chr start end). It is useful for seeing what happens within a particular region.
+We will introduce awk and bedtools here. 
+ 1) awk is a command line tool that allows for command line manipulations of files (https://www.shortcutfoo.com/app/dojos/awk/cheatsheet)
+ 2) bedtools allows for us to manipulate based on genomic regions (chr start end) which is the format of .BED files!
+ 
+bedtools intersect which is a way to subset regions to the common regions between to bed files. It is useful for seeing what belongs to a particular region.
 ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/intersect-glyph.png)
 
 ```
@@ -460,7 +473,6 @@ bedtools intersect -wb -b <(less CBW_regions_c0098_Tumor.sorted.markduplicates.b
 less -S AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv 
 ```
 We can examine a gene of interest, such as a loss of VHL which is common in kidney cancers. 
-
 ```
 less AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv | awk '$4=="VHL"' | less -S
 ``` 
