@@ -156,7 +156,7 @@ Once you select a read, a pop-up window shows quality metrics and other informat
 * Now color alignments by *read strand*. Red reads are in the forward orientation, and blue reads are in the reverse orientation.
 3. Do these look like true SNPs? What evidence is there for this?
 
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/01-het-hom-SNP.png?raw=true" width="700"/>
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/01-het-hom-SNP.png?raw=true" alt="01-het-hom-SNP" width="700"/>
 
 * Look at the other mismatched bases in the region between the two SNPs.
 4. Are these sequencing errors, SNPs, or SNVs?
