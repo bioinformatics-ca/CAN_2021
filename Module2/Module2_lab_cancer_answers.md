@@ -1,6 +1,6 @@
 ---
 layout: tutorial_page
-permalink: /CAN_2021_Module2_lab_cancer
+permalink: /CAN_2021_Module2_lab_cancer_answers
 title: CAN 2021 Module 2 Lab answers
 header1: Workshop Pages for Students
 header2: Cancer Analysis 2021
