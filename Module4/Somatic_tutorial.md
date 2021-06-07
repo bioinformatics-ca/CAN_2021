@@ -54,12 +54,12 @@ cd  ~/workspace/Module4_somaticvariants
 ```
 
 ```
-/usr/local/GATK/gatk Mutect2 -R /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -I /home/ubuntu/workspace/CBW_CAN_2021/Module4/alignment/normal/normal.sorted.dup.recal.bam -I /home/ubuntu/workspace/CBW_CAN_2021/Module4/alignment/tumor/tumor.sorted.dup.recal.bam -normal normal -tumor tumor -O pairedVariants_mutect2.vcf -L 9:130215000-130636000 --germline-resource /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
+/usr/local/GATK/gatk Mutect2 -R /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -I /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.dup.recal.bam -I /home/ubuntu/CourseData/CAN_data/Module4/alignments/tumor/tumor.sorted.dup.recal.bam -normal normal -tumor tumor -O pairedVariants_mutect2.vcf -L 9:130215000-130636000 --germline-resource /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
 ```
 
 Question: The -normal and -tumor are represented by which field in the bam? 
 ```
-samtools view /home/ubuntu/workspace/CBW_CAN_2021/Module4/alignment/normal/normal.sorted.dup.recal.bam | head -n 1 | less -S
+samtools view /home/ubuntu/CourseData/CAN_data/Module4/alignments/tumor/tumor.sorted.dup.recal.bam | head -n 1 | less -S
 ```
 side note: Mutect2 can also take multiple samples. In this case you only have to specify the normal sample! how neat is that!
 
@@ -114,7 +114,7 @@ Question: what does the "germline" in the FILTER field mean?
 
 Since we will be comparing with another tool it is best to try to consider as many sites as possible. To this end we will be using bcftools:
 ```
-bcftool --help 
+bcftools --help 
 ```
 ```
 bcftools norm --help
@@ -127,7 +127,10 @@ bcftools norm will help us here
  (https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/Normalization_mnp.png)
  
 ```
-bcftools norm -m-both -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -Oz -o pairedVariants_mutect2_filtered_normalized.vcf pairedVariants_mutect2_filtered.vcf
+bcftools norm -m-both -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -Oz -o pairedVariants_mutect2_filtered_normalized.vcf.gz pairedVariants_mutect2_filtered.vcf
+```
+```
+tabix pairedVariants_mutect2_filtered_normalized.vcf.gz 
 ```
 
 Question: what does -m-both accomplish here
@@ -138,10 +141,10 @@ Running varscan2 (http://varscan.sourceforge.net/)
 
 First we create pileup files from both the normal sample and the control sample. This is done with a tool called samtools:
 ```
-samtools mpileup -B -q 1 -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -r 9:130215000-130636000 /home/ubuntu/CourseData/CAN_data/Module4/alignments/tumor/tumor.sorted.realigned.bam > tumor.mpileup &&
+samtools mpileup -B -q 1 -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -r 9:130215000-130636000 /home/ubuntu/CourseData/CAN_data/Module4/alignments/tumor/tumor.sorted.realigned.bam > tumor.mpileup
 ```
 ```
-samtools mpileup -B -q 1 -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -r 9:130215000-130636000 /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam > normal.mpileup &&
+samtools mpileup -B -q 1 -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -r 9:130215000-130636000 /home/ubuntu/CourseData/CAN_data/Module4/alignments/normal/normal.sorted.realigned.bam > normal.mpileup
 ```
 
 A pileup contains the information of every single base-pair. 
@@ -168,12 +171,12 @@ Question: What is the definition of AD and RD in this varscan-VCF & how would yo
 We now set the minimum variant allele frequency to 0.05 or 5%.
 Two default parameters are also indicated by examining the function with --help
 ```
-varscan processSomatic --help
+java -Xmx2G -jar /usr/local/VarScan.v2.3.9.jar processSomatic --help
 ```
 
 ```
-varscan processSomatic varscan2.indel.vcf --min-tumor-freq 0.05
-varscan processSomatic varscan2.snp.vcf --min-tumor-freq 0.05
+java -Xmx2G -jar /usr/local/VarScan.v2.3.9.jar processSomatic varscan2.indel.vcf --min-tumor-freq 0.05
+java -Xmx2G -jar /usr/local/VarScan.v2.3.9.jar processSomatic varscan2.snp.vcf --min-tumor-freq 0.05
 ```
 This will split our varscan.snp.vcf and varscan.indel.vcf into 6 files each.
  
@@ -218,15 +221,17 @@ bcftools concat -Oz -a -r 9:130215000-130636000 varscan2.snp.Somatic.hc.vcf.gz v
 
 Again let's normalize
 ```
-bcftools norm -m-both -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -Oz -o pairedVariants_varscan2_filtered_normalized.vcf pairedVariants_varscan2_filtered.vcf.gz
+bcftools norm -m-both -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -Oz -o pairedVariants_varscan2_filtered_normalized.vcf.gz pairedVariants_varscan2_filtered.vcf.gz
 ```
-
+```
+bcftools index pairedVariants_varscan2_filtered_normalized.vcf.gz
+```
 Part 1, step 3
 
 Now we have finished variant calling using two different variants callers. The next step is to combine the output of the multiple callers.
  
 ```
- bcftools isec --help
+bcftools isec --help
 ```
 ```
 bcftools isec -n+1 -f PASS -p intersectionDirectory pairedVariants_mutect2_filtered_normalized.vcf.gz pairedVariants_varscan2_filtered_normalized.vcf.gz
@@ -271,7 +276,7 @@ cd ~/workspace/Module4_somaticvariants
 ```
 
 ```
-bcftools merge pairedVariants_mutect2_filtered_normalized.vcf.gz pairedVariants_varscan2_filtered.vcf.gz -o pairedVariants_mutect2_varscan2.vcf.gz -Oz
+bcftools merge -f PASS pairedVariants_mutect2_filtered_normalized.vcf.gz pairedVariants_varscan2_filtered.vcf.gz -o pairedVariants_mutect2_varscan2.vcf.gz -Oz
 ```
 Now that we have our two vcf's combined we can look at their contents. 
 
@@ -333,7 +338,12 @@ annovar is a tool to annotate our vcf files with gene names & functional informa
 ```
 This will produce two annotation files: annotated_mutect2_varscan2.hg19_multianno.vcf & annotated_mutect2_varscan2.hg19_multianno.txt. These files contain the gene annotations and infer the functional consequence of each variant. 
 
-The header for contains the vcf fields but they have been renamed by annovar. However now we can see which genes are affected and how they are changed. 
+The header for contains the vcf fields but they have been renamed by annovar. However now we can see which genes are affected and how they are changed.
+ 
+ ```
+ less annotated_mutect2_varscan2.hg19_multianno.txt | head -n 1 | sed 's/\t/|/g'
+ ```
+ 
 ```
 Chr|Start|End|Ref|Alt|Func.refGene|Gene.refGene|GeneDetail.refGene|ExonicFunc.refGene|AAChange.refGene|Otherinfo1|Otherinfo2|Otherinfo3|Otherinfo4|Otherinfo5|Otherinfo6|Otherinfo7|Otherinfo8|Otherinfo9|Otherinfo10|Otherinfo11|Otherinfo12|Otherinfo13|Otherinfo14|Otherinfo15|Otherinfo16
 ``` 
@@ -346,9 +356,11 @@ For example our first variant is an intronic mutation in LRSAM1.
 less -S annotated_mutect2_varscan2.hg19_multianno.txt | cut -f 6 | sort | uniq -c
 ```
  This shows the genomic region change where each variant is occuring. Typically exonic variants are more likely to produce a phenotypic change.  
+       
         5 exonic
         15 intronic
-```
+
+ ```
  less -S annotated_mutect2_varscan2.hg19_multianno.txt | cut -f 9 | sort | uniq -c
 ```
         15 .
@@ -473,6 +485,8 @@ ls *
  less CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_info.txt
  ```
  
+Question: The purity is suggested to be 100% do you think we have enough information to say this?
+ 
 While we don't have annovar we can intersect our segment file with a gene transfer format file or [GTF] (http://m.ensembl.org/info/website/upload/gff.html). 
 We will introduce awk and bedtools here. 
  1) awk is a command line tool that allows for command line manipulations of files (https://www.shortcutfoo.com/app/dojos/awk/cheatsheet)
@@ -481,7 +495,7 @@ We will introduce awk and bedtools here.
 bedtools intersect which is a way to subset regions to the common regions between to bed files. It is useful for seeing what belongs to a particular region.
 <img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/intersect-glyph.png?raw=true" alt="img 1" width="550" />
 ```
-bedtools intersect -wb -b <(less CBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs | awk 'NF==7' | awk '{print "chr"$1"\t"$2"\t"$3"\t"$0}' | less -S) -a <(less /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh38.Ensemble100.FullGeneAnnotations.txt | awk '$4=="ensembl_havana"') | awk '{print $1"\t"$2"\t"$3"\t"$7"\t"$8"\t"$15}' > AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv
+bedtools intersect -wb -b <(less CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_CNVs | awk 'NF==7' | awk '{print "chr"$1"\t"$2"\t"$3"\t"$0}' | less -S) -a <(less /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.Ensemble100.FullGeneAnnotations.txt | awk '$4=="ensembl_havana"') | awk '{print $1"\t"$2"\t"$3"\t"$7"\t"$8"\t"$15}' > AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv
 ```
 ```
 less -S AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv 
@@ -503,11 +517,11 @@ This script is available with controlfreec but due to the subsettting we will ha
 
  Let's read in our data
  ```
-ratio_dataTable <- read.table(file = "CBW_regions_c0098_Tumor.sorted.markduplicates.bam_ratio.txt", header=TRUE)
+ratio_dataTable <- read.table(file = "home/ubuntu/workspace/Module4_somaticvariants/copynumber/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_ratio.txt", header=TRUE)
 #ratio_dataTable <- read.table(file = "https://github.com/bioinformatics-ca/CAN_2021/raw/main/Module4/Data/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_ratio.txt",header=TRUE)
 
 ratio <- data.frame(ratio_dataTable)
-BAF_dataTable <-read.table(file="CBW_regions_c0098_Tumor.sorted.markduplicates.bam_BAF.txt", header=TRUE)
+BAF_dataTable <-read.table(file="home/ubuntu/workspace/Module4_somaticvariants/copynumber/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_BAF.txt", header=TRUE)
 #BAF_dataTable <- read.table(file = "https://github.com/bioinformatics-ca/CAN_2021/raw/main/Module4/Data/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_BAF.txt"", header=TRUE)
 BAF<-data.frame(BAF_dataTable)
 ploidy <- 2                   
