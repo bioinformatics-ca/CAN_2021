@@ -123,7 +123,8 @@ bcftools norm will help us here
  
 1) Split multiallelic (Ref == A & Alt == AT,ATT) into two seperate variants A --> AT and A --> ATT 
  
-2) It will ensure we are left-aligned. Which is a way to normalize variants based on the reference genome ![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/Normalization_mnp.png)
+2) It will ensure we are left-aligned. Which is a way to normalize variants based on the reference genome. 
+ (https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/Normalization_mnp.png)
  
 ```
 bcftools norm -m-both -f /home/ubuntu/CourseData/CAN_data/Module4/references/human_g1k_v37.fasta -Oz -o pairedVariants_mutect2_filtered_normalized.vcf pairedVariants_mutect2_filtered.vcf
@@ -367,9 +368,8 @@ Next we can examine some variants in IGV.
  
 Input: chr9:130634091
 
-![image](https://user-images.githubusercontent.com/15352153/120568604-72690b00-c3d1-11eb-8164-329868b51e7c.png)
-
-![image](https://user-images.githubusercontent.com/15352153/120906146-438ea700-c614-11eb-9fb1-6dc9fb7c8d75.png)
+[location](https://user-images.githubusercontent.com/15352153/120568604-72690b00-c3d1-11eb-8164-329868b51e7c.png)
+[variant1](https://user-images.githubusercontent.com/15352153/120906146-438ea700-c614-11eb-9fb1-6dc9fb7c8d75.png)
 Here we can see evidence of the C --> T in the tumor bam but not in the normal sample. This variant is called correctly and is called by both mutect2 and varscan2.
 
 
@@ -379,7 +379,7 @@ Here we can see evidence of the C --> T in the tumor bam but not in the normal s
 
 Now input chr9:130634993. 
 
-![image](https://user-images.githubusercontent.com/15352153/120906346-f14e8580-c615-11eb-9e22-e7f8cce02ef0.png)
+[variant2](https://user-images.githubusercontent.com/15352153/120906346-f14e8580-c615-11eb-9e22-e7f8cce02ef0.png)
 Here we can see evidence of two variants in the AKT1 exonic region. These variants are called only using mutect2.
 
 ```
@@ -391,7 +391,7 @@ Question: Compare the variant allele frequency between these three variants in A
 
 Now input chr9:130316821. This will be an intronic variant in the NIBAN2 gene. 
 
-![image](https://user-images.githubusercontent.com/15352153/120906325-b8aeac00-c615-11eb-8163-6a74c044f85a.png)
+[variant3](https://user-images.githubusercontent.com/15352153/120906325-b8aeac00-c615-11eb-8163-6a74c044f85a.png)
 
 ```
 9       130316821       130316821       C       T       intronic        NIBAN2  .       ./.:.:.:.:.:.:. ./.:.:.:.:.:.:.                                     0/0:.:23:20:0:0%:13,7,0,0        0/1:.:24:19:5:20.83%:14,5,1,4
