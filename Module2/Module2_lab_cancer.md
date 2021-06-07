@@ -205,7 +205,7 @@ Load *tumor.bam* the same way you loaded *normal.bam*. You can resize the tracks
 ![som indel](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/images-cancer/06-somatic-indel.png)
 
 1. What type of variant is in the centre?
-2. What do you notice about the variant in the normal sample to the right?
+2. In the normal sample there is a SNP to the right. What do you notice about this variant in the tumor sample?
 3. What might be an explanation for what happened?
 
 # Visualization Part 4: Inspecting structural variants in NA12878
