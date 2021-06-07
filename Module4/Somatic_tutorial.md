@@ -368,8 +368,8 @@ Next we can examine some variants in IGV.
  
 Input: chr9:130634091
 
-<img src="https://user-images.githubusercontent.com/15352153/120568604-72690b00-c3d1-11eb-8164-329868b51e7c.png?raw=true" alt="img 1" width="750" />
-<img src="https://user-images.githubusercontent.com/15352153/120906146-438ea700-c614-11eb-9fb1-6dc9fb7c8d75.png?raw=true" alt="img 1" width="750" />
+<img src="https://user-images.githubusercontent.com/15352153/120568604-72690b00-c3d1-11eb-8164-329868b51e7c.png?raw=true" alt="img 1" width="550" />
+<img src="https://user-images.githubusercontent.com/15352153/120906146-438ea700-c614-11eb-9fb1-6dc9fb7c8d75.png?raw=true" alt="img 1" width="550" />
 
 Here we can see evidence of the C --> T in the tumor bam but not in the normal sample. This variant is called correctly and is called by both mutect2 and varscan2.
 
@@ -380,7 +380,7 @@ Here we can see evidence of the C --> T in the tumor bam but not in the normal s
 
 Now input chr9:130634993. 
 
-<img src="https://user-images.githubusercontent.com/15352153/120906346-f14e8580-c615-11eb-9e22-e7f8cce02ef0.png?raw=true" alt="img 1" width="750" /> 
+<img src="https://user-images.githubusercontent.com/15352153/120906346-f14e8580-c615-11eb-9e22-e7f8cce02ef0.png?raw=true" alt="img 1" width="550" /> 
 Here we can see evidence of two variants in the AKT1 exonic region. These variants are called only using mutect2.
 
 ```
@@ -479,7 +479,7 @@ We will introduce awk and bedtools here.
  2) bedtools allows for us to manipulate based on genomic regions (chr start end) which is the format of .BED files!
  
 bedtools intersect which is a way to subset regions to the common regions between to bed files. It is useful for seeing what belongs to a particular region.
-<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/intersect-glyph.png?raw=true" alt="img 1" width="750" />
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/intersect-glyph.png?raw=true" alt="img 1" width="550" />
 ```
 bedtools intersect -wb -b <(less CBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs | awk 'NF==7' | awk '{print "chr"$1"\t"$2"\t"$3"\t"$0}' | less -S) -a <(less /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh38.Ensemble100.FullGeneAnnotations.txt | awk '$4=="ensembl_havana"') | awk '{print $1"\t"$2"\t"$3"\t"$7"\t"$8"\t"$15}' > AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv
 ```
@@ -573,8 +573,8 @@ if (length(tt)>0)
 }}}
 ```
  
- <img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_ratio.png?raw=true" alt="img 1" width="550" />
- <img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_BAF.png?raw=true" alt="img 1" width="550" />
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_ratio.png?raw=true" alt="img 1" width="550" />
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_BAF.png?raw=true" alt="img 1" width="550" />
 
 Question: What does each dot mean in the top CNV plots and what does each dot mean in the bottom BAF plot?
  
