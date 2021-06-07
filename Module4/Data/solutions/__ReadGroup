@@ -1,0 +1,10 @@
+They are represented by the read group. 
+
+/usr/local/GATK/gatk Mutect2 \
+-R /path/to/fake/vcf/tumor_sample1.bam \
+-I /path/to/fake/vcf/tumor_sample2.bam \ 
+-I /path/to/fake/vcf/normal.bam \
+-normal normal \
+-O pairedVariants_mutect2.vcf \
+-L 9:130215000-130636000 \
+--germline-resource /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh37.gnomad.exomes.r2.0.1.sites.no-VEP.nohist.tidy.vcf.gz
