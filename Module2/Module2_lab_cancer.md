@@ -35,6 +35,12 @@ Things to know before you start:
 * The lab may take between **1-2 hours**, depending on your familiarity with genome browsing. Don't worry if you don't complete the lab! It is available for you to complete later.
 * There are a few thought-provoking **Questions** or **Notes** pertaining to sections of the lab. These are **optional**, and may take more time, but are meant to help you better understand the visualizations you are seeing.
 
+### Lab components
+
+* Visualization Part 1: Getting familiar with IGV
+* Visualization Part 2: Inspecting small variants in the normal sample
+* Visualization Part 3: Inspecting small somatic variants in the tumor sample
+* Visualization Part 4: Inspecting structural variants in NA12878
 
 ### Requirements 
 
@@ -55,8 +61,6 @@ These bams are a sneak peak of the ones you will be creating in module 3. They a
 Download the files to your computer in one directory (folder) and unzip them. Remember where you saved them!
 
 # Visualization Part 1: Getting familiar with IGV
-Lets familiarize ourselves with IGV.
-
 
 ## The IGV Interface 
 
