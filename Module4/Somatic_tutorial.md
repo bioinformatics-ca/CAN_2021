@@ -478,7 +478,7 @@ We will introduce awk and bedtools here.
  2) bedtools allows for us to manipulate based on genomic regions (chr start end) which is the format of .BED files!
  
 bedtools intersect which is a way to subset regions to the common regions between to bed files. It is useful for seeing what belongs to a particular region.
-![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/intersect-glyph.png)
+[intersection](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/intersect-glyph.png)
 
 ```
 bedtools intersect -wb -b <(less CBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs | awk 'NF==7' | awk '{print "chr"$1"\t"$2"\t"$3"\t"$0}' | less -S) -a <(less /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh38.Ensemble100.FullGeneAnnotations.txt | awk '$4=="ensembl_havana"') | awk '{print $1"\t"$2"\t"$3"\t"$7"\t"$8"\t"$15}' > AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv
@@ -573,8 +573,8 @@ if (length(tt)>0)
 }}}
 ```
 
-![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_ratio.png)
-![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_BAF.png)
+[chr3_CNV](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_ratio.png)
+[chr3_BAF](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_BAF.png)
 
 Question: What does each dot mean in the top CNV plots and what does each dot mean in the bottom BAF plot?
  
@@ -584,8 +584,8 @@ Question: Comparing the green region to the BAF plots, what kind of copy number 
 
 Using a completed CNV calling on WGS data from the Terry Fox Research Initiative on GBM we can see how it looks across a whole genome.  [TFRI-WGS](https://www.pnas.org/content/116/38/19098)
 
-![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/BT143_TFRI_CNV.png)
-![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/BT143_TFRI_BAF.png)
+[TFRI_GBM_CNV](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/BT143_TFRI_CNV.png)
+[TFRI_GBM_BAF](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/BT143_TFRI_BAF.png)
 
 Question: What CNV events are supported by the data?
  
@@ -652,14 +652,14 @@ if (length(tt)>0)
 
 Now we see a chromsome 5 region which represents a gain and it is supported by the BAF
 
-![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr5_ratio.png)
-![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr5_BAF.png)
+[chr5_CNV](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr5_ratio.png)
+[chr5_BAF](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr5_BAF.png)
 
 
 And we also see another gain on chromsome 11, which is again supported by the BAF.                                                           
 
-![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr11_ratio.png)
-![image](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr11_BAF.png)
+[chr11_CNV](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr11_ratio.png)
+[chr11_BAF](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr11_BAF.png)
     
    
 
