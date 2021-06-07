@@ -355,7 +355,7 @@ less -S annotated_mutect2_varscan2.hg19_multianno.txt | cut -f 6 | sort | uniq -
         2 frameshift insertion
         3 nonsynonymous SNV
 
-This shows the functional consequence of each exonic variant, we have 5 exonic variants that results in two frameshifts and 3 nonsynonymous SNV's. 
+ This shows the functional consequence of each exonic variant, we have 5 exonic variants that results in two frameshifts and 3 nonsynonymous SNV's. 
 
 
 Next we can examine some variants in IGV. 
@@ -368,8 +368,9 @@ Next we can examine some variants in IGV.
  
 Input: chr9:130634091
 
-[location](https://user-images.githubusercontent.com/15352153/120568604-72690b00-c3d1-11eb-8164-329868b51e7c.png)
-[variant1](https://user-images.githubusercontent.com/15352153/120906146-438ea700-c614-11eb-9fb1-6dc9fb7c8d75.png)
+<img src="https://user-images.githubusercontent.com/15352153/120568604-72690b00-c3d1-11eb-8164-329868b51e7c.png?raw=true" alt="img 1" width="750" />
+<img src="https://user-images.githubusercontent.com/15352153/120906146-438ea700-c614-11eb-9fb1-6dc9fb7c8d75.png?raw=true" alt="img 1" width="750" />
+
 Here we can see evidence of the C --> T in the tumor bam but not in the normal sample. This variant is called correctly and is called by both mutect2 and varscan2.
 
 
@@ -379,7 +380,7 @@ Here we can see evidence of the C --> T in the tumor bam but not in the normal s
 
 Now input chr9:130634993. 
 
-[variant2](https://user-images.githubusercontent.com/15352153/120906346-f14e8580-c615-11eb-9e22-e7f8cce02ef0.png)
+<img src="https://user-images.githubusercontent.com/15352153/120906346-f14e8580-c615-11eb-9e22-e7f8cce02ef0.png?raw=true" alt="img 1" width="750" /> 
 Here we can see evidence of two variants in the AKT1 exonic region. These variants are called only using mutect2.
 
 ```
@@ -391,7 +392,7 @@ Question: Compare the variant allele frequency between these three variants in A
 
 Now input chr9:130316821. This will be an intronic variant in the NIBAN2 gene. 
 
-[variant3](https://user-images.githubusercontent.com/15352153/120906325-b8aeac00-c615-11eb-8163-6a74c044f85a.png)
+<img src="https://user-images.githubusercontent.com/15352153/120906325-b8aeac00-c615-11eb-8163-6a74c044f85a.png?raw=true" alt="img 1" width="550" /> 
 
 ```
 9       130316821       130316821       C       T       intronic        NIBAN2  .       ./.:.:.:.:.:.:. ./.:.:.:.:.:.:.                                     0/0:.:23:20:0:0%:13,7,0,0        0/1:.:24:19:5:20.83%:14,5,1,4
@@ -478,8 +479,7 @@ We will introduce awk and bedtools here.
  2) bedtools allows for us to manipulate based on genomic regions (chr start end) which is the format of .BED files!
  
 bedtools intersect which is a way to subset regions to the common regions between to bed files. It is useful for seeing what belongs to a particular region.
-[intersection](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/intersect-glyph.png)
-
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/intersect-glyph.png?raw=true" alt="img 1" width="750" />
 ```
 bedtools intersect -wb -b <(less CBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs | awk 'NF==7' | awk '{print "chr"$1"\t"$2"\t"$3"\t"$0}' | less -S) -a <(less /home/ubuntu/CourseData/CAN_data/Module4/accessory_files/Homo_sapiens.GRCh38.Ensemble100.FullGeneAnnotations.txt | awk '$4=="ensembl_havana"') | awk '{print $1"\t"$2"\t"$3"\t"$7"\t"$8"\t"$15}' > AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv
 ```
@@ -572,9 +572,9 @@ if (length(tt)>0)
   points(lBAF$Position[tt],lBAF$FittedB[tt],pch = ".",col = colors()[463],cex=3)
 }}}
 ```
-
-[chr3_CNV](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_ratio.png)
-[chr3_BAF](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_BAF.png)
+ 
+ <img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_ratio.png?raw=true" alt="img 1" width="550" />
+ <img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr3_BAF.png?raw=true" alt="img 1" width="550" />
 
 Question: What does each dot mean in the top CNV plots and what does each dot mean in the bottom BAF plot?
  
@@ -584,8 +584,8 @@ Question: Comparing the green region to the BAF plots, what kind of copy number 
 
 Using a completed CNV calling on WGS data from the Terry Fox Research Initiative on GBM we can see how it looks across a whole genome.  [TFRI-WGS](https://www.pnas.org/content/116/38/19098)
 
-[TFRI_GBM_CNV](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/BT143_TFRI_CNV.png)
-[TFRI_GBM_BAF](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/BT143_TFRI_BAF.png)
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/BT143_TFRI_CNV.png?raw=true" alt="img 1" width="550" />
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/BT143_TFRI_BAF.png?raw=true" alt="img 1" width="550" />
 
 Question: What CNV events are supported by the data?
  
@@ -652,16 +652,14 @@ if (length(tt)>0)
 
 Now we see a chromsome 5 region which represents a gain and it is supported by the BAF
 
-[chr5_CNV](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr5_ratio.png)
-[chr5_BAF](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr5_BAF.png)
-
-
+ <img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr5_ratio.png?raw=true" alt="img 1" width="550" />
+ <img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr5_BAF.png?raw=true" alt="img 1" width="550" />
+ 
 And we also see another gain on chromsome 11, which is again supported by the BAF.                                                           
 
-[chr11_CNV](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr11_ratio.png)
-[chr11_BAF](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr11_BAF.png)
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr11_ratio.png?raw=true" alt="img 1" width="550" />
+<img src="https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Data/chr11_BAF.png?raw=true" alt="img 1" width="550" />
     
-   
 
 ###
 Special thanks to Dr.Morrissy &  Dr.Bourgey for access to the CAGEKID data and access to [genpipes](https://genpipes.readthedocs.io/en/genpipes-v-3.4.0/)
