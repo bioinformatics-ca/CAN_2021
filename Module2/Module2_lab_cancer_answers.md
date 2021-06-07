@@ -53,13 +53,13 @@ Below are suggested answers to the questions from lab 2. You might have thought 
 1. How many SNVs are in this region for each sample?
     * Normal: 3, Tumor: 4
 3. What is the variant allele frequency for the extra SNV in the tumor sample? How did it get this high?
-    * 37%: The cells with this mutation were had an advantage during growth of the tumor sample and the mutation became more frequent
+    * 37%: A mutation might have occurred in a cell that had a growth advantage that led to a clone (group of related cells) making up a large proportion of the tumor sample.
 
 ## Somatic SNP with change in heterozygosity
 1. What are the variant allele frequencies for each sample?
     * Normal: 59%, Tumor: 80%
 3. Why are these frequencies different?
-    * Tumor cells with the alternate allele had an advantage during growth of the tumor sample and the variant became more frequent
+    * Some cells experienced a loss of heterozygosity at this locus, leading to the variant being more frequent in the tumor population overall
 
 ## Somatic indel next to SNP with change in heterozygosity
 1. What type of variant is in your centre line?
@@ -67,7 +67,7 @@ Below are suggested answers to the questions from lab 2. You might have thought 
 3. What do you notice about the variant in the normal sample to the right?
     * The variant allele is less frequent in the tumor sample and the reads with the deletion do not have the variant allele
 5. What might be an explanation for what happened?
-    * This deletion is in linkage disequilibrium with the reference allele (they are very close together). The deletion originated in tumor cells without the variant SNP allele, and as these cells had an advantage during growth of the tumor sample, the SNP variant became less frequent
+    *  Some cells experienced a loss of heterozygosity at this site, leading to the reference allele being more frequent in the tumor population overall. This LOH event might have also been associated with the occurance of a deletion nearby.
 
 # Visualization Part 4: Inspecting structural variants in NA12878
 
