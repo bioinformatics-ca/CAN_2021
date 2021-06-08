@@ -47,7 +47,7 @@ Goals:
 
 ## Setup
 
-First login into the server, and then enter the workspace directory.
+For this first part, you can either use the terminal within RStudio Server or access the server via terminal or PuTTY, and then enter the workspace directory.
 In order to keep our files in one location, we're going to create a new directory for this module and enter it.
 
 ```
@@ -144,6 +144,19 @@ Or  for the number of reads directly (*note: replace `YourFastaFile.fasta` with 
 ```
 egrep ">" YourFastaFile.fasta |wc -l
 ```
+To speed this up you can use a for loop to repeatedly perform the same set of commands:
+
+```
+for FILE in *_read1.fasta; 
+do 
+NUMREADS=$(egrep ">" $FILE | wc -l)
+echo $FILE $NUMREADS
+done > numReads.txt
+
+sort -k 2 -n -r numReads.txt
+
+rm numReads.txt
+```
 
 ## PART 2: Data alignment
 Goals:
@@ -175,7 +188,11 @@ samtools sort -@ 8 -o carcinoma_C06.bam carcinoma_C06.sam
 samtools sort -@ 8 -o normal_N02.bam normal_N02.sam
 samtools sort -@ 8 -o normal_N03.bam normal_N03.sam
 samtools sort -@ 8 -o normal_N06.bam normal_N06.sam
-ls -lah 
+```
+
+```
+du -h *.sam
+du -h *.bam
 ```
 
 Merge the bams for visualization purposes
@@ -239,6 +256,7 @@ cd $RNA_LAB/expression/stringtie/ref_only
 Have a look at a transcripts.gtf file
 ```
 more carcinoma_C02/transcripts.gtf
+awk 'FNR == 3 {print}' carcinoma_C02/transcripts.gtf
 ```
 (Look for Ensembl Id (ENSGxxxxxxxxxxx)  for PCA3 in /workspace/Module6/Module6_Lab/refs/Homo_sapiens.GRCh38.86.chr9.gtf)
 ```
@@ -263,6 +281,8 @@ printf "\"ids\",\"type\",\"path\"\n\"carcinoma_C02\",\"carcinoma\",\"$RNA_LAB/ex
 
 more carcinoma_vs_normal.csv 
 ```
+
+Now load R or switch to the console within R Studio Server.
 
 ```
 R
