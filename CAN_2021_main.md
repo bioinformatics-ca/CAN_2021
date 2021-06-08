@@ -50,7 +50,9 @@ Comming soon
 
 *<font color="#827e9c">Trevor Pugh</font>* 
 
-[Lecture](https://youtu.be/nnHRfHB9N8Q)  
+[Lecture Video](https://youtu.be/nnHRfHB9N8Q)  
+
+[Lecture pdf](https://drive.google.com/file/d/1TBzbBUVfLl5QmKH4oeSG7kxoOR8GWb6T/view?usp=sharing)
 
 ## Module 02: Data, formats and Databases
 
@@ -104,7 +106,8 @@ Comming soon
 
 *<font color="#827e9c">Florence Cavalli</font>* 
 
-[Lecture]()     
+[Lecture]()  
+
  [Labs](https://bioinformaticsdotca.github.io/CAN_2021_Module6_Lab)
 
 
