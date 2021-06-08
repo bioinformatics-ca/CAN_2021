@@ -16,17 +16,17 @@ author: Florence Cavalli
 The PCA3 gene plays a role in Prostate Cancer detection due to its localized expression in prostate tissues and its over-expression in tumour tissues. This gene expression profile makes it a useful marker that can complement the most frequently used biomarker for prostate cancer, PSA. There are cancer assays available that test the presence of PCA3 in urine. 
 
 
-In this assignment, we will be using a subset of the [GSE22260 dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE22260), which consists of 30 RNA-seq tumour/normal pairs,
+In this assignment, we will be using a subset of the [GSE22260 dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE22260), which consists of 30 RNA-seq tumour/normal pairs.
 
 Experimental information and other things to keep in mind:
 - The libraries are polyA selected. 
 - The libraries are prepared as paired end. 
 - The samples are sequenced on a Illumina Genome Analyzer II (this data is now quite old). 
-- Each read is 36 bp long 
+- Each read is 36 bp long.
 - The average insert size is 150 bp with standard deviation of 38bp. 
 - We will only look at chromosome 9 in this exercise. 
-- The dataset is located here: [GSE22260 dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE22260)
-- 20 tumour and 10 normal samples are available 
+- The dataset is located here: [GSE22260 dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE22260).
+- 20 tumour and 10 normal samples are available.
 - For this exercise we will pick 3 matched pairs (C02, C03, C06 for tumour and N02, N03, N06 for normal). We can do more if we have time. 
 
 ## Objectives
@@ -47,8 +47,8 @@ Goals:
 
 ## Setup
 
-First login into the server, and then enter the workspace directory:
-In order to keep our files in one location, we're going to create a new directory for this module and enter it:
+First login into the server, and then enter the workspace directory.
+In order to keep our files in one location, we're going to create a new directory for this module and enter it.
 
 ```
 cd  ~/workspace
@@ -66,7 +66,7 @@ cp ~/CourseData/CAN_data/Module6/data.zip .
 unzip data.zip
 ```
 
-Check the files and set up the following environment variables
+Check the files and set up the following environment variables.
 
 ```
 ls
@@ -290,9 +290,9 @@ R
 
 If you ever get stuck in R and want to return to the terminal, type `q()` to exit R.
 
-Your plots will be at http://##.oicrcbw.ca/Module6/Module6_Lab/de/ballgown/ref_only/Module6_Lab_Supplementary_R_output.pdf
+Your plots will be at http://##/Module6/Module6_Lab/de/ballgown/ref_only/Module6_Lab_Supplementary_R_output.pdf
 
-Remember to replace "##" with your instance number.
+Remember to replace "##" with your public IPv4 address.
 
 Compare your plots to the expected plots: [Module6_Lab_Supplementary_R_output.pdf](https://github.com/bioinformatics-ca/CAN_2021/raw/main/Module6/Module6_Lab_Supplementary_R_output.pdf)
 
