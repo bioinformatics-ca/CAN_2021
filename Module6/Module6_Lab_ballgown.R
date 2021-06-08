@@ -3,10 +3,11 @@ library(genefilter)
 library(dplyr)
 library(devtools)
 
-setwd("de/ballgown/ref_only/")
+work.dir <- "/media/cbwdata/workspace/Module6/Module6_Lab/de/ballgown"
+pheno.dir <- "ref_only"
 
 # Load phenotype data from a file we saved in the current working directory
-pheno_data = read.csv("carcinoma_vs_normal.csv")
+pheno_data = read.csv(file = file.path(work.dir,pheno.dir,"carcinoma_vs_normal.csv"))
 
 # Load ballgown data structure and save it to a variable "bg"
 bg = ballgown(samples=as.vector(pheno_data$path),pData=pheno_data)
@@ -21,7 +22,7 @@ bg_gene_names = unique(bg_table[, 9:10])
 
 
 # Save the ballgown object to a file for later use
-save(bg, file='bg.rda')
+save(bg, file = file.path(work.dir,'bg.rda'))
 
 # Perform differential expression (DE) analysis with no filtering
 results_transcripts = stattest(bg, feature="transcript", covariate="type", getFC=TRUE, meas="FPKM")
