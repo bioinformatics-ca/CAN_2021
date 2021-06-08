@@ -106,7 +106,8 @@ Comming soon
 
 *<font color="#827e9c">Florence Cavalli</font>* 
 
-[Lecture]()  
+[Lecture (pdf)](https://drive.google.com/drive/folders/18wf_LdLNlYGgWgdzJfZEkthauLQgvx4B)  
+[Lecture (pptx)](https://drive.google.com/file/d/1wgB28nVqKsxjoUV3fev1SNVARC3P9RUJ/view?usp=sharing)
 
  [Labs](https://bioinformaticsdotca.github.io/CAN_2021_Module6_Lab)
 
@@ -155,7 +156,7 @@ Comming soon
 
 *<font color="#827e9c">Shraddha Pai</font>* 
 
-[Lecture]()
+[Lecture](https://drive.google.com/drive/folders/18wf_LdLNlYGgWgdzJfZEkthauLQgvx4B)
 
 [Lab Practical](https://pailab.oicr.on.ca/CBW_CAN_DataIntegration_2021/index.html)    
 
