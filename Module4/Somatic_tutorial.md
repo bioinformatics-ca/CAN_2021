@@ -514,7 +514,7 @@ less AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv | awk '
 
 Now lets go visualize these results using R --> You will need to open r studio for this, we have two ways to do this. 
 1) Open it locally on you personal computer
-2) In your url enter http://<your IPv4 or your IPv4 DNS>:8080 ---> then enter your username: ubuntu and your password
+2) In your url enter "http://<your IPv4 or your IPv4 DNS>:8080" ---> then enter your username: ubuntu and your password
 
 This script is available with controlfreec but due to the subsettting we will have to plot the ratio and BAF ourselves.
 
