@@ -84,9 +84,9 @@ Comming soon
 
 *<font color="#827e9c">Sorana Morrissy</font>* 
 
-[Lecture pdf]()
+[Lecture pdf](https://drive.google.com/file/d/1nNo9ltOdJx5XRBVe46TLFMgJN1Gc7FZu/view?usp=sharing)
 
-[Lecture ppt]()
+[Lecture ppt](https://drive.google.com/file/d/1gshvfNVPZ_PoxLpW6ufrS1_Df3Ymv4-q/view?usp=sharing)
 
 [Lab Practical](https://bioinformaticsdotca.github.io/CAN_2021_module4_lab)  
 
