@@ -57,7 +57,7 @@ Below are suggested answers to the questions from lab 2. You might have thought 
 
 ## Somatic SNP with change in heterozygosity
 1. What are the variant allele frequencies for each sample?
-    * Normal: 59%, Tumor: 80%
+    * Normal: 46%, Tumor: 80%
 3. Why are these frequencies different?
     * Some cells experienced a loss of heterozygosity at this locus, leading to the variant being more frequent in the tumor population overall
 
