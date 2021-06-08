@@ -401,6 +401,8 @@ Now input chr9:130634993.
 <img src="https://user-images.githubusercontent.com/15352153/120906346-f14e8580-c615-11eb-9e22-e7f8cce02ef0.png?raw=true" alt="img 1" width="550" /> 
 Here we can see evidence of two variants in the AKT1 exonic region. These variants are called only using mutect2.
 
+ If you can't see the variants. In IGV go to View --> Preferences --> Alignments then change Coverage allele-fraction threshold to 0.1 (10%)
+ 
 ```
 9       130634993       130634993       C       T       exonic  AK1     nonsynonymous SNV       0/0:46,0:0.021:46:24,0:21,0:18,28,0,0   0/1:48,8:0.155:56:24,5:24,3:20,28,5,3   ./.:.:.:.:.:.:. ./.:.:.:.:.:.:.
 9       130635011       130635011       C       G       exonic  AK1     nonsynonymous SNV       0/0:39,0:0.024:39:23,0:16,0:17,22,0,0   0/1:46,9:0.175:55:21,5:25,4:16,30,5,4   ./.:.:.:.:.:.:. ./.:.:.:.:.:.:.
@@ -486,7 +488,6 @@ ls *
      CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_ratio.txt : Contain read-depth ratios
      CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_CNVs : Containing our copy numbers calls
      CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_info.txt : Containing sample information, purity and ploidy 
-
  ```
  less CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_info.txt
  ```
