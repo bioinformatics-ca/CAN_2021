@@ -537,7 +537,7 @@ for (chrom in c(3))
 tt <- which(ratio$Chromosome==chrom)
 if (length(tt)>0)
 {
-        plot(ratio$Start[tt],log2(ratio$Ratio[tt]),xlab = paste ("position, chr",i),ylab = "normalized copy number profile (log2)",pch = ".",col = colors()[88],cex=4)
+        plot(ratio$Start[tt],log2(ratio$Ratio[tt]),xlab = paste ("position, chr",chrom),ylab = "normalized copy number profile (log2)",pch = ".",col = colors()[88],cex=4)
         tt <- which(ratio$Chromosome==chrom  & ratio$CopyNumber>ploidy )
         points(ratio$Start[tt],log2(ratio$Ratio[tt]),pch = ".",col = colors()[136],cex=4)
 
