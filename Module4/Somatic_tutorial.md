@@ -339,6 +339,9 @@ annovar is a tool to annotate our vcf files with gene names & functional informa
 This will produce two annotation files: annotated_mutect2_varscan2.hg19_multianno.vcf & annotated_mutect2_varscan2.hg19_multianno.txt. These files contain the gene annotations and infer the functional consequence of each variant. 
 
 The header for contains the vcf fields but they have been renamed by annovar. However now we can see which genes are affected and how they are changed.
+ ```
+ cd /home/ubuntu/workspace/Module4_somaticvariants/results
+ ```
  
  ```
  less annotated_mutect2_varscan2.hg19_multianno.txt | head -n 1 | sed 's/\t/|/g'
