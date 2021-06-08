@@ -3,6 +3,8 @@ library(genefilter)
 library(dplyr)
 library(devtools)
 
+setwd("de/ballgown/ref_only/")
+
 # Load phenotype data from a file we saved in the current working directory
 pheno_data = read.csv("carcinoma_vs_normal.csv")
 
