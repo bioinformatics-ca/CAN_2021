@@ -16,7 +16,7 @@ Question: What happened in the LOH variant below? (chr9:130311404)
 Answer: We increased the VAF meaning we lost counts of the reference.  
 
 Question: What happened in the LOH variant below? (chr9:130346618)
-Answer: We decreased the VAF meaning we 
+Answer: We decreased the VAF meaning we lost counts in the alternate.
 
 Question: In what cancer type would having germline variants be useful?
 Answer: Pediatric cancers have a low mutation burden and would not have many somatic variants. The cancer was therefore initated by something other than a high mutation burden. Germline variants are also useful in predisposition studies, for example if you have germline missense mutations in TP53, your odds of cancer are higher than those who don't have the mutation
