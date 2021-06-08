@@ -194,9 +194,9 @@ dev.off()
 ls()
 save.image("save_module6_lab_plots.RData")
 
-#The output file can be downloaded in your browser at the following url:
-## http://##.oicrcbw.ca/Module6/Module6_Lab/de/ballgown/ref_only/assignment_Supplementary_R_output.pdf
-## with your student number instead of ## 
+##Your plots will be at http://##/Module6/Module6_Lab/de/ballgown/ref_only/Module6_Lab_Supplementary_R_output.pdf
+
+##Remember to replace “##” with your public IPv4 address.
 #To exit R type:
 quit(save="no")
 
