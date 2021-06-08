@@ -686,7 +686,5 @@ And we also see another gain on chromsome 11, which is again supported by the BA
 Special thanks to Dr.Morrissy &  Dr.Bourgey for access to the CAGEKID data and access to [genpipes](https://genpipes.readthedocs.io/en/genpipes-v-3.4.0/)
 ###
 
-
- 
-
+Answers (https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module4/Answer_readme.txt)
  
