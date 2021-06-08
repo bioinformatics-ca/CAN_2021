@@ -94,7 +94,7 @@ Comming soon
 
 *<font color="#827e9c">Andrew McPherson</font>* 
 
-[Lecture](https://drive.google.com/file/d/1e55f7kisrJi3HKn-n_f5fjKAHZOLSXIq/view?usp=sharing)
+[Lecture](https://drive.google.com/file/d/1e55f7kisrJi3HKn-n_f5fjKAHZOLSXIq/view)
 
 [Lab Practical](https://amcpherson.github.io/CBW_CAN_scDNA_2021)  
 
