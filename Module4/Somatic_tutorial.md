@@ -360,18 +360,20 @@ less -S annotated_mutect2_varscan2.hg19_multianno.txt | cut -f 6 | sort | uniq -
 ```
  This shows the genomic region change where each variant is occuring. Typically exonic variants are more likely to produce a phenotypic change.  
        
-        5 exonic
+         1 Func.refGene
+         5 exonic
+         1 intergenic
         15 intronic
 
  ```
  less -S annotated_mutect2_varscan2.hg19_multianno.txt | cut -f 9 | sort | uniq -c
 ```
-        15 .
-        2 frameshift insertion
-        3 nonsynonymous SNV
+         16 .
+          1 ExonicFunc.refGene
+          2 frameshift insertion
+          3 nonsynonymous SNV
 
- This shows the functional consequence of each exonic variant, we have 5 exonic variants that results in two frameshifts and 3 nonsynonymous SNV's. 
-
+This shows the functional consequence of each exonic variant, we have 5 exonic variants that results in two frameshifts and 3 nonsynonymous SNV's. 
 
 Next we can examine some variants in IGV. 
  
@@ -387,7 +389,6 @@ Input: chr9:130634091
 <img src="https://user-images.githubusercontent.com/15352153/120906146-438ea700-c614-11eb-9fb1-6dc9fb7c8d75.png?raw=true" alt="img 1" width="550" />
 
 Here we can see evidence of the C --> T in the tumor bam but not in the normal sample. This variant is called correctly and is called by both mutect2 and varscan2.
-
 
 ```
 9       130634110       130634110       C       T       exonic  AK1     nonsynonymous_SNV       0/0:48,0:0.02:48:22,0:26,0:21,27,0,0:.:.:.:.                0/1:50,30:0.376:80:25,10:25,19:26,24,14,16:.:.:.:.       0/0:0:.:47:.:.:.:.:47:0%:21,26,0,0      0/1:29:.:79:.:.:.:.:50:36.71%:26,24,15,14
