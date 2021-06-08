@@ -264,11 +264,11 @@ This variant was called in the varscan.vcf (01). 11 corresponds to the being cal
 ```
 less -S sites.txt | cut -f  5 | sort | uniq -c 
 ```   
-      3 01
+      4 01
       6 10
      11 11
 
-This show's us that varscan2 has 3 unique variants, mutect2 has 6 unique variants and there are 11 shared variants.
+This show's us that varscan2 has 4 unique variants, mutect2 has 6 unique variants and there are 11 shared variants.
 
 Let's combine our mutect2 and varscan2 vcfs into a single vcf. This will generate the union of variants. 
 ```
