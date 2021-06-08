@@ -467,7 +467,7 @@ I have commented out the BAM files, however if you you were running this for the
 Instead we use pileups and gc content. 
 
  * pileup contain base-pair information which we discussed earlier.
- * gc content for normalization.
+ * gc content for normalization between normal and tumor.
  
 - [General] indicates parameters for how we want the algorithm to run; parameters like minCNAlength, intercept are indicating WGS is being used
 - [sample] indicates the input data of our tumor either in bam format or pileup/cpn
@@ -514,7 +514,7 @@ less AnnotatedCBW_regions_c0098_Tumor.sorted.markduplicates.bam_CNVs.tsv | awk '
 
 Now lets go visualize these results using R --> You will need to open r studio for this, we have two ways to do this. 
 1) Open it locally on you personal computer
-2) In your url enter "http://<your IPv4 or your IPv4 DNS>:8080" ---> then enter your username: ubuntu and your password
+2) In your url enter "http://your IPv4 or your IPv4 DNS:8080" ---> then enter your username: ubuntu and your password
 
 This script is available with controlfreec but due to the subsettting we will have to plot the ratio and BAF ourselves.
 
