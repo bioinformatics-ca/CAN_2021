@@ -258,5 +258,5 @@ If you want to look at more examples, check out this [IGV lab from CBW's Highthr
 
 # Resources
 
-* [Suggested answers to the questions from this lab](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module2/Module2_lab_cancer_answers.md)
+* [Suggested answers to the questions from this lab](https://bioinformaticsdotca.github.io/CAN_2021_Module2_lab_cancer_answers)
 * [IGV user manual](http://software.broadinstitute.org/software/igv/UserGuide)
