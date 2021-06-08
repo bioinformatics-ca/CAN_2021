@@ -282,7 +282,7 @@ Now that we have our two vcf's combined we can look at their contents.
 
 Every vcf has a metadata sections two ##
 ```
-zless -S pairedVariants_mutect2_varscan2.vcf.gz | egrep ' ##' | head -n 10
+zless -S pairedVariants_mutect2_varscan2.vcf.gz | egrep '##' | head -n 10
 ```
       ##fileformat=VCFv4.2
       ##FILTER=<ID=PASS,Description="All filters passed">
@@ -350,7 +350,9 @@ The header for contains the vcf fields but they have been renamed by annovar. Ho
 ```
 Chr|Start|End|Ref|Alt|Func.refGene|Gene.refGene|GeneDetail.refGene|ExonicFunc.refGene|AAChange.refGene|Otherinfo1|Otherinfo2|Otherinfo3|Otherinfo4|Otherinfo5|Otherinfo6|Otherinfo7|Otherinfo8|Otherinfo9|Otherinfo10|Otherinfo11|Otherinfo12|Otherinfo13|Otherinfo14|Otherinfo15|Otherinfo16
 ``` 
-For example our first variant is an intronic mutation in LRSAM1.
+
+ 
+ For example our first variant is an intronic mutation in LRSAM1.
 ```
 9       130223126       130223126       C       T       intronic        LRSAM1  .       .       .       0.25    .      31                                   9130223126       .       C       T       .       PASS    SOMATIC;SS=2;SSC=21;GPV=1;SPV=0.0064791;DP=55   GT:GQ:DP:RD:AD:FREQ:DP4                             ./.:.:.:.:.:.:.  ./.:.:.:.:.:.:. 0/0:.:24:24:0:0%:13,11,0,0      0/1:.:31:23:8:25.81%:17,6,3,5
 ```
@@ -383,7 +385,7 @@ Next we can examine some variants in IGV.
  load your bam files by clicking file --> load from file 
  If you have not downloaded the bam or are missing it. It is provided here (https://drive.google.com/drive/folders/1f_1pDbpNaNUT6oC-pEPXInemyZwMV4Hc)
  
-Input: chr9:130634091
+Input: chr9:130634110
 
 <img src="https://user-images.githubusercontent.com/15352153/120568604-72690b00-c3d1-11eb-8164-329868b51e7c.png?raw=true" alt="img 1" width="550" />
 <img src="https://user-images.githubusercontent.com/15352153/120906146-438ea700-c614-11eb-9fb1-6dc9fb7c8d75.png?raw=true" alt="img 1" width="550" />
