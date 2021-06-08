@@ -524,11 +524,11 @@ This script is available with controlfreec but due to the subsettting we will ha
 
  Let's read in our data
  ```
-ratio_dataTable <- read.table(file = "home/ubuntu/workspace/Module4_somaticvariants/copynumber/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_ratio.txt", header=TRUE)
+ratio_dataTable <- read.table(file = "/home/ubuntu/workspace/Module4_somaticvariants/copynumber/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_ratio.txt", header=TRUE)
 #ratio_dataTable <- read.table(file = "https://github.com/bioinformatics-ca/CAN_2021/raw/main/Module4/Data/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_ratio.txt",header=TRUE)
 
 ratio <- data.frame(ratio_dataTable)
-BAF_dataTable <-read.table(file="home/ubuntu/workspace/Module4_somaticvariants/copynumber/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_BAF.txt", header=TRUE)
+BAF_dataTable <-read.table(file="/home/ubuntu/workspace/Module4_somaticvariants/copynumber/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_BAF.txt", header=TRUE)
 #BAF_dataTable <- read.table(file = "https://github.com/bioinformatics-ca/CAN_2021/raw/main/Module4/Data/CBW_regions_c0098_Tumor.sorted.markduplicates.bam_sample.cpn_BAF.txt"", header=TRUE)
 BAF<-data.frame(BAF_dataTable)
 ploidy <- 2                   
