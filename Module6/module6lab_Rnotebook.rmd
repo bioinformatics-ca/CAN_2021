@@ -17,7 +17,13 @@ output:
 * Set directory objects
 * Load data
 
-Load in packages.
+We'll need to download the package `pheatmap` to run this R Notebook.
+
+```{r}
+BiocManager::install("pheatmap")
+```
+
+Now we can load in all our packages, including `pheatmap`.
 
 ```{r}
 library(ballgown, quietly = TRUE)
