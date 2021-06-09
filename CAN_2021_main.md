@@ -116,9 +116,13 @@ Comming soon
 
 *<font color="#827e9c">Trevor Pugh / Javier Diaz</font>* 
 
-[Lecture]()
+[Lecture](https://drive.google.com/file/d/1jlEBtORik8PA39Vqyx5rly173wbr5H1T/view?usp=sharing)
 
-[Lab Practical]() 
+* Lab
+
+[Lab-Lecture](https://drive.google.com/file/d/12NWBD4d7M7b_ksFyZD9oyQivvIQVeEoB/view?usp=sharing)
+
+[Lab Practical](https://jdime.github.io/CBW_2021_CAN_M7/) 
 
 # Day 4 <a id="day4"></a>
 
