@@ -282,9 +282,7 @@ printf "\"ids\",\"type\",\"path\"\n\"carcinoma_C02\",\"carcinoma\",\"$RNA_LAB/ex
 more carcinoma_vs_normal.csv 
 ```
 
-Now open RStudio Server and load the file `module6lab_Rnotebook.rmd` located at CourseData > workspace > Module6 > Module6Lab. We'll use this file to run a differential expression analysis using the Ballgown package.
-
-You can also download this file from github at [module6lab_Rnotebook.rmd](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module6/module6lab_Rnotebook.rmd). If you download the file from github, copy and paste the whole text into an RNotebook in RStudio Server.
+Now open RStudio Server and [module6lab_Rnotebook.rmd](https://raw.githubusercontent.com/bioinformatics-ca/CAN_2021/main/Module6/module6lab_Rnotebook.rmd). We'll use this file to run a differential expression analysis using the Ballgown package. Click File > New file > R Notebook to create a new R Notebook. Copy and paste the contents of [module6lab_Rnotebook.rmd](https://raw.githubusercontent.com/bioinformatics-ca/CAN_2021/main/Module6/module6lab_Rnotebook.rmd) into your new R Notebook. Make sure you get copy and paste the whole document.
 
 Have a look at the Ballgrown package and manual document as well
 https://www.bioconductor.org/packages/release/bioc/html/ballgown.html
@@ -297,5 +295,5 @@ https://www.bioconductor.org/packages/release/bioc/html/ballgown.html
 
 **A9)** The CummerBund package provides a wide variety of plots that can be used to visualize a gene’s expression profile or genes that are differentially expressed. Some of these plots include heatmaps, boxplots, and volcano plots. Alternatively, you can use custom plots using ggplot2 command or base R plotting commands such as those provided in the supplementary tutorials. Start with something very simple such as a scatter plot of tumor vs. normal FPKM values.
 
-Compare your plots to the expected plots: [module6lab_Rnotebook.html](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module6/module6lab_Rnotebook.html) Save this file locally and load in it in your browser.
+Compare your plots to the expected plots: [module6lab_Rnotebook.html](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module6/module6lab_Rnotebook.html) To view this file, save it locally and load in it in your browser.
 
