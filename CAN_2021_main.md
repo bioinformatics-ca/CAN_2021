@@ -157,7 +157,8 @@ Comming soon
 
 *<font color="#827e9c">Shraddha Pai</font>* 
 
-[Lecture](https://drive.google.com/drive/folders/18wf_LdLNlYGgWgdzJfZEkthauLQgvx4B)
+[Lecture pdf](https://drive.google.com/file/d/1om3f86m3h8NWyCGHnim2mgFdc_n5Ym7M/view?usp=sharing)
+[Lecture ptt](https://drive.google.com/file/d/1FC_Y-3japA01ScbUOm5xlV-_r9U04ESg/view?usp=sharing)
 
 [Lab Practical](https://pailab.oicr.on.ca/CBW_CAN_DataIntegration_2021/index.html)    
 
