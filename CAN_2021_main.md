@@ -150,6 +150,7 @@ Comming soon
 
 [Lecture in PDF](https://drive.google.com/a/bioinformatics.ca/file/d/1eM8iaL9MPzwNPL7DZ4WtOzTz4BHTe0v9/view?usp=sharing)       
 [Lecture in PPT](https://drive.google.com/a/bioinformatics.ca/file/d/1EBdqVdjHkJ2TQ8VsFeYAttFwzaWSf2CO/view?usp=sharing)
+
 [Labs]
 
 ## Module 11: Multi-omic data integration
