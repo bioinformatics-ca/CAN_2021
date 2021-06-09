@@ -135,18 +135,17 @@ Analyze Module Functions>Survival Analysis>Upload/Browse “OVCA_clinical.txt”
   </summary>
 	
 * Click the most statistically significant module link [blue line] from the CoxPH results panel. Click OK. Click #_plot.pdf to display Kaplan-Meyer plot. Repeat this for the other significant module links. KM plot: samples having genes mutated in a module (green line), and samples having no genes mutated in the module (red line).
-* There is a bug with the Windows version to view the .pdf file. You may want to search for the CytoscapeConfiguration folder. 
-* On Mac, go to: /Users/[name]/CytoscapeConfiguration/3/karaf_data/tmp/#########_plot.pdf
- <details>
- <details>
-	 
+* There is a bug with the Windows version to view the .pdf file. You may want to search for the CytoscapeConfiguration folder.
+* On Mac, go to: "/Users/[name]/CytoscapeConfiguration/3/karaf_data/tmp/#########_plot.pdf"
+
+</details> 	 
 * 14. Taking into what you have learned about module 4, what is your hypothesis?
 
 ### Example 4: Illuminating the interactions and functions of an understudied protein
-Point the web browser to https://idg.reactome.org. 
-On the home page that appears, in the search box in the middle of the page, click the text box, type [PRKY or another gene symbol], then press the Enter key (or click the Search button). 
-This brings up the search results in the bottom of the page.
-Refer to the User Docs: https://idg.reactome.org/documentation/userguide to guide you through the site.
+* Point the web browser to https://idg.reactome.org. 
+* On the home page that appears, in the search box in the middle of the page, click the text box, type [PRKY or another gene symbol], then press the Enter key (or click the Search button). 
+* This brings up the search results in the bottom of the page.
+* Refer to the User Docs: https://idg.reactome.org/documentation/userguide to guide you through the site.
 
 
 
