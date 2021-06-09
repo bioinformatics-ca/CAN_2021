@@ -1,7 +1,7 @@
 ---
 layout: tutorial_page
 permalink: /CAN_2021_Module6_Lab
-title: BiCG 2019 Module 6 Lab
+title: CAN 2021 Module 6 Lab
 header1: Workshop Pages for Students
 header2: Cancer Analysis 2021
 image: /site_images/CBW_cancerDNA_icon-16.jpg
