@@ -282,13 +282,9 @@ printf "\"ids\",\"type\",\"path\"\n\"carcinoma_C02\",\"carcinoma\",\"$RNA_LAB/ex
 more carcinoma_vs_normal.csv 
 ```
 
-Now load R or switch to the console within R Studio Server.
+Now open RStudio Server.
 
-```
-R
-```
-
-The file [Module6_Lab_ballgown.R](https://raw.githubusercontent.com/bioinformatics-ca/CAN_2021/main/Module6/Module6_Lab_ballgown.R) will help you to run differential expression analysis with the Ballgown package. Copy and paste the commands from this file into your terminal once R has started (you should see ">" as a prompt).
+The file [module6lab_Rnotebook.rmd](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module6/module6lab_Rnotebook.rmd) will help you to run differential expression analysis with the Ballgown package. Copy and paste the commands from this file into an RNotebook in RStudio Server.
 
 Have a look at the Ballgrown package and manual document as well
 https://www.bioconductor.org/packages/release/bioc/html/ballgown.html
@@ -301,18 +297,5 @@ https://www.bioconductor.org/packages/release/bioc/html/ballgown.html
 
 **A9)** The CummerBund package provides a wide variety of plots that can be used to visualize a gene’s expression profile or genes that are differentially expressed. Some of these plots include heatmaps, boxplots, and volcano plots. Alternatively, you can use custom plots using ggplot2 command or base R plotting commands such as those provided in the supplementary tutorials. Start with something very simple such as a scatter plot of tumor vs. normal FPKM values.
 
-**see [Module6_Lab_plots.R](https://raw.githubusercontent.com/bioinformatics-ca/CAN_2021/main/Module6/Module6_Lab_plots.R) for plotting options**.
-
-When you finished running the commands from Module6_Lab_ballgown.R, you should have exited R (no more ">" prompt). Type R into the terminal again to restart R:
-```
-R
-```
-
-If you ever get stuck in R and want to return to the terminal, type `q()` to exit R.
-
-Your plots will be at http://##/Module6/Module6_Lab/de/ballgown/ref_only/Module6_Lab_Supplementary_R_output.pdf
-
-Remember to replace "##" with your public IPv4 address.
-
-Compare your plots to the expected plots: [Module6_Lab_Supplementary_R_output.pdf](https://github.com/bioinformatics-ca/CAN_2021/raw/main/Module6/Module6_Lab_Supplementary_R_output.pdf)
+Compare your plots to the expected plots: [module6lab_Rnotebook.html](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module6/module6lab_Rnotebook.html) Save this file locally and load in it in your browser.
 
