@@ -138,7 +138,8 @@ Analyze Module Functions>Survival Analysis>Upload/Browse “OVCA_clinical.txt”
 * There is a bug with the Windows version to view the .pdf file. You may want to search for the CytoscapeConfiguration folder.
 * On Mac, go to: "/Users/[name]/CytoscapeConfiguration/3/karaf_data/tmp/#########_plot.pdf"
 
-</details> 	 
+</details> 
+
 * 14. Taking into what you have learned about module 4, what is your hypothesis?
 
 ### Example 4: Illuminating the interactions and functions of an understudied protein
