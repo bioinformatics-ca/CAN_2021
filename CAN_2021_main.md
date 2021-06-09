@@ -143,6 +143,7 @@ Comming soon
  *<font color="#827e9c">Robin Haw</font>* 
 
  [Lecture pdf](https://drive.google.com/file/d/1CcFg40u_4hUJ2k-HtvV2Ld8SL1PydLJq/view?usp=sharing)
+ 
  [Lecture ppt](https://drive.google.com/file/d/1zgaFX1XGCYp14iiUAbaMdSAhtgrGGX8b/view?usp=sharing)
 
  [Lab Practical](https://bioinformaticsdotca.github.io/CAN_2021_module9_lab)
