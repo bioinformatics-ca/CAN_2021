@@ -282,9 +282,9 @@ printf "\"ids\",\"type\",\"path\"\n\"carcinoma_C02\",\"carcinoma\",\"$RNA_LAB/ex
 more carcinoma_vs_normal.csv 
 ```
 
-Now open RStudio Server.
+Now open RStudio Server and load the file `module6lab_Rnotebook.rmd` located at CourseData > workspace > Module6 > Module6Lab. We'll use this file to run a differential expression analysis using the Ballgown package.
 
-The file [module6lab_Rnotebook.rmd](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module6/module6lab_Rnotebook.rmd) will help you to run differential expression analysis with the Ballgown package. Copy and paste the commands from this file into an RNotebook in RStudio Server.
+You can also download this file from github at [module6lab_Rnotebook.rmd](https://github.com/bioinformatics-ca/CAN_2021/blob/main/Module6/module6lab_Rnotebook.rmd). If you download the file from github, copy and paste the whole text into an RNotebook in RStudio Server.
 
 Have a look at the Ballgrown package and manual document as well
 https://www.bioconductor.org/packages/release/bioc/html/ballgown.html
