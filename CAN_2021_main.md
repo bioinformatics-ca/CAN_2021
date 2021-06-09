@@ -106,7 +106,7 @@ Comming soon
 
 *<font color="#827e9c">Florence Cavalli</font>* 
 
-[Lecture (pdf)](https://drive.google.com/drive/folders/18wf_LdLNlYGgWgdzJfZEkthauLQgvx4B)  
+[Lecture (pdf)](https://drive.google.com/file/d/1ClFdX8x18og1hBV4EaiUIXJVngok04ol/view?usp=sharing)  
 [Lecture (pptx)](https://drive.google.com/file/d/1wgB28nVqKsxjoUV3fev1SNVARC3P9RUJ/view?usp=sharing)
 
  [Labs](https://bioinformaticsdotca.github.io/CAN_2021_Module6_Lab)
