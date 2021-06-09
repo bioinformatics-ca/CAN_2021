@@ -49,7 +49,6 @@ What are the most significant biological pathways when the FDR Filter is set to 
 * "Open Reactome Reacfoam" from the pathway tree. You may also download the Reacfoam view by clicking the download button at the top-right corner. For windows 10 users, to open the Reacfoam view, you need to allow "public" access to Cytoscape by checking "public" in the settings for "Allow an app through Windows Firewall" in the "System and Security" control settings
 
 </details> 
-</details> 
 
 ### Example 2: Gene Set Enrichment Analysis of AML dataset (PMCID: PMC6849941)
 
