@@ -154,10 +154,10 @@ Comming soon
 
 *<font color="#827e9c">Lauren Erdman</font>* 
 
-[Lecture in PDF](https://drive.google.com/a/bioinformatics.ca/file/d/1eM8iaL9MPzwNPL7DZ4WtOzTz4BHTe0v9/view?usp=sharing)       
-[Lecture in PPT](https://drive.google.com/a/bioinformatics.ca/file/d/1EBdqVdjHkJ2TQ8VsFeYAttFwzaWSf2CO/view?usp=sharing)
+[Lecture and lab slides in PPT](https://drive.google.com/file/d/1OEftBcWXaz8UwiFy6X8bEmKPJEtO-G5W/view?usp=sharing)
 
-[Labs]
+[Lab master script](https://drive.google.com/file/d/1dwXtJsiCWsAUUxNFULDzeaVB2hiVy2gm/view?usp=sharing)
+[Lab data](https://drive.google.com/file/d/1yeAHsZU__4Gj6aviwxyl5hc48PT3wvHP/view?usp=sharing)
 
 ## Module 11: Multi-omic data integration
 
