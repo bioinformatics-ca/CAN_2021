@@ -120,7 +120,7 @@ Comming soon
 
 * Lab
 
-[Lab-Lecture](https://drive.google.com/file/d/12NWBD4d7M7b_ksFyZD9oyQivvIQVeEoB/view?usp=sharing)
+[Lab-Lecture](https://drive.google.com/file/d/1_mpx8hXTU21k_dBpJBGVW_YUSDW5D2Ie/view?usp=sharing)
 
 [Lab Practical](https://jdime.github.io/CBW_2021_CAN_M7/) 
 
