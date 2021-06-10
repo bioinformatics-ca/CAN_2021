@@ -158,6 +158,11 @@ Comming soon
 
 *<font color="#827e9c">Lauren Erdman</font>* 
 
+[Lecture and lab slides in PPT](https://drive.google.com/file/d/1OEftBcWXaz8UwiFy6X8bEmKPJEtO-G5W/view?usp=sharing)
+
+[Lab master script](https://drive.google.com/file/d/1dwXtJsiCWsAUUxNFULDzeaVB2hiVy2gm/view?usp=sharing)
+
+[Lab data](https://drive.google.com/file/d/1yeAHsZU__4Gj6aviwxyl5hc48PT3wvHP/view?usp=sharing)
 
 
 ## Module 11: Multi-omic data integration
