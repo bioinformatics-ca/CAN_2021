@@ -145,6 +145,10 @@ Comming soon
  [Lecture pdf](https://drive.google.com/file/d/1CcFg40u_4hUJ2k-HtvV2Ld8SL1PydLJq/view?usp=sharing)
  
  [Lecture ppt](https://drive.google.com/file/d/1zgaFX1XGCYp14iiUAbaMdSAhtgrGGX8b/view?usp=sharing)
+ 
+ [Lab Lecture pdf](https://drive.google.com/file/d/1IDgdKcnUzTZNtkV_NXutjG2r9ukKUbfs/view?usp=sharing)
+ 
+ [Lab Lecture ppt](https://drive.google.com/file/d/1GemHIoaabgshSO1CgvfIKGi-2rZAMUGx/view?usp=sharing)
 
  [Lab Practical](https://bioinformaticsdotca.github.io/CAN_2021_module9_lab)
 
