@@ -179,9 +179,7 @@ Comming soon
 
 # Data Sets
 
-*<font color="#827e9c">CourseData</font>*
-
-[Module2](http://hpc4health.ca/cbw/2021/CAN/Module2.tar)
+*<font color="#827e9c">CourseData from AWS</font>*
 
 [Module3](http://hpc4health.ca/cbw/2021/CAN/Module3.tar)
 
@@ -193,6 +191,8 @@ Comming soon
 
 [Module7](http://hpc4health.ca/cbw/2021/CAN/Module7.tar)
 
-[Module10](http://hpc4health.ca/cbw/2021/CAN/Module10.tar)
+[Module11](http://hpc4health.ca/cbw/2021/CAN/Module10.tar)
+
+*Note:* Data from Module11 are in a file named Module10.tar
 
 
