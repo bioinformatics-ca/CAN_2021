@@ -78,6 +78,11 @@ Comming soon
 
 [Lab practical raw & computed data](https://bioinformaticsdotca.github.io/CAN_2021_module3_lab)
 
+<!---  **Data Sets** *<font color="#827e9c">CourseData from AWS</font>*
+
+[Module3](http://hpc4health.ca/cbw/2021/CAN/Module3.tar)
+--->
+
 ***
 
 # Day 2 <a id="day2"></a>
@@ -92,6 +97,11 @@ Comming soon
 
 [Lab Practical](https://bioinformaticsdotca.github.io/CAN_2021_module4_lab)  
 
+<!---# **Data Sets** *<font color="#827e9c">CourseData from AWS</font>*
+
+[Module4](http://hpc4health.ca/cbw/2021/CAN/Module4.tar) 
+--->
+
 ## Module 05: Single Cell Genomics - DNA
 
 *<font color="#827e9c">Andrew McPherson</font>* 
@@ -99,6 +109,11 @@ Comming soon
 [Lecture](https://drive.google.com/file/d/1e55f7kisrJi3HKn-n_f5fjKAHZOLSXIq/view)
 
 [Lab Practical](https://amcpherson.github.io/CBW_CAN_scDNA_2021)  
+
+<!--- **Data Sets** *<font color="#827e9c">CourseData from AWS</font>*
+
+[Module5](http://hpc4health.ca/cbw/2021/CAN/Module5.tar)
+--->
 
 # Day 3 <a id="day3"></a>  
 
@@ -109,8 +124,12 @@ Comming soon
 [Lecture (pdf)](https://drive.google.com/file/d/1ClFdX8x18og1hBV4EaiUIXJVngok04ol/view?usp=sharing)  
 [Lecture (pptx)](https://drive.google.com/file/d/1wgB28nVqKsxjoUV3fev1SNVARC3P9RUJ/view?usp=sharing)
 
- [Labs](https://bioinformaticsdotca.github.io/CAN_2021_Module6_Lab)
+[Labs](https://bioinformaticsdotca.github.io/CAN_2021_Module6_Lab)
 
+<!--- **Data Sets** *<font color="#827e9c">CourseData from AWS</font>*
+
+[Module6](http://hpc4health.ca/cbw/2021/CAN/Module6.tar)
+--->
 
 ## Module 07: Single Cell Genomics - RNA
 
@@ -123,6 +142,11 @@ Comming soon
 [Lab-Lecture](https://drive.google.com/file/d/1_mpx8hXTU21k_dBpJBGVW_YUSDW5D2Ie/view?usp=sharing)
 
 [Lab Practical](https://jdime.github.io/CBW_2021_CAN_M7/) 
+
+<!--- **Data Sets** *<font color="#827e9c">CourseData from AWS</font>*
+
+[Module7](http://hpc4health.ca/cbw/2021/CAN/Module7.tar)
+--->
 
 # Day 4 <a id="day4"></a>
 
@@ -177,22 +201,11 @@ Comming soon
 
 [Lab Practical](https://pailab.oicr.on.ca/CBW_CAN_DataIntegration_2021/index.html)   
 
-# Data Sets
-
-*<font color="#827e9c">CourseData from AWS</font>*
-
-[Module3](http://hpc4health.ca/cbw/2021/CAN/Module3.tar)
-
-[Module4](http://hpc4health.ca/cbw/2021/CAN/Module4.tar)
-
-[Module5](http://hpc4health.ca/cbw/2021/CAN/Module5.tar)
-
-[Module6](http://hpc4health.ca/cbw/2021/CAN/Module6.tar)
-
-[Module7](http://hpc4health.ca/cbw/2021/CAN/Module7.tar)
+<!--- **Data Sets** *<font color="#827e9c">CourseData from AWS</font>*
 
 [Module11](http://hpc4health.ca/cbw/2021/CAN/Module10.tar)
 
 *Note:* Data from Module11 are in a file named Module10.tar
+--->
 
 
