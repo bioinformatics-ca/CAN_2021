@@ -160,6 +160,8 @@ Comming soon
 
 [Lecture and lab slides in PPT](https://drive.google.com/file/d/1dbllT6dqhmFbQ-o4vD3azkeqHevuXINM/view?usp=sharing)
 
+[Lab student script](https://drive.google.com/file/d/1PAlM2s8w46nGEAGcW7LVHCrImTCJyY4w/view?usp=sharing)
+
 [Lab master script](https://drive.google.com/file/d/1E7Ud8K6MhLYxAAGOJcYBWVRIZZExmZVM/view?usp=sharing)
 
 [Lab data](https://drive.google.com/file/d/1yeAHsZU__4Gj6aviwxyl5hc48PT3wvHP/view?usp=sharing)
