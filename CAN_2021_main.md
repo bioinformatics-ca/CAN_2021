@@ -178,13 +178,21 @@ Comming soon
 [Lab Practical](https://pailab.oicr.on.ca/CBW_CAN_DataIntegration_2021/index.html)   
 
 # Data Sets
+
 *<font color="#827e9c">CourseData</font>*
+
 [Module2](http://hpc4health.ca/cbw/2021/CAN/Module2.tar)
+
 [Module3](http://hpc4health.ca/cbw/2021/CAN/Module3.tar)
+
 [Module4](http://hpc4health.ca/cbw/2021/CAN/Module4.tar)
+
 [Module5](http://hpc4health.ca/cbw/2021/CAN/Module5.tar)
+
 [Module6](http://hpc4health.ca/cbw/2021/CAN/Module6.tar)
+
 [Module7](http://hpc4health.ca/cbw/2021/CAN/Module7.tar)
+
 [Module10](http://hpc4health.ca/cbw/2021/CAN/Module10.tar)
 
 
