@@ -182,7 +182,7 @@ Comming soon
 
 *<font color="#827e9c">Lauren Erdman</font>* 
 
-[Lecture and lab slides in PPT](https://drive.google.com/file/d/1dbllT6dqhmFbQ-o4vD3azkeqHevuXINM/view?usp=sharing)
+[Lecture and lab slides in PPT](https://drive.google.com/file/d/1IRE9hW5BktGUu6Q8UBkqpgnyroGu6id1/view?usp=sharing)
 
 [Lab student script](https://drive.google.com/file/d/1PAlM2s8w46nGEAGcW7LVHCrImTCJyY4w/view?usp=sharing)
 
