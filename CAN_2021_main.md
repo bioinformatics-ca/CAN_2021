@@ -62,6 +62,8 @@ Comming soon
 
 [Lecture in Keynote](https://drive.google.com/file/d/1ELk3HR3ByL5ix4-LUchjIY9z7ucGD6g1/view?usp=sharing)
 
+*<font color="#827e9c">Heather Gibling</font>*
+
 [Lab slides](https://drive.google.com/file/d/1TZwPhdgERNP5uaqHq039W5I6adJ6DA3-/view?usp=sharing)
 
 [Lab Practical](https://bioinformaticsdotca.github.io/CAN_2021_Module2_lab_cancer)
@@ -95,6 +97,8 @@ Comming soon
 
 [Lecture ppt](https://drive.google.com/file/d/1gshvfNVPZ_PoxLpW6ufrS1_Df3Ymv4-q/view?usp=sharing)
 
+*<font color="#827e9c">Aaron Gillmor</font>*
+
 [Lab Practical](https://bioinformaticsdotca.github.io/CAN_2021_module4_lab)  
 
 **Data Sets** *<font color="#827e9c">CourseData from AWS</font>*
@@ -124,6 +128,8 @@ Comming soon
 [Lecture (pdf)](https://drive.google.com/file/d/1ClFdX8x18og1hBV4EaiUIXJVngok04ol/view?usp=sharing)  
 [Lecture (pptx)](https://drive.google.com/file/d/1wgB28nVqKsxjoUV3fev1SNVARC3P9RUJ/view?usp=sharing)
 
+*<font color="#827e9c">Emma Bell</font>*
+
 [Labs](https://bioinformaticsdotca.github.io/CAN_2021_Module6_Lab)
 
 <!--- **Data Sets** *<font color="#827e9c">CourseData from AWS</font>*
@@ -136,8 +142,6 @@ Comming soon
 *<font color="#827e9c">Trevor Pugh / Javier Diaz</font>* 
 
 [Lecture](https://drive.google.com/file/d/1jlEBtORik8PA39Vqyx5rly173wbr5H1T/view?usp=sharing)
-
-* Lab
 
 [Lab-Lecture](https://drive.google.com/file/d/1_mpx8hXTU21k_dBpJBGVW_YUSDW5D2Ie/view?usp=sharing)
 
@@ -156,11 +160,11 @@ Comming soon
 
 [Lecture](https://drive.google.com/file/d/1cq6zapNx7wpdHOUv70SA7yiABVe7g7XC/view?usp=sharing)
 
- * [Lab1](https://baderlab.github.io/CBW_Pathways_2021/CANgprofiler-lab.html) 
-
- * Lab2:
-  * [Lab2 part 1](https://baderlab.github.io/CBW_Pathways_2021/gsea-lab.html) 
-  * [Lab2 part 2](https://baderlab.github.io/CBW_Pathways_2021/gsea-mod3.html)  
+ [Lab1](https://baderlab.github.io/CBW_Pathways_2021/CANgprofiler-lab.html) 
+ 
+ [Lab2 part 1](https://baderlab.github.io/CBW_Pathways_2021/gsea-lab.html) 
+ 
+ [Lab2 part 2](https://baderlab.github.io/CBW_Pathways_2021/gsea-mod3.html)  
 
  ## Module 09: Genes to Networks
 
